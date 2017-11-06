@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, Button } from 'react-materialize';
 import './Main.css';
+import { Link } from 'react-router-dom';
 
 class Main extends Component {
     render() {
@@ -12,8 +13,12 @@ class Main extends Component {
                             <span className='card-title white-text'><strong>Patients</strong></span>
                             <p>I am a very simple card.</p>
                             <center className='main-add-button'>
-                                <Button floating large className='cyan accent-4 main-icon' waves='light' icon='format_list_bulleted' />
-                                <Button floating large className='cyan accent-2 main-icon' waves='light' icon='add' />
+                                <Link to={`/patients`}>
+                                    <Button floating large className='cyan accent-4 main-icon' waves='light' icon='format_list_bulleted' />
+                                </Link>
+                                <Link to={`/patient/form`}>
+                                    <Button floating large className='cyan accent-2 main-icon' waves='light' icon='add' />
+                                </Link>
                             </center>
                         </Card>
                     </Col>
