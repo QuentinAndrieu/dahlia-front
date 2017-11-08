@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Collection, CollectionItem, Col, Row, Input } from 'react-materialize';
-import './PatientList.css'
-
 
 
 class PatientList extends Component {
   render() {
+
+    const patientCollection = {
+      marginTop: '57px'
+    }
+
     return (
       <div className='patient-list'>
         <Row>
@@ -16,7 +19,7 @@ class PatientList extends Component {
           </Col>
 
           <Col m={9} s={12}>
-            <div className='patient-collection'>
+            <div style={patientCollection}>
               <Collection>
                 <CollectionItem className='cyan-text' href='#'>Albert Dupont</CollectionItem>
                 <CollectionItem className='cyan-text' href='#'>Albert Dupont</CollectionItem>

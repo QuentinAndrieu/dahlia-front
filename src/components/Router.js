@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Home from '../home/Home';
-import PatientList from '../patient/PatientList';
-import PatientForm from '../patient/PatientForm';
-import UserSignIn from '../user/UserSignIn';
+import Home from './Home';
+import PatientList from './PatientList';
+import PatientForm from './PatientForm';
+import UserSignIn from './UserSignIn';
 
 
 class Router extends Component {
