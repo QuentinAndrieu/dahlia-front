@@ -9,7 +9,6 @@ const instance = axios.create({
 });
 
 export function fetchJWTToken(mail, password) {
-    console.log(mail, password);
     return function (dispatch) {
         dispatch({ type: "FETCH_JWT_TOKEN" });
 
@@ -18,9 +17,24 @@ export function fetchJWTToken(mail, password) {
             password: password
         }).then(function (response) {
             sessionStorage.setItem('jwtToken', response.data.token);
-            dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token});
+            dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token });
         }).catch(function (error) {
             dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: error });
         });
+    }
+}
+
+export function setMail(mail) {
+    return {
+        type: 'SET_MAIL',
+        payload: mail
+    }
+}
+
+
+export function setPassword(password) {
+    return {
+        type: 'SET_PASSWORD',
+        payload: password
     }
 }
