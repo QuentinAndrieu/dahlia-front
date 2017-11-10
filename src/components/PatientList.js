@@ -4,7 +4,6 @@ import { Collection, CollectionItem, Col, Row, Input } from 'react-materialize';
 
 class PatientList extends Component {
   render() {
-
     const patientCollection = {
       marginTop: '57px'
     }

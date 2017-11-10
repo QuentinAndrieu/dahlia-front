@@ -3,7 +3,6 @@ import Router from './Router';
 
 class App extends Component {
   render() {
-
     const app = {
       textAlign: 'center'
     };
@@ -14,7 +13,6 @@ class App extends Component {
       padding: '20px',
       color: 'white'
     };
-
 
     return (
       <div className='app' style={app}>

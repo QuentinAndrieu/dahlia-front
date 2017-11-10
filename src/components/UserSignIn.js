@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Input, Container, Button } from 'react-materialize';
+import { connect } from "react-redux";
+import { fetchJWTToken } from '../actions/AuthentificationActions';
 
 class UserSignIn extends Component {
 
@@ -14,28 +16,6 @@ class UserSignIn extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    authenticate(mail, password) {
-        fetch('https://dahlia-api.herokuapp.com/authenticate', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                mail: mail,
-                password: password
-            })
-        }).then((response) => {
-            return response.json();
-        }).then((responseJson) => {
-            console.log('Authentification successful');
-            sessionStorage.setItem('jwtToken', responseJson.token);
-        }).catch(() => {
-            console.log('Authentification failed');
-        })
-    }
-
-
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -47,7 +27,9 @@ class UserSignIn extends Component {
     }
 
     handleSubmit(event) {
-        this.authenticate(this.state.mail, this.state.password);
+        console.log('token', this.props.token);
+        console.log(this.state.mail, this.state.password);
+        this.props.dispatch(fetchJWTToken(this.state.mail, this.state.password));
         event.preventDefault();
     }
 
@@ -66,4 +48,16 @@ class UserSignIn extends Component {
     }
 }
 
-export default UserSignIn;
+const mapStateToProps = (state) => ({
+    token: state.authentification.token
+})
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         fetchJWTToken: fetchJWTToken, 
+//         test: test
+//       }
+// }
+
+
+export default connect(mapStateToProps)(UserSignIn);
