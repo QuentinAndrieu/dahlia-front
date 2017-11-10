@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 class Home extends Component {
     render() {
-
         const card = {
             height: '240px'
         };
@@ -16,7 +15,6 @@ class Home extends Component {
         const homeIcon = {
             height: '240px'
         };
-
 
         return (
             <div className='home'>

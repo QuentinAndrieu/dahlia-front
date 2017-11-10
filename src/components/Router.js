@@ -7,11 +7,9 @@ import UserSignIn from './UserSignIn';
 
 
 class Router extends Component {
-
     isLogIn() {
         return Boolean(sessionStorage.getItem('jwtToken'));
     }
-
 
     render() {
         return (

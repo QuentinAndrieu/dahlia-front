@@ -3,11 +3,10 @@ import { Col, Row, Input } from 'react-materialize';
 
 class PatientForm extends Component {
     render() {
-
         const patientForm = {
             marginTop: '57px'
         }
-
+        
         return (
             <Row>
                 <Col s={3}>
