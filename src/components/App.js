@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Router from './Router';
+import Root from './Root';
 import { fetchUser } from '../actions/UserActions';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
@@ -30,7 +30,7 @@ class App extends Component {
           <h1>Dahlia</h1>
         </header>
 
-        <Router />
+        <Root />
       </div>
     );
   }

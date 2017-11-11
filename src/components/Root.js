@@ -6,7 +6,7 @@ import PatientForm from './PatientForm';
 import UserSignIn from './UserSignIn';
 
 
-class Router extends Component {
+class Root extends Component {
 
     render() {
         return (
@@ -20,4 +20,4 @@ class Router extends Component {
     }
 }
 
-export default Router;
+export default Root;
