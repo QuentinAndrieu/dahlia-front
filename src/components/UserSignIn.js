@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Input, Container, Button } from 'react-materialize';
 import { connect } from "react-redux";
 import { fetchJWTToken, setMail, setPassword } from '../actions/AuthentificationActions';
+import { bindActionCreators } from 'redux';
 
 class UserSignIn extends Component {
 
@@ -14,15 +15,15 @@ class UserSignIn extends Component {
     }
 
     setMail(event) {
-        this.props.dispatch(setMail(event.target.value));
+        this.props.setMail(event.target.value);
     }
 
     setPassword(event) {
-        this.props.dispatch(setPassword(event.target.value));
+        this.props.setPassword(event.target.value);
     }
 
     submit(event) {
-        this.props.dispatch(fetchJWTToken(this.props.mail, this.props.password));
+        this.props.fetchJWTToken(this.props.mail, this.props.password);
         event.preventDefault();
     }
 
@@ -47,4 +48,13 @@ const mapStateToProps = (state) => ({
     password: state.authentification.password
 });
 
-export default connect(mapStateToProps)(UserSignIn);
+const mapDispatchToProps = (dispatch) => (
+    bindActionCreators({
+        fetchJWTToken: fetchJWTToken,
+        setMail: setMail,
+        setPassword: setPassword,
+    }, dispatch)
+);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSignIn);
