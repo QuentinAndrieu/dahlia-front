@@ -8,7 +8,7 @@ const instance = axios.create({
     }
 });
 
-export function fetchJWTToken(mail, password) {
+export function fetchJWTToken(mail, password, callback) {
     return function (dispatch) {
         dispatch({ type: "FETCH_JWT_TOKEN" });
 
@@ -16,8 +16,13 @@ export function fetchJWTToken(mail, password) {
             mail: mail,
             password: password
         }).then(function (response) {
-            sessionStorage.setItem('jwtToken', response.data.token);
-            dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token });
+            if (response.data.success) {
+                sessionStorage.setItem('jwtToken', response.data.token);
+                callback(response.data.token);
+                dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token });
+            } else {
+                dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: 'Authentification failed' });
+            }
         }).catch(function (error) {
             dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: error });
         });

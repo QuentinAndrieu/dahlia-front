@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import Router from './Router';
+import { fetchUser } from '../actions/UserActions';
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 
 class App extends Component {
+
+  componentDidMount() {
+    if (sessionStorage.getItem('jwtToken')) {
+      this.props.fetchUser(sessionStorage.getItem('jwtToken'));
+    }
+  }
+
   render() {
     const app = {
       textAlign: 'center'
     };
-    
+
     const header = {
       backgroundColor: '#222',
       height: '200px',
@@ -26,4 +36,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    fetchUser: fetchUser
+  }, dispatch)
+);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

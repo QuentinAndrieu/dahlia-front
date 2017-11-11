@@ -1,17 +1,19 @@
 import axios from 'axios';
 
-const instance = axios.create({
-    baseURL: 'https://dahlia-api.herokuapp.com',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authentification': sessionStorage.getItem('jwtToken')
-    }
-});
 
-export function fetchUser() {
+export function fetchUser(jwtToken) {
     return function (dispatch) {
+
         dispatch({ type: "FETCH_USER" });
+
+        const instance = axios.create({
+            baseURL: 'https://dahlia-api.herokuapp.com',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': jwtToken
+            }
+        });
 
         instance.get('/user')
             .then((response) => {

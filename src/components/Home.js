@@ -13,7 +13,7 @@ class Home extends Component {
         };
 
         const homeIcon = {
-            height: '240px'
+            marginLeft: '15px'
         };
 
         return (

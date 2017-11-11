@@ -1,9 +1,5 @@
 export default function reducer(state = {
-      user: {
-            id: null,
-            firstname: null,
-            lastname: null,
-      },
+      user: {},
       fetching: false,
       fetched: false,
       error: null
@@ -21,7 +17,7 @@ export default function reducer(state = {
                         ...state,
                         fetching: false,
                         fetched: true,
-                        user: action.payload,
+                        user: action.payload
                   }
             }
             default: {
@@ -29,5 +25,5 @@ export default function reducer(state = {
             }
       }
 
-      return state
+      return state;
 }

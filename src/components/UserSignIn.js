@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Input, Container, Button } from 'react-materialize';
 import { connect } from "react-redux";
 import { fetchJWTToken, setMail, setPassword } from '../actions/AuthentificationActions';
+import { fetchUser } from '../actions/UserActions';
 import { bindActionCreators } from 'redux';
 
 class UserSignIn extends Component {
@@ -23,7 +24,10 @@ class UserSignIn extends Component {
     }
 
     submit(event) {
-        this.props.fetchJWTToken(this.props.mail, this.props.password);
+        const props = this.props;
+        props.fetchJWTToken(this.props.mail, this.props.password, function (jwtToken) {
+            props.fetchUser(jwtToken);
+        });
         event.preventDefault();
     }
 
@@ -33,7 +37,7 @@ class UserSignIn extends Component {
                 <form onSubmit={this.submit}>
                     <Row>
                         <Input s={6} type="text" name="mail" onChange={this.setMail} />
-                        <Input s={6} type="text" name="password" onChange={this.setPassword} />
+                        <Input s={6} type="password" name="password" onChange={this.setPassword} />
                         <Button s={12} type="submit">Submit</Button>
                     </Row>
                 </form>
@@ -53,6 +57,7 @@ const mapDispatchToProps = (dispatch) => (
         fetchJWTToken: fetchJWTToken,
         setMail: setMail,
         setPassword: setPassword,
+        fetchUser: fetchUser
     }, dispatch)
 );
 
