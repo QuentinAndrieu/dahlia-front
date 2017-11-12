@@ -33,7 +33,6 @@ class App extends Component {
 
         <Root />
 
-        {this.props.children}
       </div>
     );
   }

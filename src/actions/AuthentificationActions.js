@@ -36,7 +36,6 @@ export function setMail(mail) {
     }
 }
 
-
 export function setPassword(password) {
     return {
         type: 'SET_PASSWORD',

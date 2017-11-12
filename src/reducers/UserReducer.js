@@ -1,5 +1,17 @@
 export default function reducer(state = {
-      user: {},
+      user: {
+            username: '',
+            firstname: '',
+            lastname: '',
+            mail: '',
+            password: [],
+            setting: {
+                  durations: [],
+                  rates: []
+            },
+            role: '',
+            patients: []
+      },
       fetching: false,
       fetched: false,
       error: null
@@ -20,6 +32,20 @@ export default function reducer(state = {
                         user: action.payload
                   }
             }
+            case "ADD_PATIENT": {
+                  return { ...state }
+            }
+            case "ADD_PATIENT_REJECTED": {
+                  return { ...state, error: action.payload }
+            }
+            case "ADD_PATIENT_FULFILLED": {
+                  return {
+                        ...state,
+                        user: {
+                              patients: [...state.user.patients, action.payload]
+                        }
+                  }
+            }
             default: {
                   return state;
             }
@@ -27,3 +53,5 @@ export default function reducer(state = {
 
       return state;
 }
+
+

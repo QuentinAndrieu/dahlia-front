@@ -1,7 +1,5 @@
 export default function reducer(state = {
       token: null,
-      mail: null,
-      password: null,
       fetching: false,
       fetched: false,
       error: null
@@ -19,19 +17,7 @@ export default function reducer(state = {
                         ...state,
                         fetching: false,
                         fetched: true,
-                        token: action.payload,
-                  }
-            }
-            case "SET_MAIL": {
-                  return {
-                        ...state,
-                        mail: action.payload
-                  }
-            }
-            case "SET_PASSWORD": {
-                  return {
-                        ...state,
-                        password: action.payload
+                        token: action.payload
                   }
             }
             default:

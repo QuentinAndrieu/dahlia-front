@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Input, Container, Button } from 'react-materialize';
 import { connect } from "react-redux";
-import { fetchJWTToken, setMail, setPassword } from '../actions/AuthentificationActions';
+import { fetchJWTToken } from '../actions/AuthentificationActions';
 import { fetchUser } from '../actions/UserActions';
 import { bindActionCreators } from 'redux';
 
@@ -10,22 +10,29 @@ class UserSignIn extends Component {
     constructor(props) {
         super(props);
 
-        this.setMail = this.setMail.bind(this);
-        this.setPassword = this.setPassword.bind(this);
+        this.state = {
+            mail: '',
+            password: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
     }
 
-    setMail(event) {
-        this.props.setMail(event.target.value);
+    handleChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
-    setPassword(event) {
-        this.props.setPassword(event.target.value);
-    }
 
     submit(event) {
         const props = this.props;
-        props.fetchJWTToken(this.props.mail, this.props.password, function (jwtToken) {
+        props.fetchJWTToken(this.state.mail, this.state.password, function (jwtToken) {
             props.fetchUser(jwtToken);
         });
         event.preventDefault();
@@ -36,8 +43,8 @@ class UserSignIn extends Component {
             <Container>
                 <form onSubmit={this.submit}>
                     <Row>
-                        <Input s={6} type="text" name="mail" onChange={this.setMail} />
-                        <Input s={6} type="password" name="password" onChange={this.setPassword} />
+                        <Input s={6} type="text" name="mail" value={this.state.mail} onChange={this.handleChange} />
+                        <Input s={6} type="password" name="password" value={this.state.password} onChange={this.handleChange} />
                         <Button s={12} type="submit">Submit</Button>
                     </Row>
                 </form>
@@ -47,16 +54,12 @@ class UserSignIn extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    token: state.authentification.token,
-    mail: state.authentification.mail,
-    password: state.authentification.password
+    token: state.authentification.token
 });
 
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
         fetchJWTToken: fetchJWTToken,
-        setMail: setMail,
-        setPassword: setPassword,
         fetchUser: fetchUser
     }, dispatch)
 );
