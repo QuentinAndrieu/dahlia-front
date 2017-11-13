@@ -54,7 +54,6 @@ class UserSignIn extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    token: state.authentification.token
 });
 
 const mapDispatchToProps = (dispatch) => (

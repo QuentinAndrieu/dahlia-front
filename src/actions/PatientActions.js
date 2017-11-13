@@ -20,7 +20,6 @@ export function addPatient(firstname, lastname, birthday, description) {
             birthday: birthday,
             description: description
         }).then(function (response) {
-            console.log('--------------------', response.data);
             dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data });
         }).catch(function (error) {
             dispatch({ type: "ADD_PATIENT_REJECTED", payload: error });

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Collection, CollectionItem, Col, Row, Input } from 'react-materialize';
+import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+
 
 
 class PatientList extends Component {
@@ -7,6 +10,11 @@ class PatientList extends Component {
     const patientCollection = {
       marginTop: '57px'
     }
+
+    const mappedPatients = this.props.patients.map(patient =>
+      <CollectionItem key={patient._id} className='cyan-text' href='#'>
+        {patient.lastname} {patient.firstname}
+      </CollectionItem>);
 
     return (
       <div className='patient-list'>
@@ -20,10 +28,7 @@ class PatientList extends Component {
           <Col m={9} s={12}>
             <div style={patientCollection}>
               <Collection>
-                <CollectionItem className='cyan-text' href='#'>Albert Dupont</CollectionItem>
-                <CollectionItem className='cyan-text' href='#'>Albert Dupont</CollectionItem>
-                <CollectionItem className='cyan-text' href='#'>Albert Dupont</CollectionItem>
-                <CollectionItem className='cyan-text' href='#'>Albert Dupont</CollectionItem>
+                {mappedPatients}
               </Collection>
             </div>
           </Col>
@@ -33,4 +38,14 @@ class PatientList extends Component {
   }
 }
 
-export default PatientList;
+const mapStateToProps = (state) => ({
+  patients: state.user.user.patients
+});
+
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+  }, dispatch)
+);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PatientList);

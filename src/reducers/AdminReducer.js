@@ -1,5 +1,7 @@
 export default function reducer(state = {
     patients:[],
+    users: [],
+    appointments:[],
     error: null
 }, action) {
 
