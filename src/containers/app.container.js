@@ -1,4 +1,5 @@
 import { fetchUser } from '../actions/user.action';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import App from '../components/app.component';
@@ -12,4 +13,4 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Root from '../containers/root.container';
-import { withRouter } from 'react-router-dom';
 
 class App extends Component {
 
@@ -35,4 +34,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default App;
