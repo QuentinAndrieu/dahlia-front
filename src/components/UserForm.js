@@ -30,6 +30,12 @@ class UserForm extends Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.user !== this.props.user) {
+          this.setState(nextProps.user);
+        }
+      }
+
     submit(event) {
         this.props.updateUser(this.state.username, this.state.lastname, this.state.firstname, this.state.mail);
         event.preventDefault();
