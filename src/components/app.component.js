@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Root from './Root';
-import { fetchUser } from '../actions/UserActions';
+import Root from '../containers/root.container';
 import { withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
 
 class App extends Component {
 
@@ -38,13 +35,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({
-    fetchUser: fetchUser
-  }, dispatch)
-);
-
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(App);

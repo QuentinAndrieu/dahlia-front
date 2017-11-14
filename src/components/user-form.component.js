@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Row, Input, Button } from 'react-materialize';
-import { updateUser } from '../actions/UserActions';
-import { bindActionCreators } from 'redux';
-import { connect } from "react-redux";
 
 class UserForm extends Component {
 
@@ -69,16 +66,4 @@ class UserForm extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    user: state.user.user,
-    fetched: state.user.fetched
-});
-
-const mapDispatchToProps = (dispatch) => (
-    bindActionCreators({
-        updateUser: updateUser
-    }, dispatch)
-);
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserForm);
+export default UserForm;

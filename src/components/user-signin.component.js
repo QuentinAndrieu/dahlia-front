@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { Row, Input, Container, Button } from 'react-materialize';
-import { connect } from "react-redux";
-import { fetchJWTToken } from '../actions/AuthentificationActions';
-import { fetchUser } from '../actions/UserActions';
-import { bindActionCreators } from 'redux';
 
 class UserSignIn extends Component {
 
@@ -53,15 +49,4 @@ class UserSignIn extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-});
-
-const mapDispatchToProps = (dispatch) => (
-    bindActionCreators({
-        fetchJWTToken: fetchJWTToken,
-        fetchUser: fetchUser
-    }, dispatch)
-);
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserSignIn);
+export default UserSignIn;

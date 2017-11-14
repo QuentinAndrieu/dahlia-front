@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Row, Input, Button } from 'react-materialize';
-import { addPatient } from '../actions/PatientActions';
-import { bindActionCreators } from 'redux';
-import { connect } from "react-redux";
 
 class PatientForm extends Component {
 
@@ -66,14 +63,4 @@ class PatientForm extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-});
-
-const mapDispatchToProps = (dispatch) => (
-    bindActionCreators({
-        addPatient: addPatient
-    }, dispatch)
-);
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PatientForm);
+export default PatientForm;

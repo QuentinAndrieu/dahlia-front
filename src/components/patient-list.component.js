@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { Collection, CollectionItem, Col, Row, Input } from 'react-materialize';
-import { bindActionCreators } from 'redux';
-import { connect } from "react-redux";
-
-
 
 class PatientList extends Component {
   render() {
@@ -38,14 +34,4 @@ class PatientList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  patients: state.user.user.patients
-});
-
-const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({
-  }, dispatch)
-);
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PatientList);
+export default PatientList;
