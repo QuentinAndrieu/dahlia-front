@@ -14,12 +14,13 @@ export default function reducer(state = {
       },
       fetching: false,
       fetched: false,
+      hasFetch: false,
       error: null
 }, action) {
 
       switch (action.type) {
             case "FETCH_USER": {
-                  return { ...state, fetching: true }
+                  return { ...state, fetching: true, hasFetch: true }
             }
             case "FETCH_USER_REJECTED": {
                   return { ...state, fetching: false, error: action.payload }
