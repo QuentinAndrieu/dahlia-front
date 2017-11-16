@@ -7,9 +7,7 @@ export default function reducer(state = {
 
     switch (action.type) {
         default: {
-            return state;
+            return state;   
         }
     }
-
-    return state;
 }

@@ -31,12 +31,6 @@ class UserForm extends Component {
         this.setState(this.props.user);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.user !== this.props.user) {
-            this.setState(nextProps.user);
-        }
-    }
-
     submit(event) {
         this.props.updateUser(this.state.username, this.state.lastname, this.state.firstname,
             this.state.mail);

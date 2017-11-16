@@ -23,6 +23,4 @@ export default function reducer(state = {
             default:
                   return state;
       }
-
-      return state
 }
