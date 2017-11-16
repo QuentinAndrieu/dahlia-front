@@ -6,16 +6,13 @@ import PatientCreate from '../containers/patient-create.container';
 import UserSignIn from '../containers/user-signin.container';
 import UserUpdate from '../containers/user-update.container';
 import Loader from './loader.component';
+import decode from 'jwt-decode';
 
 
 class Root extends Component {
 
-    isLoading(){
+    isLoading() {
         return this.props.fetching;
-    }
-
-    isNotLogIn(){
-        return !this.props.fetching && !this.props.fetched && this.props.hasFetch;
     }
 
     render() {
@@ -24,20 +21,52 @@ class Root extends Component {
             return (<Loader />);
         }
 
-        if (this.isNotLogIn()) {
-            return <Redirect to='/signin' />;
-        }
-
         return (
             <Switch>
-                <Route exact path='/' component={Home} />
                 <Route exact path='/signin' component={UserSignIn} />
-                <Route exact path='/user/form/update' component={UserUpdate} />
-                <Route exact path='/patients' component={PatientList} />
-                <Route exact path='/patient/form' component={PatientCreate} />
+                <AuthRoute path='/' component={<Home />} />
+                <AuthRoute path='/user/form/update' component={<UserUpdate />} />
+                <AuthRoute path='/patients' component={<PatientList />} />
+                <AuthRoute path='/patient/form' component={<PatientCreate />} />
             </Switch>
         );
+    }
+}
 
+class AuthRoute extends Component {
+
+    isAuthenticated() {
+        const token = sessionStorage.getItem('jwtToken');
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { exp } = decode(token);
+
+            if (exp < new Date().getTime() / 1000) {
+                return false;
+            }
+        } catch (e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    render() {
+        const path = this.props.path;
+        
+        return (
+            <Route exact path={this.props.path} render={() => (
+                this.isAuthenticated() ? (
+                    this.props.component
+                ) : (
+                        <Redirect to='/signin' />
+                    )
+            )} />
+        );
     }
 }
 

@@ -14,7 +14,6 @@ export default function reducer(state = {
       },
       fetching: false,
       fetched: false,
-      hasFetch: false,
       error: null
 }, action) {
 
