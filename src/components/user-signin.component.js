@@ -41,7 +41,7 @@ class UserSignIn extends Component {
                     <Row>
                         <Input s={6} type="text" name="mail" value={this.state.mail} onChange={this.handleChange} />
                         <Input s={6} type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                        <Button s={12} type="submit">Submit</Button>
+                        <center><Button s={12} type="submit">Submit</Button></center>
                     </Row>
                 </form>
             </Container>

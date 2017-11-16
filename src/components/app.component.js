@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Root from '../containers/root.container';
-import { SideNav, SideNavItem, Button, Navbar } from 'react-materialize';
-// import logo from './images/Dahlia.jpg';
+import { SideNav, SideNavItem, Navbar } from 'react-materialize';
+import '../index.css';
 
 class App extends Component {
 
@@ -12,19 +12,14 @@ class App extends Component {
   }
 
   render() {
-    const app = {
-      textAlign: 'center'
-    };
 
     const navBar = {
-      backgroundColor: '#222'
+      backgroundColor: '#222',
+      height: '110px'
     };
 
     let main = {
-      paddingLeft: '300px',
-      '@media screen and (max-width : 992px)': {
-        paddingLeft: '0'
-      }
+      paddingLeft: '300px'
     }
 
     const imgLogo = {
@@ -36,27 +31,27 @@ class App extends Component {
     }
 
     return (
-      <div className='app' style={app}>
+      <div className="app">
 
-        <SideNav className="side-nav fixed" trigger={<div></div>}>
+        <SideNav id="sideNav" className="side-nav fixed" trigger={<div></div>}>
           <div style={sideNavLogo}>
-            <img style={imgLogo} src="images/Dahlia.jpg" />
+            <img alt="" style={imgLogo} src="images/Dahlia.jpg" />
           </div>
-          <SideNavItem icon='person'>Profile</SideNavItem>
+          <SideNavItem href="/profile" icon="person">Profile</SideNavItem>
           <SideNavItem divider />
-          <SideNavItem icon='add'>Add patient</SideNavItem>
-          <SideNavItem icon='format_list_bulleted'>List patients</SideNavItem>
+          <SideNavItem href="/patient/create" icon="add">Add patient</SideNavItem>
+          <SideNavItem href="/patients" icon="format_list_bulleted">List patients</SideNavItem>
           <SideNavItem divider />
-          <SideNavItem icon='add'>Add appointment</SideNavItem>
-          <SideNavItem icon='format_list_bulleted'>List appointments</SideNavItem>
+          <SideNavItem href="/appointment/create" icon="add">Add appointment</SideNavItem>
+          <SideNavItem href="/appointments" icon="format_list_bulleted">List appointments</SideNavItem>
           <SideNavItem divider />
-          <SideNavItem icon='perm_contact_calendar'>Calendar</SideNavItem>
+          <SideNavItem href="/calendar" icon="perm_contact_calendar">Calendar</SideNavItem>
         </SideNav>
 
         <Navbar style={navBar}>
         </Navbar>
 
-        <div style={main}>
+        <div style={main} className="main">
           <Root />
         </div>
 

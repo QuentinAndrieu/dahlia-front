@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../containers/home.container';
 import PatientList from '../containers/patient-list.container';
 import PatientCreate from '../containers/patient-create.container';
-import UserSignIn from '../containers/user-signin.container';
 import UserUpdate from '../containers/user-update.container';
 import Loader from './loader.component';
 import decode from 'jwt-decode';
@@ -17,15 +16,22 @@ class Root extends Component {
 
     render() {
 
+        const loader = {
+            marginTop: '50px'
+        }
+
+
         if (this.isLoading()) {
-            return (<Loader />);
+            return (
+                <center style={loader}>
+                    <Loader />
+                </center>);
         }
 
         return (
             <Switch>
-                <Route exact path='/signin' component={UserSignIn} />
                 <AuthRoute exact path='/' component={<Home />} />
-                <AuthRoute exact path='/user/update' component={<UserUpdate />} />
+                <AuthRoute exact path='/profile' component={<UserUpdate />} />
                 <AuthRoute exact path='/patients' component={<PatientList />} />
                 <AuthRoute exact path='/patient/create' component={<PatientCreate />} />
             </Switch>
