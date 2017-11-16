@@ -27,14 +27,19 @@ class UserForm extends Component {
         });
     }
 
+    componentDidMount() {
+        this.setState(this.props.user);
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.user !== this.props.user) {
-          this.setState(nextProps.user);
+            this.setState(nextProps.user);
         }
-      }
+    }
 
     submit(event) {
-        this.props.updateUser(this.state.username, this.state.lastname, this.state.firstname, this.state.mail);
+        this.props.updateUser(this.state.username, this.state.lastname, this.state.firstname,
+            this.state.mail);
         event.preventDefault();
     }
 
@@ -42,6 +47,8 @@ class UserForm extends Component {
         const userForm = {
             marginTop: '57px'
         }
+
+        console.log('props', this.props.user);
 
         return (
             <Row>

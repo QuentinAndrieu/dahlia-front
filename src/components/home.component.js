@@ -27,7 +27,7 @@ class Home extends Component {
                                 <Link to={`/patients`}>
                                     <Button floating large className='cyan accent-4' style={homeIcon} waves='light' icon='format_list_bulleted' />
                                 </Link>
-                                <Link to={`/patient/form`}>
+                                <Link to={`/patient/create`}>
                                     <Button floating large className='cyan accent-2' style={homeIcon} waves='light' icon='add' />
                                 </Link>
                             </center>

@@ -24,10 +24,10 @@ class Root extends Component {
         return (
             <Switch>
                 <Route exact path='/signin' component={UserSignIn} />
-                <AuthRoute path='/' component={<Home />} />
-                <AuthRoute path='/user/form/update' component={<UserUpdate />} />
-                <AuthRoute path='/patients' component={<PatientList />} />
-                <AuthRoute path='/patient/form' component={<PatientCreate />} />
+                <AuthRoute exact path='/' component={<Home />} />
+                <AuthRoute exact path='/user/update' component={<UserUpdate />} />
+                <AuthRoute exact path='/patients' component={<PatientList />} />
+                <AuthRoute exact path='/patient/create' component={<PatientCreate />} />
             </Switch>
         );
     }
@@ -56,8 +56,6 @@ class AuthRoute extends Component {
     }
 
     render() {
-        const path = this.props.path;
-        
         return (
             <Route exact path={this.props.path} render={() => (
                 this.isAuthenticated() ? (

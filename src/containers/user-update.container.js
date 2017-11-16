@@ -5,8 +5,7 @@ import UserForm  from '../components/user-form.component';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
-    user: state.user.user,
-    fetched: state.user.fetched
+    user: state.user.user
 });
 
 const mapDispatchToProps = (dispatch) => (
