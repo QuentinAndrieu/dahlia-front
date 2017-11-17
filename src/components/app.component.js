@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import Root from '../containers/root.container';
-import { SideNav, SideNavItem, Navbar } from 'react-materialize';
+import { SideNav, SideNavItem, Container, Icon } from 'react-materialize';
 import '../index.css';
+import { Link } from 'react-router-dom';
 
 class App extends Component {
 
   componentDidMount() {
-    if (sessionStorage.getItem('jwtToken')) {
+    if (sessionStorage.getItem('jwtToken') && !this.props.fetched) {
       this.props.fetchUser(sessionStorage.getItem('jwtToken'));
     }
   }
 
   render() {
-
-    const navBar = {
-      backgroundColor: '#222',
-      height: '110px'
-    };
 
     let main = {
       paddingLeft: '300px'
@@ -30,31 +26,48 @@ class App extends Component {
       height: '215px'
     }
 
+    const header = {
+      backgroundColor: 'grey',
+      height: '110px',
+      color: 'white'
+    }
+
+    const menu = {
+      cursor: 'pointer'
+    }
+
     return (
-      <div className="app">
-
-        <SideNav id="sideNav" className="side-nav fixed" trigger={<div></div>}>
+      <div className="app" >
+        <SideNav id="sideNav" className="side-nav fixed" trigger={< div ></div>} >
           <div style={sideNavLogo}>
-            <img alt="" style={imgLogo} src="images/Dahlia.jpg" />
+            <center>
+              <img alt="" style={imgLogo} src="images/Dahlia.jpg" />
+            </center>
           </div>
-          <SideNavItem href="/profile" icon="person">Profile</SideNavItem>
+          <Link to="/">Home</Link>
           <SideNavItem divider />
-          <SideNavItem href="/patient/create" icon="add">Add patient</SideNavItem>
-          <SideNavItem href="/patients" icon="format_list_bulleted">List patients</SideNavItem>
+          <Link to="/profile">Profile</Link>
           <SideNavItem divider />
-          <SideNavItem href="/appointment/create" icon="add">Add appointment</SideNavItem>
-          <SideNavItem href="/appointments" icon="format_list_bulleted">List appointments</SideNavItem>
+          <Link to="/patient/create">Add patient</Link>
+          <Link to="/patients">Add patient</Link>
           <SideNavItem divider />
-          <SideNavItem href="/calendar" icon="perm_contact_calendar">Calendar</SideNavItem>
-        </SideNav>
-
-        <Navbar style={navBar}>
-        </Navbar>
+          <Link to="/appointment/create">Add appointment</Link>
+          <Link to="/appointments">Add appointment</Link>
+          <SideNavItem divider />
+          <Link to="/calendar">Calendar</Link>
+        </SideNav >
 
         <div style={main} className="main">
-          <Root />
-        </div>
+          <header style={header}>
+            <a style={menu} data-activates="sideNav" className="button-collapse white-text hide-on-large-only">
+              <i className="material-icons">menu</i>
+            </a>
+          </header>
 
+          <Container >
+            <Root />
+          </Container>
+        </div>
       </div >
     );
   }

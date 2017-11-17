@@ -9,14 +9,12 @@ import { Provider } from 'react-redux';
 
 ReactDOM.render((
     <Provider store={store}>
-        <div>
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/signin' component={UserSignIn} />
                     <Route path='/' component={App} />
                 </Switch>
             </BrowserRouter>
-        </div>
     </Provider>
 ), document.getElementById('root'));
 

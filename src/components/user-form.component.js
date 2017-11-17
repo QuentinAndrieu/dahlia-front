@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Input, Button } from 'react-materialize';
+import { Row, Input, Button } from 'react-materialize';
 
 class UserForm extends Component {
 
@@ -38,31 +38,19 @@ class UserForm extends Component {
     }
 
     render() {
-        const userForm = {
-            marginTop: '57px'
-        }
-
-        console.log('props', this.props.user);
 
         return (
-            <Row>
-                <form onSubmit={this.submit}>
-                    <Col s={3}>
-                        <h4 className='cyan-text'>User Form</h4>
-                    </Col>
-                    <Col s={9}>
-                        <div style={userForm}>
-                            <Row>
-                                <Input s={12} name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
-                                <Input s={12} name="mail" placeholder="Mail" value={this.state.mail} onChange={this.handleChange} />
-                                <Input s={6} name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
-                                <Input s={6} name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange} />
-                                <Button s={12} type="submit">Submit</Button>
-                            </Row>
-                        </div>
-                    </Col>
-                </form>
-            </Row >
+            <form onSubmit={this.submit}>
+                <Row>
+                    <Input s={12} name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
+                    <Input s={12} name="mail" placeholder="Mail" value={this.state.mail} onChange={this.handleChange} />
+                    <Input s={6} name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
+                    <Input s={6} name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange} />
+                    <center>
+                        <Button s={12} type="submit">Submit</Button>
+                    </center>
+                </Row>
+            </form>
         );
     }
 }

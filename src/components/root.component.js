@@ -16,25 +16,26 @@ class Root extends Component {
 
     render() {
 
-        const loader = {
-            marginTop: '50px'
-        }
-
-
         if (this.isLoading()) {
             return (
-                <center style={loader}>
+                <center>
                     <Loader />
                 </center>);
         }
 
+        const containerRoot = {
+            marginTop: '57px'
+        }
+
         return (
-            <Switch>
-                <AuthRoute exact path='/' component={<Home />} />
-                <AuthRoute exact path='/profile' component={<UserUpdate />} />
-                <AuthRoute exact path='/patients' component={<PatientList />} />
-                <AuthRoute exact path='/patient/create' component={<PatientCreate />} />
-            </Switch>
+            <div style={containerRoot}>
+                <Switch >
+                    <AuthRoute exact path='/' component={<Home />} />
+                    <AuthRoute exact path='/profile' component={<UserUpdate />} />
+                    <AuthRoute exact path='/patients' component={<PatientList />} />
+                    <AuthRoute exact path='/patient/create' component={<PatientCreate />} />
+                </Switch>
+            </div>
         );
     }
 }
