@@ -5,7 +5,7 @@ class PatientList extends Component {
   render() {
 
     const mappedPatients = this.props.patients.map(patient =>
-      <CollectionItem key={patient._id} className='cyan-text' href='#'>
+      <CollectionItem key={patient._id} className='grey-text' href='#'>
         {patient.lastname} {patient.firstname}
       </CollectionItem>);
 

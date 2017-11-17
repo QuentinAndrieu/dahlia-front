@@ -4,22 +4,26 @@
     }
 }
 
-.input-field input[type=text] + label, .materialize-textarea + label {
-    color: #B7AFA3 !important;
+/* label focus color */
+.input-field input:focus + label, textarea:focus + label{
+    color: #FFCC00 !important;
 }
 
 /* label underline focus color */
-.input-field input[type=text], .materialize-textarea {
-    border-bottom: 1px solid #B7AFA3 !important;
-    box-shadow: 0 1px 0 0 #B7AFA3 !important;
+.row .input-field input:focus, textarea:focus {
+    border-bottom: 1px solid #FFCC00 !important;
+    box-shadow: 0 1px 0 0 #FFCC00 !important
 }
 
-.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
-    color: #ACD1E9 !important;
+.picker__date-display, .picker__weekday-display, .btn{
+    background-color: red;
 }
 
-/* label underline focus color */
-.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #ACD1E9 !important;
-    box-shadow: 0 1px 0 0 #ACD1E9 !important;
+.btn:hover{
+    background-color: #FFFF66;
+}
+
+
+.picker__close, .picker__today{
+    color: #FFCC00;
 }

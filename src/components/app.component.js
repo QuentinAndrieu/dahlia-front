@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Root from '../containers/root.container';
-import { SideNav, SideNavItem, Container, Icon } from 'react-materialize';
+import { SideNav, SideNavItem, Container } from 'react-materialize';
 import '../index.css';
 import { Link } from 'react-router-dom';
 
@@ -15,8 +15,7 @@ class App extends Component {
   render() {
 
     let main = {
-      paddingLeft: '300px',
-      color: '#B7AFA3'
+      paddingLeft: '300px'
     }
 
     const imgLogo = {
@@ -28,7 +27,7 @@ class App extends Component {
     }
 
     const header = {
-      backgroundColor: '#6D929B',
+      backgroundColor: '#FFCC00',
       height: '110px',
       color: 'white'
     }
@@ -38,7 +37,7 @@ class App extends Component {
     }
 
     const link = {
-      color: '#6D929B'
+      color: '#FF9900'
     }
 
     return (
@@ -51,15 +50,15 @@ class App extends Component {
           </div>
           <Link style={link} to="/">Home</Link>
           <SideNavItem divider />
-          <Link style={link} to="/profile">Profile</Link>
-          <SideNavItem divider />
           <Link style={link} to="/patient/create">Add patient</Link>
-          <Link style={link} to="/patients">Add patient</Link>
+          <Link style={link} to="/patients">List patients</Link>
           <SideNavItem divider />
           <Link style={link} to="/appointment/create">Add appointment</Link>
-          <Link style={link} to="/appointments">Add appointment</Link>
+          <Link style={link} to="/appointments">List appointments</Link>
           <SideNavItem divider />
           <Link style={link} to="/calendar">Calendar</Link>
+          <SideNavItem divider />
+          <Link style={link} to="/profile">Profile</Link>
         </SideNav >
 
         <div style={main} className="main">
