@@ -17,6 +17,10 @@ class PatientForm extends Component {
         this.submit = this.submit.bind(this);
     }
 
+    componentDidMount(){
+        this.props.setTitle('Create Patient');
+    }
+
     handleChange(event) {
         const target = event.target;
         const value = target.value;

@@ -29,6 +29,7 @@ class UserForm extends Component {
 
     componentDidMount() {
         this.setState(this.props.user);
+        this.props.setTitle('Profile');
     }
 
     submit(event) {

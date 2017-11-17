@@ -25,6 +25,9 @@ class UserSignIn extends Component {
         });
     }
 
+    componentDidMount() {
+        this.props.setTitle('Sign In');
+    }
 
     submit(event) {
         const props = this.props;

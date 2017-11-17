@@ -3,13 +3,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PatientForm from '../components/patient-form.component';
 import { withRouter } from 'react-router-dom';
+import { setTitle } from '../actions/router.action';
 
 const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
-        addPatient: addPatient
+        addPatient: addPatient,
+        setTitle: setTitle
     }, dispatch)
 );
 

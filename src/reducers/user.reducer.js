@@ -19,7 +19,7 @@ export default function reducer(state = {
 
       switch (action.type) {
             case "FETCH_USER": {
-                  return { ...state, fetching: true, hasFetch: true }
+                  return { ...state, fetching: true }
             }
             case "FETCH_USER_REJECTED": {
                   return { ...state, fetching: false, error: action.payload }

@@ -2,12 +2,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Home from '../components/home.component';
 import { withRouter } from 'react-router-dom';
+import { setTitle } from '../actions/router.action';
 
 const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
+    setTitle: setTitle
   }, dispatch)
 );
 

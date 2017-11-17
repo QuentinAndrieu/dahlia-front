@@ -29,15 +29,16 @@ class App extends Component {
     const header = {
       backgroundColor: '#FFCC00',
       height: '110px',
-      color: 'white'
+      color: 'white',
+      paddingTop: '15px'
     }
 
     const menu = {
       cursor: 'pointer'
     }
 
-    const link = {
-      color: '#FF9900'
+    const title = {
+      marginTop: '0px'
     }
 
     return (
@@ -48,17 +49,17 @@ class App extends Component {
               <img alt="" style={imgLogo} src="images/Dahlia.png" />
             </center>
           </div>
-          <Link style={link} to="/">Home</Link>
+          <Link to="/">Home</Link>
           <SideNavItem divider />
-          <Link style={link} to="/patient/create">Add patient</Link>
-          <Link style={link} to="/patients">List patients</Link>
+          <Link to="/patient/create">Add patient</Link>
+          <Link to="/patients">List patients</Link>
           <SideNavItem divider />
-          <Link style={link} to="/appointment/create">Add appointment</Link>
-          <Link style={link} to="/appointments">List appointments</Link>
+          <Link to="/appointment/create">Add appointment</Link>
+          <Link to="/appointments">List appointments</Link>
           <SideNavItem divider />
-          <Link style={link} to="/calendar">Calendar</Link>
+          <Link to="/calendar">Calendar</Link>
           <SideNavItem divider />
-          <Link style={link} to="/profile">Profile</Link>
+          <Link to="/profile">Profile</Link>
         </SideNav >
 
         <div style={main} className="main">
@@ -66,6 +67,9 @@ class App extends Component {
             <a style={menu} data-activates="sideNav" className="button-collapse white-text hide-on-large-only">
               <i className="material-icons">menu</i>
             </a>
+            <center>
+              <h1 style={title}>{this.props.title}</h1>
+            </center>
           </header>
 
           <Container >

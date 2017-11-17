@@ -16,14 +16,29 @@
 }
 
 .picker__date-display, .picker__weekday-display, .btn{
+    background-color: #FFCC00;
+}
+
+.btn {
     background-color: red;
 }
 
-.btn:hover{
-    background-color: #FFFF66;
+.btn:hover {
+    background-color: #FFCC00;
 }
 
+.btn:focus {
+    background-color: red;
+}
 
 .picker__close, .picker__today{
     color: #FFCC00;
+}
+
+a {
+    color: #FF9900!important 
+}
+
+.container {
+    width: 90%
 }
