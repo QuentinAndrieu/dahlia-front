@@ -3,3 +3,23 @@
         padding-left: 0!important;
     }
 }
+
+.input-field input[type=text] + label, .materialize-textarea + label {
+    color: #B7AFA3 !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text], .materialize-textarea {
+    border-bottom: 1px solid #B7AFA3 !important;
+    box-shadow: 0 1px 0 0 #B7AFA3 !important;
+}
+
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: #ACD1E9 !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #ACD1E9 !important;
+    box-shadow: 0 1px 0 0 #ACD1E9 !important;
+}

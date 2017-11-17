@@ -15,7 +15,8 @@ class App extends Component {
   render() {
 
     let main = {
-      paddingLeft: '300px'
+      paddingLeft: '300px',
+      color: '#B7AFA3'
     }
 
     const imgLogo = {
@@ -27,7 +28,7 @@ class App extends Component {
     }
 
     const header = {
-      backgroundColor: 'grey',
+      backgroundColor: '#6D929B',
       height: '110px',
       color: 'white'
     }
@@ -36,25 +37,29 @@ class App extends Component {
       cursor: 'pointer'
     }
 
+    const link = {
+      color: '#6D929B'
+    }
+
     return (
-      <div className="app" >
+      <div >
         <SideNav id="sideNav" className="side-nav fixed" trigger={< div ></div>} >
           <div style={sideNavLogo}>
             <center>
-              <img alt="" style={imgLogo} src="images/Dahlia.jpg" />
+              <img alt="" style={imgLogo} src="images/Dahlia.png" />
             </center>
           </div>
-          <Link to="/">Home</Link>
+          <Link style={link} to="/">Home</Link>
           <SideNavItem divider />
-          <Link to="/profile">Profile</Link>
+          <Link style={link} to="/profile">Profile</Link>
           <SideNavItem divider />
-          <Link to="/patient/create">Add patient</Link>
-          <Link to="/patients">Add patient</Link>
+          <Link style={link} to="/patient/create">Add patient</Link>
+          <Link style={link} to="/patients">Add patient</Link>
           <SideNavItem divider />
-          <Link to="/appointment/create">Add appointment</Link>
-          <Link to="/appointments">Add appointment</Link>
+          <Link style={link} to="/appointment/create">Add appointment</Link>
+          <Link style={link} to="/appointments">Add appointment</Link>
           <SideNavItem divider />
-          <Link to="/calendar">Calendar</Link>
+          <Link style={link} to="/calendar">Calendar</Link>
         </SideNav >
 
         <div style={main} className="main">
