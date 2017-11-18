@@ -4,6 +4,7 @@ import Home from '../containers/home.container';
 import PatientList from '../containers/patient-list.container';
 import PatientCreate from '../containers/patient-create.container';
 import UserUpdate from '../containers/user-update.container';
+import PatientDetail from '../containers/patient-detail.container';
 import Loader from './loader.component';
 import decode from 'jwt-decode';
 
@@ -34,6 +35,7 @@ class Root extends Component {
                     <AuthRoute exact path='/profile' component={<UserUpdate />} />
                     <AuthRoute exact path='/patients' component={<PatientList />} />
                     <AuthRoute exact path='/patient/create' component={<PatientCreate />} />
+                    <AuthRoute exact path='/patient/:id' component={<PatientDetail />} />
                 </Switch>
             </div>
         );
