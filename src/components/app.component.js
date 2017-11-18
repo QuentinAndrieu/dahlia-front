@@ -27,7 +27,6 @@ class App extends Component {
     }
 
     const header = {
-      backgroundColor: '#FFCC00',
       height: '110px',
       color: 'white',
       paddingTop: '15px'
@@ -63,7 +62,7 @@ class App extends Component {
         </SideNav >
 
         <div style={main} className="main">
-          <header style={header}>
+          <header style={header} className="header">
             <a style={menu} data-activates="sideNav" className="button-collapse white-text hide-on-large-only">
               <i className="material-icons">menu</i>
             </a>

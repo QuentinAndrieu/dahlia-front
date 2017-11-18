@@ -4,41 +4,44 @@
     }
 }
 
-/* label focus color */
-.input-field input:focus + label, textarea:focus + label{
-    color: #FFCC00 !important;
-}
-
-/* label underline focus color */
-.row .input-field input:focus, textarea:focus {
-    border-bottom: 1px solid #FFCC00 !important;
-    box-shadow: 0 1px 0 0 #FFCC00 !important
-}
-
-.picker__date-display, .picker__weekday-display, .btn{
-    background-color: #FFCC00;
-}
-
-.btn {
-    background-color: red;
-}
-
-.btn:hover {
-    background-color: #FFCC00;
-}
-
-.btn:focus {
-    background-color: red;
-}
-
-.picker__close, .picker__today{
-    color: #FFCC00;
-}
-
-a {
-    color: #FF9900!important 
-}
-
 .container {
     width: 90%
 }
+
+a {
+    color: #003333!important 
+}
+
+.header {
+    background-color: #669999;  
+}
+
+.input-field input:focus + label, textarea:focus + label{
+    color: #669999 !important;
+}
+
+.row .input-field input:focus, textarea:focus {
+    border-bottom: 1px solid #669999 !important;
+    box-shadow: 0 1px 0 0 #669999 !important
+}
+
+.picker__date-display, .picker__weekday-display, .btn{
+    background-color: #669999;
+}
+
+.picker__close, .picker__today{
+    color: #669999;
+}
+
+.btn {
+    background-color: #669999;
+}
+
+.btn:hover {
+    background-color: #999999;
+}
+
+.btn:focus {
+    background-color: #669999;
+}
+
