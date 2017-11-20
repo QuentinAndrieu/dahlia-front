@@ -19,10 +19,10 @@ export function addPatient(firstname, lastname, birthday, description) {
             birthday: birthday,
             description: description
         }).then(function (response) {
-            if (response.data.success) {
-                dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data });
+            if (response.data.errors) {
+                dispatch({ type: "ADD_PATIENT_REJECTED", payload: response.data.errors });
             } else {
-                dispatch({ type: "ADD_PATIENT_REJECTED", payload: 'Missing properties' });
+                dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data });
             }
         }).catch(function (error) {
             dispatch({ type: "ADD_PATIENT_REJECTED", payload: error });
