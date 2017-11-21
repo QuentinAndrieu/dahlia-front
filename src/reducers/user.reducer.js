@@ -41,9 +41,27 @@ export default function reducer(state = {
             case "ADD_PATIENT_FULFILLED": {
                   return {
                         ...state,
-                        user: {
-                              patients: [...state.user.patients, action.payload]
+                        user: { patients: [...state.user.patients, action.payload] }
+                  }
+            }
+            case "UPDATE_PATIENT": {
+                  return { ...state }
+            }
+            case "UPDATE_PATIENT_REJECTED": {
+                  return { ...state, error: action.payload }
+            }
+            case "UPDATE_PATIENT_FULFILLED": {
+                  const patientsUpdated = state.user.patients.map((patient) => {
+                        if (patient._id === action.payload._id) {
+                              return action.payload;
+                        } else {
+                              return patient;
                         }
+                  });
+
+                  return {
+                        ...state,
+                        user: { ...state.user, patients: patientsUpdated }
                   }
             }
             default: {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Input, Col } from 'react-materialize';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class PatientDetail extends Component {
 
@@ -28,7 +29,7 @@ class PatientDetail extends Component {
         });
 
         if (patient[0]) {
-            const formatBirthday = moment(patient[0].birthday).format('MMMM Do YYYY');
+            const formatBirthday = moment(patient[0].birthday).format('L');
 
             const patientUpdated = {
                 ...patient[0],
@@ -47,9 +48,17 @@ class PatientDetail extends Component {
         return '';
     }
 
+    customPath(path, id) {
+        return path + '/' + id;
+    }
+
     render() {
         const detailPatient = {
             minHeight: '400px'
+        }
+
+        const icons = {
+            cursor: 'pointer'
         }
 
         return (
@@ -66,8 +75,20 @@ class PatientDetail extends Component {
                             <strong>Birthday:</strong> {this.state.patient.birthday}
                         </p>
                     </Col>
-                    <Col s={9}>
+                    <Col s={8}>
                         <p>{this.state.patient.description}</p>
+                    </Col>
+                    <Col s={1}>
+                        <p>
+                            <Link to={this.customPath('/patient/update', this.state.patient._id)}>
+                                <i style={icons} className="small material-icons icons">create</i>
+                            </Link>
+                        </p>
+                        <p>
+                            <Link to="/">
+                                <i style={icons} className="small material-icons icons">delete</i>
+                            </Link>
+                        </p>
                     </Col>
                 </div>
                 <Col s={3}>
@@ -75,9 +96,13 @@ class PatientDetail extends Component {
                         <strong>Add appointment:</strong>
                     </p>
                 </Col>
-                <Col s={9}>
+                <Col s={8}>
                     <Input s={12} name="description" label="Description" type="textarea" />
                 </Col>
+                <Col s={1}>
+                    <p><i style={icons} className="small material-icons icons">send</i></p>
+                </Col>
+
             </Row>
         );
     }

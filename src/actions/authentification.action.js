@@ -19,7 +19,10 @@ export function fetchJWTToken(mail, password, callback) {
             if (response.data.success) {
                 sessionStorage.setItem('jwtToken', response.data.token);
                 dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token });
-                callback(response.data.token);
+                
+                if (callback) {
+                    callback(response.data.token);
+                }
             } else {
                 dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: 'Authentification failed' });
             }

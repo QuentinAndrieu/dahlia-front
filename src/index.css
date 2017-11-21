@@ -45,6 +45,10 @@ a {
     background-color: #669999;
 }
 
+.icons {
+    color: #003333;  
+}
+
 .delete_button{
     background-color: red;
 }

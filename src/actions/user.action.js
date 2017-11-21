@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export function fetchUser(jwtToken, callback) {
     return (dispatch) => {
-
         dispatch({ type: 'FETCH_USER' });
 
         const instance = axios.create({
@@ -17,7 +16,10 @@ export function fetchUser(jwtToken, callback) {
         instance.get('/user')
             .then((response) => {
                 dispatch({ type: 'FETCH_USER_FULFILLED', payload: response.data });
-                callback();
+
+                if (callback) {
+                    callback();
+                }
             })
             .catch((err) => {
                 dispatch({ type: 'FETCH_USER_REJECTED', payload: err })
@@ -28,7 +30,6 @@ export function fetchUser(jwtToken, callback) {
 
 export function updateUser(username, lastname, firstname, mail) {
     return (dispatch) => {
-
         dispatch({ type: 'UPDATE_USER' });
 
         const instance = axios.create({

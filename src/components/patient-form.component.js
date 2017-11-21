@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Col, Row, Input, Button} from 'react-materialize';
+import { Col, Row, Input, Button } from 'react-materialize';
 import { Redirect } from 'react-router-dom';
+import moment from 'moment';
 
 class PatientForm extends Component {
 
@@ -8,12 +9,13 @@ class PatientForm extends Component {
         super(props);
 
         this.state = {
-            id: '',
+            _id: '',
             lastname: '',
             firstname: '',
             birthday: '',
             description: '',
-            redirect: false
+            redirect: false,
+            update: props.match.params.id ? true : false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -21,7 +23,60 @@ class PatientForm extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Create Patient');
+        if (this.state.update) {
+            this.setState(this.getPatient(this.props.match.params.id), () => {
+                this.props.setTitle(this.getTitle(this.state.firstname,
+                    this.state.lastname));
+            });
+        } else {
+            this.props.setTitle('Create Patient');
+        }
+    }
+
+    getTitle(firstname, lastname) {
+        if (firstname && lastname) {
+            return firstname + ' ' + lastname;
+        }
+
+        return '';
+    }
+
+    getPatient(id) {
+        const patient = this.props.patients.filter((patient) => {
+            return (patient._id === id);
+        });
+
+        if (patient[0]) {
+            const formatBirthday = moment(patient[0].birthday).format('L');
+
+            const patientUpdated = {
+                ...patient[0],
+                birthday: formatBirthday
+            };
+
+            return patientUpdated;
+        }
+    }
+
+    addPatient(firstname, lastname, birthday, description) {
+        this.props.addPatient(firstname, lastname, birthday, description, (id) => {
+            this.setState({
+                _id: id,
+                redirect: true
+            });
+        });
+    }
+
+    updatePatient(id, firstname, lastname, birthday, description) {
+        this.props.updatePatient(id, firstname, lastname, birthday, description, (id) => {
+            this.setState({
+                redirect: true
+            });
+        });
+    }
+
+    customPath(path, id) {
+        return path + '/' + id;
     }
 
     handleChange(event) {
@@ -34,36 +89,32 @@ class PatientForm extends Component {
         });
     }
 
-    customPath(path, id) {
-        return path + '/' + id;
-    }
-
     submit(event) {
-        this.props.addPatient(this.state.firstname, this.state.lastname, this.state.birthday,
-            this.state.description, (id) => {
-                this.setState({
-                    id: id,
-                    redirect: true
-                });
-            });
         event.preventDefault();
+        if (this.state.update) {
+            this.updatePatient(this.state._id, this.state.firstname, this.state.lastname,
+                this.state.birthday, this.state.description);
+        } else {
+            this.addPatient(this.state.firstname, this.state.lastname,
+                this.state.birthday, this.state.description);
+        }
     }
 
     render() {
         return (
             <form onSubmit={this.submit}>
                 <Row>
-                    <Input s={6} name="firstname" label='First Name' value={this.state.firstname} onChange={this.handleChange} />
-                    <Input s={6} name="lastname" label='Last Name' value={this.state.lastname} onChange={this.handleChange} />
-                    <Input s={12} name="description" label='Description' type='textarea' value={this.state.description} onChange={this.handleChange} />
+                    <Input s={6} name="firstname" placeholder='First Name' value={this.state.firstname} onChange={this.handleChange} />
+                    <Input s={6} name="lastname" placeholder='Last Name' value={this.state.lastname} onChange={this.handleChange} />
+                    <Input s={12} name="description" placeholder='Description' type='textarea' value={this.state.description} onChange={this.handleChange} />
                     <Col s={6}></Col>
-                    <Input s={6} name="birthday" label='Birthday' type='date' value={this.state.birthday} onChange={this.handleChange} />
+                    <Input s={6} name="birthday" placeholder='Birthday' type='date' value={this.state.birthday} onChange={this.handleChange} />
                     <center>
                         <Button s={12} type="submit">Submit</Button>
                     </center>
                 </Row>
                 {this.state.redirect && (
-                    <Redirect to={this.customPath('/patient', this.state.id)} />
+                    <Redirect to={this.customPath('/patient', this.state._id)} />
                 )}
             </form>
         );
