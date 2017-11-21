@@ -9,8 +9,8 @@ const instance = axios.create({
     }
 });
 
-export function addPatient(firstname, lastname, birthday, description) {
-    return function (dispatch) {
+export function addPatient(firstname, lastname, birthday, description, callback) {
+    return (dispatch) => {
         dispatch({ type: "ADD_PATIENT" });
 
         instance.post('/patients', {
@@ -18,13 +18,14 @@ export function addPatient(firstname, lastname, birthday, description) {
             firstname: lastname,
             birthday: birthday,
             description: description
-        }).then(function (response) {
+        }).then((response) => {
             if (response.data.errors) {
                 dispatch({ type: "ADD_PATIENT_REJECTED", payload: response.data.errors });
             } else {
                 dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data });
+                callback(response.data._id);
             }
-        }).catch(function (error) {
+        }).catch((error) => {
             dispatch({ type: "ADD_PATIENT_REJECTED", payload: error });
         });
     }

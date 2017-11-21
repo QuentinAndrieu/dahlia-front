@@ -17,21 +17,26 @@ class PatientDetail extends Component {
     componentDidMount() {
         this.setState({
             patient: this.getPatient(this.props.match.params.id)
-        }, function(){
+        }, () => {
             this.props.setTitle(this.getTitle(this.state.patient.firstname, this.state.patient.lastname));
         });
     }
 
     getPatient(id) {
-        const patient = this.props.patients.filter(function (patient) {
+        const patient = this.props.patients.filter((patient) => {
             return (patient._id === id);
         });
 
         if (patient[0]) {
-            patient[0].birthday = moment(patient[0].birthday).format('MMMM Do YYYY')
-        }
+            const formatBirthday = moment(patient[0].birthday).format('MMMM Do YYYY');
 
-        return patient[0];
+            const patientUpdated = {
+                ...patient[0],
+                birthday: formatBirthday
+            };
+
+            return patientUpdated;
+        }
     }
 
     getTitle(firstname, lastname) {

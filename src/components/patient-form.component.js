@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Col, Row, Input, Button } from 'react-materialize';
+import { Col, Row, Input, Button} from 'react-materialize';
+import { Redirect } from 'react-router-dom';
 
 class PatientForm extends Component {
 
@@ -7,17 +8,19 @@ class PatientForm extends Component {
         super(props);
 
         this.state = {
+            id: '',
             lastname: '',
             firstname: '',
             birthday: '',
-            description: ''
+            description: '',
+            redirect: false
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.setTitle('Create Patient');
     }
 
@@ -31,10 +34,18 @@ class PatientForm extends Component {
         });
     }
 
+    customPath(path, id) {
+        return path + '/' + id;
+    }
 
     submit(event) {
         this.props.addPatient(this.state.firstname, this.state.lastname, this.state.birthday,
-            this.state.description);
+            this.state.description, (id) => {
+                this.setState({
+                    id: id,
+                    redirect: true
+                });
+            });
         event.preventDefault();
     }
 
@@ -51,6 +62,9 @@ class PatientForm extends Component {
                         <Button s={12} type="submit">Submit</Button>
                     </center>
                 </Row>
+                {this.state.redirect && (
+                    <Redirect to={this.customPath('/patient', this.state.id)} />
+                )}
             </form>
         );
     }

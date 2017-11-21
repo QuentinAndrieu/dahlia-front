@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Input, Container, Button } from 'react-materialize';
+import { Row, Input, Button, Col } from 'react-materialize';
+import { Redirect } from 'react-router-dom';
 
 class UserSignIn extends Component {
 
@@ -8,7 +9,8 @@ class UserSignIn extends Component {
 
         this.state = {
             mail: '',
-            password: ''
+            password: '',
+            redirect: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -31,25 +33,48 @@ class UserSignIn extends Component {
 
     submit(event) {
         const props = this.props;
-        props.fetchJWTToken(this.state.mail, this.state.password, function (jwtToken) {
-            props.fetchUser(jwtToken);
+        props.fetchJWTToken(this.state.mail, this.state.password, (jwtToken) => {
+            props.fetchUser(jwtToken, () => {
+                this.setState({
+                    redirect: true
+                })
+            });
         });
         event.preventDefault();
     }
 
     render() {
+        const imgLogo = {
+            width: '200px'
+        }
+
+        const formSignin = {
+            marginTop: '70px'
+        }
+
         return (
-            <Container>
-                <form onSubmit={this.submit}>
-                    <Row>
-                        <Input s={6} type="text" name="mail" value={this.state.mail} onChange={this.handleChange} />
-                        <Input s={6} type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+            <form style={formSignin} onSubmit={this.submit}>
+                <Col s={12}>
+                    <center>
+                        <img alt="" style={imgLogo} src="images/Dahlia.png" />
+                        <h4>Dahlia</h4>
+                    </center>
+                </Col>
+                <Row>
+                    <Col s={4}></Col>
+                    <Col s={4}>
+                        <Input s={6} placeholder="Mail" type="text" name="mail" value={this.state.mail} onChange={this.handleChange} />
+                        <Input s={6} placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
                         <center>
                             <Button s={12} type="submit">Submit</Button>
                         </center>
-                    </Row>
-                </form>
-            </Container>
+                    </Col>
+                </Row>
+                {this.state.redirect && (
+                    <Redirect to="" />
+                )}
+            </form>
+
         );
     }
 }

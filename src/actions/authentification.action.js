@@ -9,21 +9,21 @@ const instance = axios.create({
 });
 
 export function fetchJWTToken(mail, password, callback) {
-    return function (dispatch) {
+    return (dispatch) => {
         dispatch({ type: "FETCH_JWT_TOKEN" });
 
         instance.post('/authenticate', {
             mail: mail,
             password: password
-        }).then(function (response) {
+        }).then((response) => {
             if (response.data.success) {
                 sessionStorage.setItem('jwtToken', response.data.token);
-                callback(response.data.token);
                 dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token });
+                callback(response.data.token);
             } else {
                 dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: 'Authentification failed' });
             }
-        }).catch(function (error) {
+        }).catch((error) => {
             dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: error });
         });
     }

@@ -22,7 +22,7 @@ class PatientList extends Component {
     const target = event.target;
     const value = target.value;
 
-    const updatedPatientsList = this.props.patients.filter(function (patient) {
+    const updatedPatientsList = this.props.patients.filter((patient) => {
       return patient.firstname.toLowerCase().search(
         value.toLowerCase()) !== -1;
     })
@@ -39,7 +39,7 @@ class PatientList extends Component {
   render() {
     let mappedPatients = this.state.patients.map(patient =>
       <CollectionItem key={patient._id} className="grey-text">
-        <Link test="test" to={this.customPath('/patient', patient._id)}>{patient.lastname} {patient.firstname}</Link>
+        <Link to={this.customPath('/patient', patient._id)}>{patient.lastname} {patient.firstname}</Link>
       </CollectionItem>);
 
     return (
