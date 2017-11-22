@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Input, Col } from 'react-materialize';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class PatientDetail extends Component {
 
@@ -9,10 +9,12 @@ class PatientDetail extends Component {
         super(props);
 
         this.state = {
-            patient: ''
+            patient: '',
+            redirect: false
         }
 
         this.props.setTitle('');
+        this.removePatient = this.removePatient.bind(this);
     }
 
     componentDidMount() {
@@ -38,6 +40,14 @@ class PatientDetail extends Component {
 
             return patientUpdated;
         }
+    }
+
+    removePatient(id) {
+        this.props.removePatient(id, () => {
+            this.setState({
+                redirect: true
+            })
+        });
     }
 
     getTitle(firstname, lastname) {
@@ -85,9 +95,8 @@ class PatientDetail extends Component {
                             </Link>
                         </p>
                         <p>
-                            <Link to="/">
-                                <i style={icons} className="small material-icons icons">delete</i>
-                            </Link>
+                            <i onClick={() => { this.removePatient(this.state.patient._id) }}
+                                style={icons} className="small material-icons icons">delete</i>
                         </p>
                     </Col>
                 </div>
@@ -102,7 +111,9 @@ class PatientDetail extends Component {
                 <Col s={1}>
                     <p><i style={icons} className="small material-icons icons">send</i></p>
                 </Col>
-
+                {this.state.redirect && (
+                    <Redirect to="/patients" />
+                )}
             </Row>
         );
     }

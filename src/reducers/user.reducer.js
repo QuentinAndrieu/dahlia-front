@@ -64,6 +64,22 @@ export default function reducer(state = {
                         user: { ...state.user, patients: patientsUpdated }
                   }
             }
+            case "REMOVE_PATIENT": {
+                  return { ...state }
+            }
+            case "REMOVE_PATIENT_REJECTED": {
+                  return { ...state, error: action.payload }
+            }
+            case "REMOVE_PATIENT_FULFILLED": {
+                  const patientsUpdated = state.user.patients.filter((patient) => {
+                        return (patient._id !== action.payload);
+                  });
+
+                  return {
+                        ...state,
+                        user: { ...state.user, patients: patientsUpdated }
+                  }
+            }
             default: {
                   return state;
             }

@@ -58,3 +58,23 @@ export function updatePatient(idPatient, firstname, lastname, birthday, descript
         });
     }
 }
+
+export function removePatient(idPatient, callback) {
+    return (dispatch) => {
+        dispatch({ type: "REMOVE_PATIENT" });
+
+        instance.delete('/patients/' + idPatient).then((response) => {
+            if (response.data.errors) {
+                dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: response.data.errors });
+            } else {
+                dispatch({ type: "REMOVE_PATIENT_FULFILLED", payload: idPatient });
+
+                if (callback) {
+                    callback(response.data._id);
+                }
+            }
+        }).catch((error) => {
+            dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: error });
+        });
+    }
+}

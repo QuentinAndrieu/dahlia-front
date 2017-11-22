@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PatientDetail from '../components/patient-detail.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../actions/router.action';
+import { removePatient } from '../actions/patient.action';
 
 const mapStateToProps = (state) => ({
     patients: state.user.user.patients 
@@ -10,7 +11,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
-        setTitle: setTitle
+        setTitle: setTitle,
+        removePatient: removePatient
     }, dispatch)
 );
 
