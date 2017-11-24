@@ -1,29 +1,57 @@
 import React, { Component } from 'react';
 import Root from '../containers/root.container';
-import { SideNav, SideNavItem, Container } from 'react-materialize';
+import { Container } from 'react-materialize';
 import '../index.css';
-import { Link } from 'react-router-dom';
+import SideNavCustom from '../containers/side-nav-custom.container';
+import decode from 'jwt-decode';
 
 class App extends Component {
 
-  componentDidMount() {
-    if (sessionStorage.getItem('jwtToken') && !this.props.fetched) {
-      this.props.fetchUser(sessionStorage.getItem('jwtToken'));
+  constructor() {
+    super();
+    this.state = {
+      loading: true
     }
   }
 
-  render() {
+  componentDidMount() {
+    const token = sessionStorage.getItem('jwtToken');
+    if (this.jwtTokenIsValid(token)) {
+      this.props.fetchUser(token, () => {
+        this.props.setJWTToken(token);
+        this.setState({
+          loading: false
+        });
+      });
+    } else {
+      this.setState({
+        loading: false
+      });
+    }
+  }
 
+  jwtTokenIsValid(token) {
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const { exp } = decode(token);
+
+      if (exp < new Date().getTime() / 1000) {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+
+    return true;
+  }
+
+
+  render() {
     let main = {
       paddingLeft: '300px'
-    }
-
-    const imgLogo = {
-      width: '200px'
-    }
-
-    const sideNavLogo = {
-      height: '215px'
     }
 
     const header = {
@@ -40,26 +68,13 @@ class App extends Component {
       marginTop: '0px'
     }
 
+    if (this.state.loading) {
+      return (<div></div>);
+    }
+
     return (
-      <div >
-        <SideNav id="sideNav" className="side-nav fixed" trigger={< div ></div>} >
-          <div style={sideNavLogo}>
-            <center>
-              <img alt="" style={imgLogo} src="images/Dahlia.png" />
-            </center>
-          </div>
-          <Link to="/">Home</Link>
-          <SideNavItem divider />
-          <Link to="/patient/create">Add patient</Link>
-          <Link to="/patients">List patients</Link>
-          <SideNavItem divider />
-          <Link to="/appointment/create">Add appointment</Link>
-          <Link to="/appointments">List appointments</Link>
-          <SideNavItem divider />
-          <Link to="/calendar">Calendar</Link>
-          <SideNavItem divider />
-          <Link to="/profile">Profile</Link>
-        </SideNav >
+      <div>
+        <SideNavCustom />
 
         <div style={main} className="main">
           <header style={header} className="header">
@@ -75,7 +90,7 @@ class App extends Component {
             <Root />
           </Container>
         </div>
-      </div >
+      </div>
     );
   }
 }

@@ -32,16 +32,9 @@ export function fetchJWTToken(mail, password, callback) {
     }
 }
 
-export function setMail(mail) {
+export function setJWTToken(token) {
     return {
-        type: 'SET_MAIL',
-        payload: mail
-    }
-}
-
-export function setPassword(password) {
-    return {
-        type: 'SET_PASSWORD',
-        payload: password
+        type: 'SET_TOKEN',
+        payload: token
     }
 }

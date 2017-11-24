@@ -17,7 +17,6 @@ class Root extends Component {
     }
 
     render() {
-
         if (this.isLoading()) {
             return (
                 <center>

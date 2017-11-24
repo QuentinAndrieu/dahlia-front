@@ -19,10 +19,17 @@ export default function reducer(state = {
 
       switch (action.type) {
             case "FETCH_USER": {
-                  return { ...state, fetching: true }
+                  return {
+                        ...state,
+                        fetching: true
+                  }
             }
             case "FETCH_USER_REJECTED": {
-                  return { ...state, fetching: false, error: action.payload }
+                  return {
+                        ...state,
+                        fetching: false,
+                        error: action.payload
+                  }
             }
             case "FETCH_USER_FULFILLED": {
                   return {
@@ -41,7 +48,10 @@ export default function reducer(state = {
             case "ADD_PATIENT_FULFILLED": {
                   return {
                         ...state,
-                        user: { patients: [...state.user.patients, action.payload] }
+                        user: {
+                              ...state.user,
+                              patients: [...state.user.patients, action.payload]
+                        }
                   }
             }
             case "UPDATE_PATIENT": {
@@ -53,7 +63,12 @@ export default function reducer(state = {
             case "UPDATE_PATIENT_FULFILLED": {
                   const patientsUpdated = state.user.patients.map((patient) => {
                         if (patient._id === action.payload._id) {
-                              return action.payload;
+                              return Object.assign({},
+                                    patient,
+                                    action.payload,
+                                    {
+                                          appointments: patient.appointments
+                                    });
                         } else {
                               return patient;
                         }
@@ -61,23 +76,56 @@ export default function reducer(state = {
 
                   return {
                         ...state,
-                        user: { ...state.user, patients: patientsUpdated }
+                        user: {
+                              ...state.user,
+                              patients: patientsUpdated
+                        }
                   }
             }
             case "REMOVE_PATIENT": {
                   return { ...state }
             }
             case "REMOVE_PATIENT_REJECTED": {
-                  return { ...state, error: action.payload }
+                  return {
+                        ...state,
+                        error: action.payload
+                  }
             }
             case "REMOVE_PATIENT_FULFILLED": {
                   const patientsUpdated = state.user.patients.filter((patient) => {
                         return (patient._id !== action.payload);
                   });
 
+                  // const appointmentsUpdated = state.user.appointments.filter((appointment) => {
+                  //       return (appointment._id !== action.payload);
+                  // });
+
                   return {
                         ...state,
                         user: { ...state.user, patients: patientsUpdated }
+                  }
+            }
+            case "ADD_APPOINTMENT": {
+                  return { ...state }
+            }
+            case "ADD_APPOINTMENT_REJECTED": {
+                  return { ...state, error: action.payload }
+            }
+            case "ADD_APPOINTMENT_FULFILLED": {
+                  const patientsUpdated = state.user.patients.map((patient) => {
+                        if (patient._id === action.payload.id_patient) {
+                              patient.appointments = [...patient.appointments, action.payload]
+                        }
+                        return patient;
+                  });
+
+                  return {
+                        ...state,
+                        user: {
+                              ...state.user,
+                              patients: patientsUpdated,
+                              appointments: [...state.user.appointments, action.payload]
+                        },
                   }
             }
             default: {

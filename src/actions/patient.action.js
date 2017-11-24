@@ -67,11 +67,11 @@ export function removePatient(idPatient, callback) {
             if (response.data.errors) {
                 dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: response.data.errors });
             } else {
-                dispatch({ type: "REMOVE_PATIENT_FULFILLED", payload: idPatient });
-
                 if (callback) {
-                    callback(response.data._id);
+                    callback();
                 }
+
+                dispatch({ type: "REMOVE_PATIENT_FULFILLED", payload: idPatient });
             }
         }).catch((error) => {
             dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: error });

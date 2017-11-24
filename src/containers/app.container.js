@@ -1,4 +1,5 @@
 import { fetchUser } from '../actions/user.action';
+import { setJWTToken } from '../actions/authentification.action';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,7 +12,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    fetchUser: fetchUser
+    fetchUser: fetchUser,
+    setJWTToken: setJWTToken
   }, dispatch)
 );
 

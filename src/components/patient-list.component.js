@@ -18,6 +18,14 @@ class PatientList extends Component {
     this.props.setTitle('List patients');
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.patients !== this.state.patients){
+      this.setState({
+        patients: nextProps.patients
+      })
+    }
+  }
+
   searchPatient(event) {
     const target = event.target;
     const value = target.value;
@@ -50,6 +58,11 @@ class PatientList extends Component {
         <Collection>
           {mappedPatients}
         </Collection>
+        <div className="fixed-action-btn">
+          <Link to="/patient/create" className="btn-floating btn-large red">
+            <i className="large material-icons">add</i>
+          </Link>
+        </div>
       </div>
     );
   }
