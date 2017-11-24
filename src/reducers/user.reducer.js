@@ -96,13 +96,17 @@ export default function reducer(state = {
                         return (patient._id !== action.payload);
                   });
 
-                  // const appointmentsUpdated = state.user.appointments.filter((appointment) => {
-                  //       return (appointment._id !== action.payload);
-                  // });
+                  const appointmentsUpdated = state.user.appointments.filter((appointment) => {
+                        return (appointment.id_patient !== action.payload);
+                  });
 
                   return {
                         ...state,
-                        user: { ...state.user, patients: patientsUpdated }
+                        user: {
+                              ...state.user,
+                              patients: patientsUpdated,
+                              appointments: appointmentsUpdated
+                        }
                   }
             }
             case "ADD_APPOINTMENT": {

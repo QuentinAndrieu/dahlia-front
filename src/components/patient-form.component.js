@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Input, Button } from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
-import moment from 'moment';
 
 class PatientForm extends Component {
 
@@ -14,8 +13,7 @@ class PatientForm extends Component {
             firstname: '',
             birthday: '',
             description: '',
-            redirect: false,
-            update: props.match.params.id ? true : false
+            redirect: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -23,8 +21,8 @@ class PatientForm extends Component {
     }
 
     componentDidMount() {
-        if (this.state.update) {
-            this.setState(this.getPatient(this.props.match.params.id), () => {
+        if (this.props.update) {
+            this.setState(this.props.patient, () => {
                 this.props.setTitle(this.getTitle(this.state.firstname,
                     this.state.lastname));
             });
@@ -39,23 +37,6 @@ class PatientForm extends Component {
         }
 
         return '';
-    }
-
-    getPatient(id) {
-        const patient = this.props.patients.filter((patient) => {
-            return (patient._id === id);
-        });
-
-        if (patient[0]) {
-            const formatBirthday = moment(patient[0].birthday).format('L');
-
-            const patientUpdated = {
-                ...patient[0],
-                birthday: formatBirthday
-            };
-
-            return patientUpdated;
-        }
     }
 
     addPatient(firstname, lastname, birthday, description) {
@@ -91,7 +72,7 @@ class PatientForm extends Component {
 
     submit(event) {
         event.preventDefault();
-        if (this.state.update) {
+        if (this.props.update) {
             this.updatePatient(this.state._id, this.state.firstname, this.state.lastname,
                 this.state.birthday, this.state.description);
         } else {
