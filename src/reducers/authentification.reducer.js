@@ -1,5 +1,6 @@
 export default function reducer(state = {
       token: null,
+      authenticated: false,
       fetching: false,
       fetched: false,
       error: null
@@ -22,6 +23,12 @@ export default function reducer(state = {
             }
             case "SET_TOKEN": {
                   return { ...state, token: action.payload }
+            }
+            case "UNAUTHENTICATED": {
+                  return { ...state, authenticated: false }
+            }
+            case "AUTHENTICATED": {
+                  return { ...state, authenticated: true }
             }
             default:
                   return state;

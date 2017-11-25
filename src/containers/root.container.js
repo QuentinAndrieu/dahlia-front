@@ -4,8 +4,7 @@ import Root from '../components/root.component';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
-  fetching: state.user.fetching,
-  fetched: state.user.fetched
+  fetching: state.user.fetching
 });
 
 const mapDispatchToProps = (dispatch) => (

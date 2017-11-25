@@ -1,4 +1,6 @@
 import axios from 'axios';
+import decode from 'jwt-decode';
+
 
 const instance = axios.create({
     baseURL: 'https://dahlia-api.herokuapp.com',
@@ -19,7 +21,7 @@ export function fetchJWTToken(mail, password, callback) {
             if (response.data.success) {
                 sessionStorage.setItem('jwtToken', response.data.token);
                 dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token });
-                
+
                 if (callback) {
                     callback(response.data.token);
                 }
@@ -36,5 +38,35 @@ export function setJWTToken(token) {
     return {
         type: 'SET_TOKEN',
         payload: token
+    }
+}
+
+export function isAuthenticated(token, callbackAuth, callbackUnAuth) {
+    return (dispatch) => {
+        if (!token) {
+            console.log('token');
+            if (callbackUnAuth) callbackUnAuth();
+            dispatch({ type: "UNAUTHENTICATED" });
+            return false;
+        }
+
+        try {
+            const { exp } = decode(token);
+
+            if (exp < new Date().getTime() / 1000) {
+                if (callbackUnAuth) callbackUnAuth();
+                dispatch({ type: "UNAUTHENTICATED" });
+                return false;
+            }
+        } catch (e) {
+            if (callbackUnAuth) callbackUnAuth();
+            dispatch({ type: "UNAUTHENTICATED" });
+            return false;
+        }
+
+        dispatch({ type: "AUTHENTICATED" });
+
+        if (callbackAuth) callbackAuth();
+        return true;
     }
 }

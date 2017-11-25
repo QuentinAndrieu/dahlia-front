@@ -4,13 +4,14 @@ export default function reducer(state = {
             firstname: '',
             lastname: '',
             mail: '',
-            password: [],
+            password: '',
             setting: {
                   durations: [],
                   rates: []
             },
             role: '',
-            patients: []
+            patients: [],
+            appointments: []
       },
       fetching: false,
       fetched: false,

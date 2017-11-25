@@ -3,7 +3,6 @@ import Root from '../containers/root.container';
 import { Container } from 'react-materialize';
 import '../index.css';
 import SideNavCustom from '../containers/side-nav-custom.container';
-import decode from 'jwt-decode';
 
 class App extends Component {
 
@@ -16,11 +15,19 @@ class App extends Component {
 
   componentDidMount() {
     const token = sessionStorage.getItem('jwtToken');
-    if (this.jwtTokenIsValid(token)) {
-      this.props.fetchUser(token, () => {
+
+    if (token) {
+      this.props.isAuthenticated(token, () => {
         this.props.setJWTToken(token);
-        this.setState({
-          loading: false
+
+        this.props.fetchUser(token, () => {
+          this.setState({
+            loading: false
+          });
+        }, () => {
+          this.setState({
+            loading: false
+          });
         });
       });
     } else {
@@ -29,25 +36,6 @@ class App extends Component {
       });
     }
   }
-
-  jwtTokenIsValid(token) {
-    if (!token) {
-      return false;
-    }
-
-    try {
-      const { exp } = decode(token);
-
-      if (exp < new Date().getTime() / 1000) {
-        return false;
-      }
-    } catch (e) {
-      return false;
-    }
-
-    return true;
-  }
-
 
   render() {
     let main = {
