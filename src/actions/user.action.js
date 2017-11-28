@@ -42,11 +42,7 @@ export function updateUser(username, lastname, firstname, mail) {
             firstname: firstname,
             mail: mail
         }).then((response) => {
-            if (response.data.success) {
-                dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data });
-            } else {
-                dispatch({ type: "UPDATE_USER_REJECTED", payload: 'Missing properties' });
-            }
+            dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data });
         }).catch((err) => {
             dispatch({ type: 'UPDATE_USER_REJECTED', payload: err })
         });

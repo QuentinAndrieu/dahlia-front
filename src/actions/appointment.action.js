@@ -64,3 +64,23 @@ export function updateAppointment(idAppointment, description, date, rate, durati
         });
     }
 }
+
+export function removeAppointment(idAppointment, callback) {
+    return (dispatch) => {
+        dispatch({ type: "REMOVE_APPOINTMENT" });
+
+        getInstance().delete('/appointments/' + idAppointment).then((response) => {
+            if (response.data.errors) {
+                dispatch({ type: "REMOVE_APPOINTMENT_REJECTED", payload: response.data.errors });
+            } else {
+                dispatch({ type: "REMOVE_APPOINTMENT_FULFILLED", payload: response.data });
+
+                if (callback) {
+                    callback();
+                }
+            }
+        }).catch((error) => {
+            dispatch({ type: "REMOVE_APPOINTMENT_REJECTED", payload: error });
+        });
+    }
+}

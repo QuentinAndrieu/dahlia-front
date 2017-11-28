@@ -26,7 +26,11 @@ class AppointmentForm extends Component {
     }
 
     updateAppointment(id, description, date, rate, duration) {
-        this.props.updateAppointment(id, description, date, rate, duration);
+        this.props.updateAppointment(id, description, date, rate, duration, (idPatient) => {
+            this.setState({
+                redirect: true
+            });
+        });
     }
 
     customPath(path, id) {

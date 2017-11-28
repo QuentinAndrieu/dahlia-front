@@ -40,6 +40,23 @@ export default function reducer(state = {
                         user: action.payload
                   }
             }
+            case "UPDATE_USER": {
+                  return {
+                        ...state
+                  }
+            }
+            case "UPDATE_USER_REJECTED": {
+                  return {
+                        ...state,
+                        error: action.payload
+                  }
+            }
+            case "UPDATE_USER_FULFILLED": {
+                  return {
+                        ...state,
+                        user: action.payload
+                  }
+            }
             case "ADD_PATIENT": {
                   return { ...state }
             }
@@ -166,6 +183,38 @@ export default function reducer(state = {
                               patients: patientsUpdated,
                               appointments: appointmentsUpdated
                         },
+                  }
+            }
+            case "REMOVE_APPOINTMENT": {
+                  return { ...state }
+            }
+            case "REMOVE_APPOINTMENT_REJECTED": {
+                  return {
+                        ...state,
+                        error: action.payload
+                  }
+            }
+            case "REMOVE_APPOINTMENT_FULFILLED": {
+                  const patientsUpdated = state.user.patients.map((patient) => {
+                        if (patient._id === action.payload.id_patient) {
+                              patient.appointments = patient.appointments.filter((appointment) => {
+                                    return (appointment._id !== action.payload._id);
+                              });
+                        }
+                        return patient;
+                  });
+
+                  const appointmentsUpdated = state.user.appointments.filter((appointment) => {
+                        return (appointment._id !== action.payload._id);
+                  });
+
+                  return {
+                        ...state,
+                        user: {
+                              ...state.user,
+                              patients: patientsUpdated,
+                              appointments: appointmentsUpdated
+                        }
                   }
             }
             default: {

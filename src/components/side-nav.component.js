@@ -25,9 +25,6 @@ class SideNavCustom extends Component {
           <SideNavItem divider />
           <Link to="/patients">Patients</Link>
           <SideNavItem divider />
-          <Link to="/appointment/create">Add appointment</Link>
-          <Link to="/appointments">List appointments</Link>
-          <SideNavItem divider />
           <Link to="/calendar">Calendar</Link>
           <SideNavItem divider />
           <Link to="/profile">Profile</Link>

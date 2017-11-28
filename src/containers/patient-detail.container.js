@@ -4,7 +4,7 @@ import PatientDetail from '../components/patient-detail.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../actions/router.action';
 import { removePatient } from '../actions/patient.action';
-import { addAppointment } from '../actions/appointment.action';
+import { addAppointment, removeAppointment } from '../actions/appointment.action';
 import moment from 'moment';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -15,7 +15,8 @@ const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
         setTitle: setTitle,
         removePatient: removePatient,
-        addAppointment: addAppointment
+        addAppointment: addAppointment,
+        removeAppointment: removeAppointment
     }, dispatch)
 );
 

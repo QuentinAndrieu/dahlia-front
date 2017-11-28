@@ -24,6 +24,10 @@ class PatientDetail extends Component {
         this.props.setTitle(this.getTitle(this.props.patient.firstname, this.props.patient.lastname));
     }
 
+    /**
+     * Remove patient
+     * @param {*} id 
+     */
     removePatient(id) {
         this.props.removePatient(id, () => {
             this.setState({
@@ -32,6 +36,10 @@ class PatientDetail extends Component {
         });
     }
 
+    /**
+     * Add Appointment
+     * @param {*} description 
+     */
     addAppointment(description) {
         const date = moment();
         const rate = '60';
@@ -44,6 +52,19 @@ class PatientDetail extends Component {
         });
     }
 
+    /**
+     * Remove Appointment
+     * @param {*} id 
+     */
+    removeAppointment(id) {
+        this.props.removeAppointment(id);
+    }
+
+    /**
+     * Get Title
+     * @param {*} firstname 
+     * @param {*} lastname 
+     */
     getTitle(firstname, lastname) {
         if (firstname && lastname) {
             return firstname + ' ' + lastname;
@@ -52,10 +73,19 @@ class PatientDetail extends Component {
         return '';
     }
 
+    /**
+     * Custom Path
+     * @param {*} path 
+     * @param {*} id 
+     */
     customPath(path, id) {
         return path + '/' + id;
     }
 
+    /**
+     * Handle Path
+     * @param {*} event 
+     */
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -87,6 +117,10 @@ class PatientDetail extends Component {
                     <Link to={this.customPath('/appointment/update', appointment._id)}>
                         <i style={icons} className="small material-icons icons">create</i>
                     </Link>
+                    <p>
+                        <i onClick={() => { this.removeAppointment(appointment._id) }}
+                            style={icons} className="small material-icons icons">delete</i>
+                    </p>
                 </Col>
             </div>);
 
@@ -115,11 +149,14 @@ class PatientDetail extends Component {
                 </div>
                 {mappedAppointments}
                 <Col s={11}>
-                    <Input s={12} name="description" value={this.state.description} onChange={this.handleChange} placeholder="Add appointment" type="textarea" />
+                    <Input s={12} name="description" value={this.state.description}
+                        onChange={this.handleChange} placeholder="Add appointment" type="textarea" />
                 </Col>
                 <Col s={1}>
-                    <p><i onClick={() => { this.addAppointment(this.state.description) }}
-                        style={icons} className="small material-icons icons">send</i></p>
+                    <p>
+                        <i onClick={() => { this.addAppointment(this.state.description) }}
+                            style={icons} className="small material-icons icons">send</i>
+                    </p>
                 </Col>
                 {this.state.redirect && (
                     <Redirect to="/patients" />
