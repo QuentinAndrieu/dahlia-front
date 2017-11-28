@@ -1,19 +1,23 @@
 import axios from 'axios';
 
-const instance = axios.create({
-    baseURL: 'https://dahlia-api.herokuapp.com',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': sessionStorage.getItem('jwtToken')
-    }
-});
+function getInstance() {
+    const instance = axios.create({
+        baseURL: 'https://dahlia-api.herokuapp.com',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('jwtToken')
+        }
+    });
+
+    return instance;
+}
 
 export function addPatient(firstname, lastname, birthday, description, callback) {
     return (dispatch) => {
         dispatch({ type: "ADD_PATIENT" });
 
-        instance.post('/patients', {
+        getInstance().post('/patients', {
             lastname: lastname,
             firstname: firstname,
             birthday: birthday,
@@ -38,7 +42,7 @@ export function updatePatient(idPatient, firstname, lastname, birthday, descript
     return (dispatch) => {
         dispatch({ type: "UPDATE_PATIENT" });
 
-        instance.put('/patients/' + idPatient, {
+        getInstance().put('/patients/' + idPatient, {
             lastname: lastname,
             firstname: firstname,
             birthday: birthday,
@@ -63,7 +67,7 @@ export function removePatient(idPatient, callback) {
     return (dispatch) => {
         dispatch({ type: "REMOVE_PATIENT" });
 
-        instance.delete('/patients/' + idPatient).then((response) => {
+        getInstance().delete('/patients/' + idPatient).then((response) => {
             if (response.data.errors) {
                 dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: response.data.errors });
             } else {

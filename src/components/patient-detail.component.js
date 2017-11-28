@@ -34,8 +34,8 @@ class PatientDetail extends Component {
 
     addAppointment(description) {
         const date = moment();
-        const rate = 60;
-        const duration = 60;
+        const rate = '60';
+        const duration = '60';
 
         this.props.addAppointment(this.props.patient._id, description, date, rate, duration, () => {
             this.setState({
@@ -84,7 +84,9 @@ class PatientDetail extends Component {
                     <p>{appointment.date}</p>
                 </Col>
                 <Col s={1}>
-                    <p><i style={icons} className="small material-icons icons">create</i></p>
+                    <Link to={this.customPath('/appointment/update', appointment._id)}>
+                        <i style={icons} className="small material-icons icons">create</i>
+                    </Link>
                 </Col>
             </div>);
 

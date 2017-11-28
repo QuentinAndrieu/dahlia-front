@@ -85,17 +85,17 @@ class PatientForm extends Component {
         return (
             <form onSubmit={this.submit}>
                 <Row>
-                    <Input s={12} m={6} name="firstname" placeholder='First Name' value={this.state.firstname} onChange={this.handleChange} />
-                    <Input s={12} m={6} name="lastname" placeholder='Last Name' value={this.state.lastname} onChange={this.handleChange} />
-                    <Input s={12} name="description" placeholder='Description' type='textarea' value={this.state.description} onChange={this.handleChange} />
+                    <Input s={12} m={6} name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange} />
+                    <Input s={12} m={6} name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
+                    <Input s={12} name="description" placeholder="Description" type="textarea" value={this.state.description} onChange={this.handleChange} />
                     <Col s={6}></Col>
-                    <Input s={6} name="birthday" placeholder='Birthday' type='date' value={this.state.birthday} onChange={this.handleChange} />
+                    <Input s={6} name="birthday" placeholder="Birthday" type="date" value={this.state.birthday} onChange={this.handleChange} />
                     <center>
                         <Button s={12} type="submit">Submit</Button>
                     </center>
                 </Row>
                 <div className="fixed-action-btn">
-                    <Link to="/patients" className="btn-floating btn-large red">
+                    <Link to="/patients" className="btn-floating btn-large">
                         <i className="large material-icons">list</i>
                     </Link>
                 </div>

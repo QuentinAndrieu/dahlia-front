@@ -133,6 +133,41 @@ export default function reducer(state = {
                         },
                   }
             }
+            case "UPDATE_APPOINTMENT": {
+                  return { ...state }
+            }
+            case "UPDATE_APPOINTMENT_REJECTED": {
+                  return { ...state, error: action.payload }
+            }
+            case "UPDATE_APPOINTMENT_FULFILLED": {
+                  const patientsUpdated = state.user.patients.map((patient) => {
+                        if (patient._id === action.payload.id_patient) {
+                              patient.appointments = patient.appointments.map((appointment) => {
+                                    if (appointment._id === action.payload._id) {
+                                          appointment = action.payload
+                                    }
+                                    return appointment;
+                              });
+                        }
+                        return patient;
+                  });
+
+                  const appointmentsUpdated = state.user.appointments.map((appointment) => {
+                        if (appointment._id === action.payload._id) {
+                              appointment = action.payload
+                        }
+                        return appointment;
+                  });
+
+                  return {
+                        ...state,
+                        user: {
+                              ...state.user,
+                              patients: patientsUpdated,
+                              appointments: appointmentsUpdated
+                        },
+                  }
+            }
             default: {
                   return state;
             }

@@ -1,19 +1,23 @@
 import axios from 'axios';
 
+function getInstance(token) {
+    const instance = axios.create({
+        baseURL: 'https://dahlia-api.herokuapp.com',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }
+    });
+
+    return instance;
+}
+
 export function fetchUser(jwtToken, callback) {
     return (dispatch) => {
         dispatch({ type: 'FETCH_USER' });
 
-        const instance = axios.create({
-            baseURL: 'https://dahlia-api.herokuapp.com',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': jwtToken
-            }
-        });
-
-        instance.get('/user')
+        getInstance(jwtToken).get('/user')
             .then((response) => {
                 dispatch({ type: 'FETCH_USER_FULFILLED', payload: response.data });
 
@@ -32,16 +36,7 @@ export function updateUser(username, lastname, firstname, mail) {
     return (dispatch) => {
         dispatch({ type: 'UPDATE_USER' });
 
-        const instance = axios.create({
-            baseURL: 'https://dahlia-api.herokuapp.com',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': sessionStorage.getItem('jwtToken')
-            }
-        });
-
-        instance.put('/user', {
+        getInstance(sessionStorage.getItem('jwtToken')).put('/user', {
             username: username,
             lastname: lastname,
             firstname: firstname,
@@ -52,7 +47,6 @@ export function updateUser(username, lastname, firstname, mail) {
             } else {
                 dispatch({ type: "UPDATE_USER_REJECTED", payload: 'Missing properties' });
             }
-            dispatch({ type: 'UPDATE_USER_FULFILLED', payload: response.data })
         }).catch((err) => {
             dispatch({ type: 'UPDATE_USER_REJECTED', payload: err })
         });

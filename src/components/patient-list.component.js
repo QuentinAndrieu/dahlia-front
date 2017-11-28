@@ -33,11 +33,11 @@ class PatientList extends Component {
     const updatedPatientsList = this.props.patients.filter((patient) => {
       return patient.firstname.toLowerCase().search(
         value.toLowerCase()) !== -1;
-    })
+    });
 
     this.setState({
       patients: updatedPatientsList
-    })
+    });
   }
 
   customPath(path, id) {
@@ -59,7 +59,7 @@ class PatientList extends Component {
           {mappedPatients}
         </Collection>
         <div className="fixed-action-btn">
-          <Link to="/patient/create" className="btn-floating btn-large red">
+          <Link to="/patient/create" className="btn-floating btn-large">
             <i className="large material-icons">add</i>
           </Link>
         </div>
