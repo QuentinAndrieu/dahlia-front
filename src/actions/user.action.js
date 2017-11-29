@@ -48,3 +48,16 @@ export function updateUser(username, lastname, firstname, mail) {
         });
     }
 }
+
+export function fetchAllUsers() {
+    return (dispatch) => {
+        dispatch({ type: 'FETCH_ALL_USERS' });
+
+        getInstance(sessionStorage.getItem('jwtToken')).get('/admin/users')
+            .then((response) => {
+                dispatch({ type: "FETCH_ALL_USERS_FULFILLED", payload: response.data });
+            }).catch((err) => {
+                dispatch({ type: 'FETCH_ALL_USERS_REJECTED', payload: err })
+            });
+    }
+}

@@ -4,6 +4,7 @@ import SideNavCustom from '../components/side-nav.component';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
+  username: state.user.user.username
 });
 
 const mapDispatchToProps = (dispatch) => (

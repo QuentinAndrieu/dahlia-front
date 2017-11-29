@@ -1,13 +1,30 @@
 export default function reducer(state = {
-    patients:[],
+    patients: [],
     users: [],
-    appointments:[],
+    appointments: [],
     error: null
 }, action) {
 
     switch (action.type) {
+        case "FETCH_ALL_USERS": {
+            return {
+                ...state
+            }
+        }
+        case "FETCH_ALL_USERS_REJECTED": {
+            return {
+                ...state,
+                error: action.payload
+            }
+        }
+        case "FETCH_ALL_USERS_FULFILLED": {
+            return {
+                ...state,
+                users: action.payload
+            }
+        }
         default: {
-            return state;   
+            return state;
         }
     }
 }
