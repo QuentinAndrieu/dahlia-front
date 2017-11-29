@@ -24,10 +24,6 @@ class PatientDetail extends Component {
         this.props.setTitle(this.getTitle(this.props.patient.firstname, this.props.patient.lastname));
     }
 
-    /**
-     * Remove patient
-     * @param {*} id 
-     */
     removePatient(id) {
         this.props.removePatient(id, () => {
             this.setState({
@@ -36,35 +32,32 @@ class PatientDetail extends Component {
         });
     }
 
-    /**
-     * Add Appointment
-     * @param {*} description 
-     */
     addAppointment(description) {
-        const date = moment();
+        const date = new Date();
         const rate = '60';
         const duration = '60';
+        const title = this.getTitle(this.props.patient.firstname, this.props.patient.lastname);
 
-        this.props.addAppointment(this.props.patient._id, description, date, rate, duration, () => {
+        this.props.addAppointment(this.props.patient._id, description, title, date, rate, duration, () => {
             this.setState({
                 description: ''
             });
         });
     }
 
-    /**
-     * Remove Appointment
-     * @param {*} id 
-     */
     removeAppointment(id) {
         this.props.removeAppointment(id);
     }
 
-    /**
-     * Get Title
-     * @param {*} firstname 
-     * @param {*} lastname 
-     */
+    formatAppointments(appointments) {
+        const formatAppointments = appointments.map((appointment) => {
+            appointment.date = moment(appointment.date).format('LLLL');
+            return appointment;
+        });
+
+        return formatAppointments;
+    }
+
     getTitle(firstname, lastname) {
         if (firstname && lastname) {
             return firstname + ' ' + lastname;
@@ -73,19 +66,10 @@ class PatientDetail extends Component {
         return '';
     }
 
-    /**
-     * Custom Path
-     * @param {*} path 
-     * @param {*} id 
-     */
     customPath(path, id) {
         return path + '/' + id;
     }
 
-    /**
-     * Handle Path
-     * @param {*} event 
-     */
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -107,7 +91,7 @@ class PatientDetail extends Component {
             cursor: 'pointer'
         }
 
-        let mappedAppointments = patient.appointments.map(appointment =>
+        let mappedAppointments = this.formatAppointments(patient.appointments).map(appointment =>
             <div key={appointment._id}>
                 <Col s={11}>
                     <p>{appointment.description}</p>

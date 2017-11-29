@@ -14,13 +14,14 @@ function getInstance() {
 }
 
 
-export function addAppointment(idPatient, description, date, rate, duration, callback) {
+export function addAppointment(idPatient, description, title, date, rate, duration, callback) {
     return (dispatch) => {
         dispatch({ type: "ADD_APPOINTMENT" });
 
         getInstance().post('/appointments', {
             id_patient: idPatient,
             description: description,
+            title: title,
             date: date,
             rate: rate,
             duration: duration
@@ -40,12 +41,13 @@ export function addAppointment(idPatient, description, date, rate, duration, cal
     }
 }
 
-export function updateAppointment(idAppointment, description, date, rate, duration, callback) {
+export function updateAppointment(idAppointment, description, title, date, rate, duration, callback) {
     return (dispatch) => {
         dispatch({ type: "UPDATE_APPOINTMENT" });
 
         getInstance().put('/appointments/' + idAppointment, {
             description: description,
+            title: title,
             date: date,
             rate: rate,
             duration: duration

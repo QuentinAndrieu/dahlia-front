@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Input, Button } from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
+import moment from 'moment';
 
 class AppointmentForm extends Component {
 
@@ -25,8 +26,8 @@ class AppointmentForm extends Component {
         this.setState(this.formatToState(this.props.appointment));
     }
 
-    updateAppointment(id, description, date, rate, duration) {
-        this.props.updateAppointment(id, description, date, rate, duration, (idPatient) => {
+    updateAppointment(id, description, title, date, rate, duration) {
+        this.props.updateAppointment(id, description, title, date, rate, duration, (idPatient) => {
             this.setState({
                 redirect: true
             });
@@ -55,10 +56,14 @@ class AppointmentForm extends Component {
         });
     }
 
+    formatDate(date) {
+        return moment(date).format('LLLL');
+    }
+
     submit(event) {
         event.preventDefault();
 
-        this.updateAppointment(this.state._id, this.state.description, this.state.date,
+        this.updateAppointment(this.state._id, this.state.description, this.state.title, this.state.date,
             this.state.rate, this.state.duration);
     }
 
@@ -69,8 +74,9 @@ class AppointmentForm extends Component {
                     <Input s={12} name="description" placeholder="Description" type="textarea" value={this.state.description} onChange={this.handleChange} />
                     <Input s={12} m={6} name="rate" placeholder="Rate" value={this.state.rate} onChange={this.handleChange} />
                     <Input s={12} m={6} name="duration" placeholder="Duration" value={this.state.duration} onChange={this.handleChange} />
-                    <Col s={6}></Col>
-                    <Input s={6} name="date" placeholder="Date" type="date" value={this.state.date} onChange={this.handleChange} />
+                    <Col s={12}>
+                        <p><strong>{this.formatDate(this.state.date)}</strong></p>
+                    </Col>
                     <center>
                         <Button s={12} type="submit">Submit</Button>
                     </center>
