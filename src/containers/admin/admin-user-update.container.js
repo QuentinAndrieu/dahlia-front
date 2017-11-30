@@ -22,7 +22,7 @@ function getUser(id, users) {
         return (user._id === id);
     });
 
-    return user;
+    return user[0];
 }
 
 

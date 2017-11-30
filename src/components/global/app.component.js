@@ -11,6 +11,9 @@ class App extends Component {
     this.state = {
       loading: true
     }
+
+    this.setLoadingState = this.setLoadingState.bind(this);
+    this.fetchAdminData = this.fetchAdminData.bind(this);
   }
 
   componentDidMount() {
@@ -19,22 +22,31 @@ class App extends Component {
     if (token) {
       this.props.isAuthenticated(token, () => {
         this.props.setJWTToken(token);
-
-        this.props.fetchUser(token, () => {
-          this.setState({
-            loading: false
-          });
+        this.props.fetchUser(token, (user) => {
+          if (user.role === 'Admin') {
+            this.fetchAdminData();
+          } else {
+            this.setLoadingState(false)
+          }
         }, () => {
-          this.setState({
-            loading: false
-          });
+          this.setLoadingState(false)
         });
       });
     } else {
-      this.setState({
-        loading: false
-      });
+      this.setLoadingState(false)
     }
+  }
+
+  setLoadingState(state) {
+    this.setState({
+      loading: state
+    });
+  }
+
+  fetchAdminData() {
+    this.props.fetchAllUsers(() => {
+      this.setLoadingState(false)
+    });
   }
 
   render() {

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import UserList from '../../components/user/user-list.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
-import { fetchAllUsers } from '../../actions/user.action';
 
 
 const mapStateToProps = (state) => ({
@@ -12,8 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    setTitle: setTitle,
-    fetchAllUsers: fetchAllUsers
+    setTitle: setTitle
   }, dispatch)
 );
 

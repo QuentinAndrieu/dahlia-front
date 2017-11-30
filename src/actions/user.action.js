@@ -22,7 +22,7 @@ export function fetchUser(jwtToken, callback) {
                 dispatch({ type: 'FETCH_USER_FULFILLED', payload: response.data });
 
                 if (callback) {
-                    callback();
+                    callback(response.data);
                 }
             })
             .catch((err) => {
@@ -48,13 +48,17 @@ export function updateUser(username, lastname, firstname, mail) {
     }
 }
 
-export function fetchAllUsers() {
+export function fetchAllUsers(callback) {
     return (dispatch) => {
         dispatch({ type: 'FETCH_ALL_USERS' });
 
         getInstance(sessionStorage.getItem('jwtToken')).get('/admin/users')
             .then((response) => {
                 dispatch({ type: "FETCH_ALL_USERS_FULFILLED", payload: response.data });
+
+                if (callback) {
+                    callback();
+                }
             }).catch((err) => {
                 dispatch({ type: 'FETCH_ALL_USERS_REJECTED', payload: err })
             });

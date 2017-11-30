@@ -16,7 +16,9 @@ class UserList extends Component {
 
     componentDidMount() {
         this.props.setTitle('List users');
-        this.props.fetchAllUsers();
+        this.setState({
+            users: this.props.users
+        })
     }
 
     componentWillReceiveProps(nextProps) {
