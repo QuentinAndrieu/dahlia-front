@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/app.container';
-import UserSignIn from './containers/user-signin.container';
+import App from './containers/global/app.container';
+import UserSignIn from './containers/user/user-signin.container';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './store';

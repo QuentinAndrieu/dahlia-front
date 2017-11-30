@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Root from '../containers/root.container';
+import Root from '../../containers/global/root.container';
 import { Container } from 'react-materialize';
-import '../index.css';
-import SideNavCustom from '../containers/side-nav-custom.container';
+import '../../index.css';
+import SideNavCustom from '../../containers/global/side-nav-custom.container';
 
 class App extends Component {
 

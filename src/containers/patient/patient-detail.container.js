@@ -1,10 +1,10 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PatientDetail from '../components/patient-detail.component';
+import PatientDetail from '../../components/patient/patient-detail.component';
 import { withRouter } from 'react-router-dom';
-import { setTitle } from '../actions/router.action';
-import { removePatient } from '../actions/patient.action';
-import { addAppointment, removeAppointment } from '../actions/appointment.action';
+import { setTitle } from '../../actions/router.action';
+import { removePatient } from '../../actions/patient.action';
+import { addAppointment, removeAppointment } from '../../actions/appointment.action';
 import moment from 'moment';
 
 const mapStateToProps = (state, ownProps) => ({

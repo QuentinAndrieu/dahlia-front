@@ -11,7 +11,7 @@ class UserList extends Component {
             users: []
         }
 
-    this.searchUser = this.searchUser.bind(this);
+        this.searchUser = this.searchUser.bind(this);
     }
 
     componentDidMount() {
@@ -20,12 +20,16 @@ class UserList extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.users !== this.state.users){
-          this.setState({
-            users: nextProps.users
-          })
+        if (nextProps.users !== this.state.users) {
+            this.setState({
+                users: nextProps.users
+            })
         }
-      }
+    }
+
+    customPath(path, id) {
+        return path + '/' + id;
+    }
 
     searchUser(event) {
         const target = event.target;
@@ -44,11 +48,11 @@ class UserList extends Component {
     render() {
         let mappedUsers = this.state.users.map(user =>
             <CollectionItem key={user._id} className="grey-text">
-                <Link to="/">{user.username}</Link>
+                <Link to={this.customPath('/admin/user', user._id)}>{user.username}</Link>
             </CollectionItem>);
 
         return (
-            <div className='user-list'>
+            <div className='admin-user-list'>
                 <Row>
                     <Input onChange={this.searchUser} s={12} label="Search User" />
                 </Row>

@@ -31,7 +31,6 @@ export function fetchUser(jwtToken, callback) {
     }
 }
 
-
 export function updateUser(username, lastname, firstname, mail) {
     return (dispatch) => {
         dispatch({ type: 'UPDATE_USER' });
@@ -59,5 +58,22 @@ export function fetchAllUsers() {
             }).catch((err) => {
                 dispatch({ type: 'FETCH_ALL_USERS_REJECTED', payload: err })
             });
+    }
+}
+
+export function updateUserById(id, username, lastname, firstname, mail) {
+    return (dispatch) => {
+        dispatch({ type: 'UPDATE_USER_BY_ID' });
+
+        getInstance(sessionStorage.getItem('jwtToken')).put('//admin/users/' + id, {
+            username: username,
+            lastname: lastname,
+            firstname: firstname,
+            mail: mail
+        }).then((response) => {
+            dispatch({ type: "UPDATE_USER_BY_ID_FULFILLED", payload: response.data });
+        }).catch((err) => {
+            dispatch({ type: 'UPDATE_USER_BY_ID_REJECTED', payload: err })
+        });
     }
 }

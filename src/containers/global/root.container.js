@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import SideNavCustom from '../components/side-nav.component';
+import Root from '../../components/global/root.component';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
-  username: state.user.user.username
+  fetching: state.user.fetching
 });
 
 const mapDispatchToProps = (dispatch) => (
@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideNavCustom));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Root));

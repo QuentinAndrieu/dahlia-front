@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import AppointmentForm from '../components/appointment-form.conponent';
+import AppointmentForm from '../../components/appointment/appointment-form.conponent';
 import { withRouter } from 'react-router-dom';
-import { setTitle } from '../actions/router.action';
-import { updateAppointment } from '../actions/appointment.action';
+import { setTitle } from '../../actions/router.action';
+import { updateAppointment } from '../../actions/appointment.action';
 
 const mapStateToProps = (state, ownProps) => ({
     appointment: getAppointment(ownProps.match.params.id, state.user.user.appointments)

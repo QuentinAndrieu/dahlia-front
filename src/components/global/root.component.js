@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
-import Home from '../containers/home.container';
-import PatientList from '../containers/patient-list.container';
-import PatientCreate from '../containers/patient-create.container';
-import UserUpdate from '../containers/user-update.container';
-import PatientDetail from '../containers/patient-detail.container';
-import PatientUpdate from '../containers/patient-update.container';
-import AppointmentUpdate from '../containers/appointment-update.container';
-import Calendar from '../containers/calendar.container';
-import UserList from '../containers/user-list.container';
-import AuthRoute from '../containers/auth-route.container';
-import AdminRoute from '../containers/admin-route.container';
+import Home from '../../containers/home/home.container';
+import PatientList from '../../containers/patient/patient-list.container';
+import PatientCreate from '../../containers/patient/patient-create.container';
+import UserUpdate from '../../containers/user/user-update.container';
+import PatientDetail from '../../containers/patient/patient-detail.container';
+import PatientUpdate from '../../containers/patient/patient-update.container';
+import AppointmentUpdate from '../../containers/appointment/appointment-update.container';
+import Calendar from '../../containers/calendar/calendar.container';
+import AdminUserList from '../../containers/admin/admin-user-list.container';
+import AuthRoute from '../../containers/global/auth-route.container';
+import AdminRoute from '../../containers/global/auth-route-admin.container';
+import AdminUserUpdate from '../../containers/admin/admin-user-update.container';
 import Loader from './loader.component';
 
 
@@ -43,7 +44,8 @@ class Root extends Component {
                     <AuthRoute exact path='/patient/update/:id' component={<PatientUpdate />} />
                     <AuthRoute exact path='/appointment/update/:id' component={<AppointmentUpdate />} />
                     <AuthRoute exact path='/calendar' component={<Calendar />} />
-                    <AdminRoute exact path='/admin/users' component={<UserList />} />
+                    <AdminRoute exact path='/admin/users' component={<AdminUserList />} />
+                    <AdminRoute exact path='/admin/user/:id' component={<AdminUserUpdate />} />
                 </Switch>
             </div>
         );

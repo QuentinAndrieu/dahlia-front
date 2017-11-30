@@ -1,9 +1,9 @@
-import { updateUser } from '../actions/user.action';
+import { updateUser } from '../../actions/user.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import UserForm  from '../components/user-form.component';
+import UserForm  from '../../components/user/user-form.component';
 import { withRouter } from 'react-router-dom';
-import { setTitle } from '../actions/router.action';
+import { setTitle } from '../../actions/router.action';
 
 const mapStateToProps = (state) => ({
     user: state.user.user

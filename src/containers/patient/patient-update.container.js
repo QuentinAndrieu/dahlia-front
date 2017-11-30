@@ -1,9 +1,9 @@
-import { updatePatient } from '../actions/patient.action';
+import { updatePatient } from '../../actions/patient.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PatientForm from '../components/patient-form.component';
+import PatientForm from '../../components/patient/patient-form.component';
 import { withRouter } from 'react-router-dom';
-import { setTitle } from '../actions/router.action';
+import { setTitle } from '../../actions/router.action';
 import moment from 'moment';
 
 const mapStateToProps = (state, ownProps) => ({

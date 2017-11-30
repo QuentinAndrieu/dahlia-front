@@ -6,7 +6,6 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 class Calendar extends Component {
 
-
     componentWillMount() {
         BigCalendar.setLocalizer(
             BigCalendar.momentLocalizer(moment)

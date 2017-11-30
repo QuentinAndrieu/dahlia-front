@@ -23,6 +23,23 @@ export default function reducer(state = {
                 users: action.payload
             }
         }
+        case "UPDATE_USER_BY_ID": {
+            return {
+                ...state
+            }
+        }
+        case "UPDATE_USER_BY_ID_REJECTED": {
+            return {
+                ...state,
+                error: action.payload
+            }
+        }
+        case "UPDATE_USER_BY_ID_FULFILLED": {
+            return {
+                ...state,
+                users: action.payload
+            }
+        }
         default: {
             return state;
         }

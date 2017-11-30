@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Home from '../components/home.component';
+import SideNavCustom from '../../components/global/side-nav.component';
 import { withRouter } from 'react-router-dom';
-import { setTitle } from '../actions/router.action';
 
 const mapStateToProps = (state) => ({
+  username: state.user.user.username,
+  admin: state.user.user.role === 'Admin'
 });
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    setTitle: setTitle
   }, dispatch)
 );
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideNavCustom));

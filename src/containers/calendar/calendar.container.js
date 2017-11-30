@@ -1,7 +1,7 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Calendar from '../components/calendar.component';
+import Calendar from '../../components/calendar/calendar.component';
 
 const mapStateToProps = (state) => ({
   appointments: state.user.user.appointments

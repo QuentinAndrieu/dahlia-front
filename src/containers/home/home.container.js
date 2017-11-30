@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Root from '../components/root.component';
+import Home from '../../components/home/home.component';
 import { withRouter } from 'react-router-dom';
+import { setTitle } from '../../actions/router.action';
 
 const mapStateToProps = (state) => ({
-  fetching: state.user.fetching
 });
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
+    setTitle: setTitle
   }, dispatch)
 );
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Root));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

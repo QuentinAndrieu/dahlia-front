@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 
 class SideNavCustom extends Component {
 
-  render() {
+  isAdmin() {
+    return this.props.admin;
+  }
 
+  render() {
     const imgLogo = {
       width: '200px'
     }
@@ -13,6 +16,15 @@ class SideNavCustom extends Component {
     const sideNavLogo = {
       height: '250px'
     }
+
+    let linkAdmin;
+
+    if (this.isAdmin()) {
+      linkAdmin = <div>
+        <SideNavItem divider />
+        <Link className="link-admin" to="/admin/users">Users (Admin)</Link>
+      </div>;
+    } 
 
     return (
       <SideNav id="sideNav" className="side-nav fixed" trigger={< div ></div>} >
@@ -28,6 +40,7 @@ class SideNavCustom extends Component {
         <Link to="/calendar">Calendar</Link>
         <SideNavItem divider />
         <Link to="/profile">Profile</Link>
+        {linkAdmin}
       </SideNav >
     );
   }

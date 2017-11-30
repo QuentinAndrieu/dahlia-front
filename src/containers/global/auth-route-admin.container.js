@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import AuthRoute from '../components/auth-route.component';
+import AuthRoute from '../../components/global/auth-route.component';
 import { withRouter } from 'react-router-dom';
-import { isAuthenticated } from '../actions/authentification.action';
+import { isAuthenticated } from '../../actions/authentification.action';
 
 const mapStateToProps = (state) => ({
     authenticated: state.authentification.authenticated,
