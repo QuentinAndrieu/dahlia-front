@@ -37,6 +37,26 @@ export function fetchJWTToken(mail, password, callback) {
     }
 }
 
+export function register(mail, password, callback) {
+    return (dispatch) => {
+        dispatch({ type: "REGISTER" });
+
+        getInstance().post('/register', {
+            mail: mail,
+            password: password
+        }).then((response) => {
+            dispatch({ type: "REGISTER_FULFILLED", payload: response.data });
+
+            if (callback) {
+                callback();
+            }
+        }).catch((error) => {
+            dispatch({ type: "REGISTER_REJECTED", payload: error });
+        });
+    }
+}
+
+
 export function setJWTToken(token) {
     return {
         type: 'SET_TOKEN',

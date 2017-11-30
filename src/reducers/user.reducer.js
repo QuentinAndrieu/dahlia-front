@@ -40,6 +40,23 @@ export default function reducer(state = {
                         user: action.payload
                   }
             }
+            case "REGISTER": {
+                  return {
+                        ...state
+                  }
+            }
+            case "REGISTER_REJECTED": {
+                  return {
+                        ...state,
+                        error: action.payload
+                  }
+            }
+            case "REGISTER_FULFILLED": {
+                  return {
+                        ...state,
+                        user: action.payload
+                  }
+            }
             case "UPDATE_USER": {
                   return {
                         ...state

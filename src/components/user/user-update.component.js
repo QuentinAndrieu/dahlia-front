@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Input, Button } from 'react-materialize';
 
-class UserForm extends Component {
+class UserUpdate extends Component {
 
     constructor(props) {
         super(props);
@@ -33,7 +33,9 @@ class UserForm extends Component {
     }
 
     submit(event) {
-        this.props.updateUser(this.state.username, this.state.lastname, this.state.firstname,
+        const username = this.state.lastname + ' ' + this.state.firstname;
+
+        this.props.updateUser(username, this.state.lastname, this.state.firstname,
             this.state.mail);
         event.preventDefault();
     }
@@ -43,10 +45,9 @@ class UserForm extends Component {
         return (
             <form onSubmit={this.submit}>
                 <Row>
-                    <Input s={12} name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
-                    <Input s={12} name="mail" placeholder="Mail" value={this.state.mail} onChange={this.handleChange} />
                     <Input s={6} name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
                     <Input s={6} name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange} />
+                    <Input s={12} name="mail" placeholder="Mail" value={this.state.mail} onChange={this.handleChange} />
                     <center>
                         <Button s={12} type="submit">Submit</Button>
                     </center>
@@ -56,4 +57,4 @@ class UserForm extends Component {
     }
 }
 
-export default UserForm;
+export default UserUpdate;

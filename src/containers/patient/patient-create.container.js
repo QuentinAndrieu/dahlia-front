@@ -1,7 +1,7 @@
 import { addPatient } from '../../actions/patient.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PatientForm from '../../components/patient/patient-form.component';
+import PatientCreate from '../../components/patient/patient-create.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => (
     }, dispatch)
 );
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PatientForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PatientCreate));

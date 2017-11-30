@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/global/app.container';
 import UserSignIn from './containers/user/user-signin.container';
+import UserSignUp from './containers/user/user-signup.container';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './store';
@@ -12,6 +13,7 @@ ReactDOM.render((
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/signin' component={UserSignIn} />
+                    <Route exact path='/signup' component={UserSignUp} />
                     <Route path='/' component={App} />
                 </Switch>
             </BrowserRouter>

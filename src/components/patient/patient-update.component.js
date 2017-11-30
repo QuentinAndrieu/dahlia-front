@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row, Input, Button } from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
 
-class PatientForm extends Component {
+class PatientFormUpdate extends Component {
 
     constructor(props) {
         super(props);
@@ -21,14 +21,11 @@ class PatientForm extends Component {
     }
 
     componentDidMount() {
-        if (this.props.update) {
-            this.setState(this.props.patient, () => {
-                this.props.setTitle(this.getTitle(this.state.firstname,
-                    this.state.lastname));
-            });
-        } else {
-            this.props.setTitle('Create Patient');
-        }
+        this.setState(this.props.patient, () => {
+            this.props.setTitle(this.getTitle(this.state.firstname,
+                this.state.lastname));
+        });
+
     }
 
     getTitle(firstname, lastname) {
@@ -37,15 +34,6 @@ class PatientForm extends Component {
         }
 
         return '';
-    }
-
-    addPatient(firstname, lastname, birthday, description) {
-        this.props.addPatient(firstname, lastname, birthday, description, (id) => {
-            this.setState({
-                _id: id,
-                redirect: true
-            });
-        });
     }
 
     updatePatient(id, firstname, lastname, birthday, description) {
@@ -72,13 +60,8 @@ class PatientForm extends Component {
 
     submit(event) {
         event.preventDefault();
-        if (this.props.update) {
-            this.updatePatient(this.state._id, this.state.firstname, this.state.lastname,
-                this.state.birthday, this.state.description);
-        } else {
-            this.addPatient(this.state.firstname, this.state.lastname,
-                this.state.birthday, this.state.description);
-        }
+        this.updatePatient(this.state._id, this.state.firstname, this.state.lastname,
+            this.state.birthday, this.state.description);
     }
 
     render() {
@@ -107,4 +90,4 @@ class PatientForm extends Component {
     }
 }
 
-export default PatientForm;
+export default PatientFormUpdate;

@@ -1,7 +1,7 @@
 import { updateUser } from '../../actions/user.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import UserForm  from '../../components/user/user-form.component';
+import UserUpdate  from '../../components/user/user-update.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 
@@ -16,5 +16,4 @@ const mapDispatchToProps = (dispatch) => (
     }, dispatch)
 );
 
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserUpdate));

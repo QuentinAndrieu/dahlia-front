@@ -1,14 +1,13 @@
 import { updatePatient } from '../../actions/patient.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PatientForm from '../../components/patient/patient-form.component';
+import PatientUpdate from '../../components/patient/patient-update.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 import moment from 'moment';
 
 const mapStateToProps = (state, ownProps) => ({
-    patient: getPatient(ownProps.match.params.id, state.user.user.patients),
-    update: true
+    patient: getPatient(ownProps.match.params.id, state.user.user.patients)
 });
 
 const mapDispatchToProps = (dispatch) => (
@@ -35,4 +34,4 @@ function getPatient(id, patients) {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PatientForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PatientUpdate));
