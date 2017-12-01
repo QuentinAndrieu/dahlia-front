@@ -19,10 +19,13 @@ export function fetchUser(jwtToken, callback) {
 
         getInstance(jwtToken).get('/user')
             .then((response) => {
-                dispatch({ type: 'FETCH_USER_FULFILLED', payload: response.data });
+                if (response.data.success) {
+                    if (callback)
+                        callback(response.data.content);
 
-                if (callback) {
-                    callback(response.data);
+                    dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.content });
+                } else {
+                    dispatch({ type: "FETCH_USER_REJECTED", payload: response.data.errors });
                 }
             })
             .catch((err) => {
@@ -41,7 +44,11 @@ export function updateUser(username, lastname, firstname, mail) {
             firstname: firstname,
             mail: mail
         }).then((response) => {
-            dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data });
+            if (response.data.success) {
+                dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data.content });
+            } else {
+                dispatch({ type: "UPDATE_USER_REJECTED", payload: response.data.errors });
+            }
         }).catch((err) => {
             dispatch({ type: 'UPDATE_USER_REJECTED', payload: err })
         });
@@ -54,10 +61,13 @@ export function fetchAllUsers(callback) {
 
         getInstance(sessionStorage.getItem('jwtToken')).get('/admin/users')
             .then((response) => {
-                dispatch({ type: "FETCH_ALL_USERS_FULFILLED", payload: response.data });
+                if (response.data.success) {
+                    dispatch({ type: "FETCH_ALL_USERS_FULFILLED", payload: response.data.content });
 
-                if (callback) {
-                    callback();
+                    if (callback)
+                        callback();
+                } else {
+                    dispatch({ type: "FETCH_ALL_USERS_REJECTED", payload: response.data.errors });
                 }
             }).catch((err) => {
                 dispatch({ type: 'FETCH_ALL_USERS_REJECTED', payload: err })
@@ -75,7 +85,11 @@ export function updateUserById(id, username, lastname, firstname, mail) {
             firstname: firstname,
             mail: mail
         }).then((response) => {
-            dispatch({ type: "UPDATE_USER_BY_ID_FULFILLED", payload: response.data });
+            if (response.data.success) {
+                dispatch({ type: "UPDATE_USER_BY_ID_FULFILLED", payload: response.data.content });
+            } else {
+                dispatch({ type: "UPDATE_USER_BY_ID_REJECTED", payload: response.data.errors });
+            }
         }).catch((err) => {
             dispatch({ type: 'UPDATE_USER_BY_ID_REJECTED', payload: err })
         });

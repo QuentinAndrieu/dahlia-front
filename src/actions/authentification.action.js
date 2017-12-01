@@ -22,14 +22,14 @@ export function fetchJWTToken(mail, password, callback) {
             password: password
         }).then((response) => {
             if (response.data.success) {
-                sessionStorage.setItem('jwtToken', response.data.token);
-                dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token });
+                sessionStorage.setItem('jwtToken', response.data.content.token);
 
-                if (callback) {
-                    callback(response.data.token);
-                }
+                if (callback)
+                    callback(response.data.content.token);
+
+                dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.content.token });
             } else {
-                dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: 'Authentification failed' });
+                dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: response.data.errors });
             }
         }).catch((error) => {
             dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: error });
@@ -45,10 +45,13 @@ export function register(mail, password, callback) {
             mail: mail,
             password: password
         }).then((response) => {
-            dispatch({ type: "REGISTER_FULFILLED", payload: response.data });
+            if (response.data.success) {
+                dispatch({ type: "REGISTER_FULFILLED", payload: response.data.content });
 
-            if (callback) {
-                callback();
+                if (callback)
+                    callback();
+            } else {
+                dispatch({ type: "REGISTER_REJECTED", payload: response.data.errors });
             }
         }).catch((error) => {
             dispatch({ type: "REGISTER_REJECTED", payload: error });
@@ -67,8 +70,8 @@ export function setJWTToken(token) {
 export function isAuthenticated(token, callbackAuth, callbackUnAuth) {
     return (dispatch) => {
         if (!token) {
-            if (callbackUnAuth) callbackUnAuth();
             dispatch({ type: "UNAUTHENTICATED" });
+            if (callbackUnAuth) callbackUnAuth();
             return false;
         }
 
@@ -76,13 +79,13 @@ export function isAuthenticated(token, callbackAuth, callbackUnAuth) {
             const { exp } = decode(token);
 
             if (exp < new Date().getTime() / 1000) {
-                if (callbackUnAuth) callbackUnAuth();
                 dispatch({ type: "UNAUTHENTICATED" });
+                if (callbackUnAuth) callbackUnAuth();
                 return false;
             }
         } catch (e) {
-            if (callbackUnAuth) callbackUnAuth();
             dispatch({ type: "UNAUTHENTICATED" });
+            if (callbackUnAuth) callbackUnAuth();
             return false;
         }
 

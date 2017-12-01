@@ -23,14 +23,13 @@ export function addPatient(firstname, lastname, birthday, description, callback)
             birthday: birthday,
             description: description
         }).then((response) => {
-            if (response.data.errors) {
-                dispatch({ type: "ADD_PATIENT_REJECTED", payload: response.data.errors });
-            } else {
-                dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data });
+            if (response.data.success) {
+                dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data.content });
 
-                if (callback) {
-                    callback(response.data._id);
-                }
+                if (callback)
+                    callback(response.data.content._id);
+            } else {
+                dispatch({ type: "ADD_PATIENT_REJECTED", payload: response.data.errors });
             }
         }).catch((error) => {
             dispatch({ type: "ADD_PATIENT_REJECTED", payload: error });
@@ -48,14 +47,13 @@ export function updatePatient(idPatient, firstname, lastname, birthday, descript
             birthday: birthday,
             description: description
         }).then((response) => {
-            if (response.data.errors) {
-                dispatch({ type: "UPDATE_PATIENT_REJECTED", payload: response.data.errors });
-            } else {
-                dispatch({ type: "UPDATE_PATIENT_FULFILLED", payload: response.data });
+            if (response.data.success) {
+                dispatch({ type: "UPDATE_PATIENT_FULFILLED", payload: response.data.content });
 
-                if (callback) {
-                    callback(response.data._id);
-                }
+                if (callback)
+                    callback(response.data.content._id);
+            } else {
+                dispatch({ type: "UPDATE_PATIENT_REJECTED", payload: response.data.errors });
             }
         }).catch((error) => {
             dispatch({ type: "UPDATE_PATIENT_REJECTED", payload: error });
@@ -68,14 +66,13 @@ export function removePatient(idPatient, callback) {
         dispatch({ type: "REMOVE_PATIENT" });
 
         getInstance().delete('/patients/' + idPatient).then((response) => {
-            if (response.data.errors) {
-                dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: response.data.errors });
-            } else {
-                if (callback) {
-                    callback();
-                }
+            if (response.data.success) {
+                dispatch({ type: "REMOVE_PATIENT_FULFILLED", payload: response.data.content });
 
-                dispatch({ type: "REMOVE_PATIENT_FULFILLED", payload: idPatient });
+                if (callback)
+                    callback();
+            } else {
+                dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: response.data.errors });
             }
         }).catch((error) => {
             dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: error });

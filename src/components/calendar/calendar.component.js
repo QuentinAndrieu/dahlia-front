@@ -12,6 +12,10 @@ class Calendar extends Component {
         );
     }
 
+    componentDidMount() {
+        this.props.setTitle('Calendar');
+    }
+
     formatAppointments(appointments) {
         const formatAppointments = appointments.map((appointment) => {
             appointment = {

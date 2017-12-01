@@ -16,7 +16,7 @@ function getInstance() {
 
 export function addAppointment(idPatient, description, title, date, rate, duration, callback) {
     return (dispatch) => {
-        dispatch({ type: "ADD_APPOINTMENT" });
+        dispatch({ type: 'ADD_APPOINTMENT' });
 
         getInstance().post('/appointments', {
             id_patient: idPatient,
@@ -26,24 +26,24 @@ export function addAppointment(idPatient, description, title, date, rate, durati
             rate: rate,
             duration: duration
         }).then((response) => {
-            if (response.data.errors) {
-                dispatch({ type: "ADD_APPOINTMENT_REJECTED", payload: response.data.errors });
-            } else {
-                dispatch({ type: "ADD_APPOINTMENT_FULFILLED", payload: response.data });
+            if (response.data.success) {
+                dispatch({ type: 'ADD_APPOINTMENT_FULFILLED', payload: response.data.content });
 
-                if (callback) {
-                    callback(response.data._id);
-                }
+                if (callback)
+                    callback(response.data.content._id);
+            }
+            else {
+                dispatch({ type: 'ADD_APPOINTMENT_REJECTED', payload: response.data.errors });
             }
         }).catch((error) => {
-            dispatch({ type: "ADD_APPOINTMENT_REJECTED", payload: error });
+            dispatch({ type: 'ADD_APPOINTMENT_REJECTED', payload: error });
         });
     }
 }
 
 export function updateAppointment(idAppointment, description, title, date, rate, duration, callback) {
     return (dispatch) => {
-        dispatch({ type: "UPDATE_APPOINTMENT" });
+        dispatch({ type: 'UPDATE_APPOINTMENT' });
 
         getInstance().put('/appointments/' + idAppointment, {
             description: description,
@@ -52,37 +52,37 @@ export function updateAppointment(idAppointment, description, title, date, rate,
             rate: rate,
             duration: duration
         }).then((response) => {
-            if (response.data.errors) {
-                dispatch({ type: "UPDATE_APPOINTMENT_REJECTED", payload: response.data.errors });
-            } else {
-                dispatch({ type: "UPDATE_APPOINTMENT_FULFILLED", payload: response.data });
+            if (response.data.success) {
+                dispatch({ type: 'UPDATE_APPOINTMENT_FULFILLED', payload: response.data.content });
 
-                if (callback) {
-                    callback(response.data._id);
-                }
+                if (callback)
+                    callback(response.data.content._id);
+            }
+            else {
+                dispatch({ type: 'UPDATE_APPOINTMENT_REJECTED', payload: response.data.errors });
             }
         }).catch((error) => {
-            dispatch({ type: "UPDATE_APPOINTMENT_REJECTED", payload: error });
+            dispatch({ type: 'UPDATE_APPOINTMENT_REJECTED', payload: error });
         });
     }
 }
 
 export function removeAppointment(idAppointment, callback) {
     return (dispatch) => {
-        dispatch({ type: "REMOVE_APPOINTMENT" });
+        dispatch({ type: 'REMOVE_APPOINTMENT' });
 
         getInstance().delete('/appointments/' + idAppointment).then((response) => {
-            if (response.data.errors) {
-                dispatch({ type: "REMOVE_APPOINTMENT_REJECTED", payload: response.data.errors });
-            } else {
-                dispatch({ type: "REMOVE_APPOINTMENT_FULFILLED", payload: response.data });
+            if (response.data.success) {
+                dispatch({ type: 'REMOVE_APPOINTMENT_FULFILLED', payload: response.data.content });
 
-                if (callback) {
+                if (callback)
                     callback();
-                }
+            }
+            else {
+                dispatch({ type: 'REMOVE_APPOINTMENT_REJECTED', payload: response.data.errors });
             }
         }).catch((error) => {
-            dispatch({ type: "REMOVE_APPOINTMENT_REJECTED", payload: error });
+            dispatch({ type: 'REMOVE_APPOINTMENT_REJECTED', payload: error });
         });
     }
 }
