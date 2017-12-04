@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PatientList from '../../components/patient/patient-list.component';
+import PatientList from './patient-list.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import SideNavCustom from '../../components/global/side-nav.component';
+import SideNavCustom from './side-nav-custom.component';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({

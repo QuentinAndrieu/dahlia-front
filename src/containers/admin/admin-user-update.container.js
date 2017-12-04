@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import UserUpdate from '../../components/user/user-update.component';
+import AdminUserUpdate from './admin-user-update.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 import { updateUserById } from '../../actions/user.action';
@@ -26,4 +26,4 @@ function getUser(id, users) {
 }
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserUpdate));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminUserUpdate));

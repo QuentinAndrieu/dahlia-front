@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import AppointmentForm from '../../components/appointment/appointment-form.conponent';
+import AppointmentUpdate from './appointment-update.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 import { updateAppointment } from '../../actions/appointment.action';
@@ -27,4 +27,4 @@ function getAppointment(id, appointments) {
 }
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppointmentForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppointmentUpdate));

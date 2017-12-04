@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Home from '../../components/home/home.component';
+import Home from './home.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 

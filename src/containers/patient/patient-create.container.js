@@ -1,7 +1,7 @@
 import { addPatient } from '../../actions/patient.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PatientCreate from '../../components/patient/patient-create.component';
+import PatientCreate from './patient-create.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import UserSignUp from '../../components/user/user-signup.component';
+import UserSignUp from './user-signup.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 import { register, fetchJWTToken } from '../../actions/authentification.action';

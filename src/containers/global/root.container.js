@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Root from '../../components/global/root.component';
+import Root from './root.component';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({

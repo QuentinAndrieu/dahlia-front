@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
-import Home from '../../containers/home/home.container';
-import PatientList from '../../containers/patient/patient-list.container';
-import PatientCreate from '../../containers/patient/patient-create.container';
-import UserUpdate from '../../containers/user/user-update.container';
-import PatientDetail from '../../containers/patient/patient-detail.container';
-import PatientUpdate from '../../containers/patient/patient-update.container';
-import AppointmentUpdate from '../../containers/appointment/appointment-update.container';
-import Calendar from '../../containers/calendar/calendar.container';
-import AdminUserList from '../../containers/admin/admin-user-list.container';
-import AuthRoute from '../../containers/global/auth-route.container';
-import AdminRoute from '../../containers/global/auth-route-admin.container';
-import AdminUserUpdate from '../../containers/admin/admin-user-update.container';
-import Loader from './loader.component';
+import Home from '../home/home.container';
+import PatientList from '../patient/patient-list.container';
+import PatientCreate from '../patient/patient-create.container';
+import UserUpdate from '../user/user-update.container';
+import PatientDetail from '../patient/patient-detail.container';
+import PatientUpdate from '../patient/patient-update.container';
+import AppointmentUpdate from '../appointment/appointment-update.container';
+import Calendar from '../calendar/calendar.container';
+import AdminUserList from '../admin/admin-user-list.container';
+import AuthRoute from './auth-route.container';
+import AdminRoute from './auth-route-admin.container';
+import AdminUserUpdate from '../admin/admin-user-update.container';
+import Loader from '../../components/utils/loader.component';
 
 
 class Root extends Component {

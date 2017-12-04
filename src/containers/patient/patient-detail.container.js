@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PatientDetail from '../../components/patient/patient-detail.component';
+import PatientDetail from './patient-detail.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 import { removePatient } from '../../actions/patient.action';

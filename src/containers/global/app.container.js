@@ -3,7 +3,7 @@ import { setJWTToken, isAuthenticated } from '../../actions/authentification.act
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import App from '../../components/global/app.component';
+import App from './app.component';
 
 const mapStateToProps = (state) => ({
   fetched: state.user.fetched,
