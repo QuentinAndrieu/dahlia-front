@@ -79,7 +79,7 @@ export function updateUserById(id, username, lastname, firstname, mail) {
     return (dispatch) => {
         dispatch({ type: 'UPDATE_USER_BY_ID' });
 
-        getInstance(sessionStorage.getItem('jwtToken')).put('//admin/users/' + id, {
+        getInstance(sessionStorage.getItem('jwtToken')).put('/admin/users/' + id, {
             username: username,
             lastname: lastname,
             firstname: firstname,

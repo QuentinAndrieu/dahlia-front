@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Input, Button } from 'react-materialize';
 
-class UserUpdate extends Component {
+class UserForm extends Component {
 
     constructor(props) {
         super(props);
@@ -57,4 +57,4 @@ class UserUpdate extends Component {
     }
 }
 
-export default UserUpdate;
+export default UserForm;

@@ -35,13 +35,12 @@ class UserUpdate extends Component {
     submit(event) {
         const username = this.state.lastname + ' ' + this.state.firstname;
 
-        this.props.updateUser(username, this.state.lastname, this.state.firstname,
-            this.state.mail);
+        this.props.updateUserById(this.state._id, username, this.state.lastname,
+            this.state.firstname, this.state.mail);
         event.preventDefault();
     }
 
-    render() {
-
+    render() { 
         return (
             <form onSubmit={this.submit}>
                 <Row>

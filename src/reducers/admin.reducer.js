@@ -35,9 +35,17 @@ export default function reducer(state = {
             }
         }
         case "UPDATE_USER_BY_ID_FULFILLED": {
+            const users = state.users.map((user) => {
+                if (user._id === action.payload._id) {
+                    user = action.payload
+                }
+
+                return user;
+            });
+
             return {
                 ...state,
-                users: action.payload
+                users: users
             }
         }
         default: {

@@ -4,8 +4,19 @@ import { Link } from 'react-router-dom';
 
 class SideNavCustom extends Component {
 
+  constructor(props){
+    super(props);
+
+    this.logOut = this.logOut.bind(this);
+  }
+
   isAdmin() {
     return this.props.admin;
+  }
+
+  logOut() {
+    this.props.setJWTToken(null);
+    sessionStorage.setItem('jwtToken', null);
   }
 
   render() {
@@ -24,7 +35,7 @@ class SideNavCustom extends Component {
         <SideNavItem divider />
         <Link className="link-admin" to="/admin/users">Users (Admin)</Link>
       </div>;
-    } 
+    }
 
     return (
       <SideNav id="sideNav" className="side-nav fixed" trigger={< div ></div>} >
@@ -41,6 +52,8 @@ class SideNavCustom extends Component {
         <SideNavItem divider />
         <Link to="/profile">Profile</Link>
         {linkAdmin}
+        <SideNavItem divider />
+        <Link to="/signin" onClick={this.logOut}>Log out</Link>
       </SideNav >
     );
   }

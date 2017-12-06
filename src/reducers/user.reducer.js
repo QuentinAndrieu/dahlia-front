@@ -71,7 +71,13 @@ export default function reducer(state = {
             case "UPDATE_USER_FULFILLED": {
                   return {
                         ...state,
-                        user: action.payload
+                        user: Object.assign({},
+                              state.user,
+                              action.payload,
+                              {
+                                    appointments: state.user.appointments,
+                                    patients: state.user.patients
+                              })
                   }
             }
             case "ADD_PATIENT": {
