@@ -45,7 +45,11 @@ class App extends Component {
 
   fetchAdminData() {
     this.props.fetchAllUsers(() => {
-      this.setLoadingState(false)
+      this.props.fetchAllPatients(() => {
+        this.props.fetchAllAppointments(() => {
+          this.setLoadingState(false)
+        });
+      });
     });
   }
 

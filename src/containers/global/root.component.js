@@ -8,7 +8,7 @@ import PatientDetail from '../patient/patient-detail.container';
 import PatientUpdate from '../patient/patient-update.container';
 import AppointmentUpdate from '../appointment/appointment-update.container';
 import Calendar from '../calendar/calendar.container';
-import AdminUserList from '../admin/admin-user-list.container';
+import AdminList from '../admin/admin-list.container';
 import AuthRoute from './auth-route.container';
 import AdminRoute from './auth-route-admin.container';
 import AdminUserUpdate from '../admin/admin-user-update.container';
@@ -44,8 +44,8 @@ class Root extends Component {
                     <AuthRoute exact path='/patient/update/:id' component={<PatientUpdate />} />
                     <AuthRoute exact path='/appointment/update/:id' component={<AppointmentUpdate />} />
                     <AuthRoute exact path='/calendar' component={<Calendar />} />
-                    <AdminRoute exact path='/admin/users' component={<AdminUserList />} />
-                    <AdminRoute exact path='/admin/user/:id' component={<AdminUserUpdate />} />
+                    <AdminRoute exact path='/admin/users' component={<AdminList />} />
+                    <AdminRoute exact path='/admin/user/update/:id' component={<AdminUserUpdate />} />
                 </Switch>
             </div>
         );

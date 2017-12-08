@@ -1,12 +1,14 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import AdminUserList from './admin-user-list.component';
+import AdminList from './admin-list.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 
 
 const mapStateToProps = (state) => ({
-  users: state.admin.users
+  users: state.admin.users,
+  patients: state.admin.patients,
+  appointments: state.admin.appointments
 });
 
 const mapDispatchToProps = (dispatch) => (
@@ -16,4 +18,4 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminUserList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminList));

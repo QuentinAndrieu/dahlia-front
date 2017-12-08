@@ -33,7 +33,7 @@ class SideNavCustom extends Component {
     if (this.isAdmin()) {
       linkAdmin = <div>
         <SideNavItem divider />
-        <Link className="link-admin" to="/admin/users">Users (Admin)</Link>
+        <Link className="link-admin" to="/admin/users">Admin</Link>
       </div>;
     }
 

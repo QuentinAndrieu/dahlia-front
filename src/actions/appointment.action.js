@@ -41,6 +41,26 @@ export function addAppointment(idPatient, description, title, date, rate, durati
     }
 }
 
+export function fetchAllAppointments(callback) {
+    return (dispatch) => {
+        dispatch({ type: 'FETCH_ALL_APPOINTMENTS' });
+
+        getInstance(sessionStorage.getItem('jwtToken')).get('/admin/appointments')
+            .then((response) => {
+                if (response.data.success) {
+                    dispatch({ type: "FETCH_ALL_APPOINTMENTS_FULFILLED", payload: response.data.content });
+
+                    if (callback)
+                        callback();
+                } else {
+                    dispatch({ type: "FETCH_ALL_APPOINTMENTS_REJECTED", payload: response.data.errors });
+                }
+            }).catch((err) => {
+                dispatch({ type: 'FETCH_ALL_APPOINTMENTS_REJECTED', payload: err })
+            });
+    }
+}
+
 export function updateAppointment(idAppointment, description, title, date, rate, duration, callback) {
     return (dispatch) => {
         dispatch({ type: 'UPDATE_APPOINTMENT' });
