@@ -78,8 +78,8 @@ class PatientFormUpdate extends Component {
                     </center>
                 </Row>
                 <div className="fixed-action-btn">
-                    <Link to="/patients" className="btn-floating btn-large">
-                        <i className="large material-icons">list</i>
+                    <Link to={this.customPath('/patient', this.state._id)} className="btn-floating btn-large">
+                        <i className="large material-icons">person</i>
                     </Link>
                 </div>
                 {this.state.redirect && (

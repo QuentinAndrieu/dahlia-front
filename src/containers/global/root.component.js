@@ -11,7 +11,6 @@ import Calendar from '../calendar/calendar.container';
 import AdminList from '../admin/admin-list.container';
 import AuthRoute from './auth-route.container';
 import AdminRoute from './auth-route-admin.container';
-import AdminUserUpdate from '../admin/admin-user-update.container';
 import Loader from '../../components/utils/loader.component';
 
 
@@ -45,7 +44,6 @@ class Root extends Component {
                     <AuthRoute exact path='/appointment/update/:id' component={<AppointmentUpdate />} />
                     <AuthRoute exact path='/calendar' component={<Calendar />} />
                     <AdminRoute exact path='/admin/users' component={<AdminList />} />
-                    <AdminRoute exact path='/admin/user/update/:id' component={<AdminUserUpdate />} />
                 </Switch>
             </div>
         );
