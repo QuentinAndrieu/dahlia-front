@@ -74,24 +74,3 @@ export function fetchAllUsers(callback) {
             });
     }
 }
-
-export function updateUserById(id, username, lastname, firstname, mail) {
-    return (dispatch) => {
-        dispatch({ type: 'UPDATE_USER_BY_ID' });
-
-        getInstance(sessionStorage.getItem('jwtToken')).put('/admin/users/' + id, {
-            username: username,
-            lastname: lastname,
-            firstname: firstname,
-            mail: mail
-        }).then((response) => {
-            if (response.data.success) {
-                dispatch({ type: "UPDATE_USER_BY_ID_FULFILLED", payload: response.data.content });
-            } else {
-                dispatch({ type: "UPDATE_USER_BY_ID_REJECTED", payload: response.data.errors });
-            }
-        }).catch((err) => {
-            dispatch({ type: 'UPDATE_USER_BY_ID_REJECTED', payload: err })
-        });
-    }
-}

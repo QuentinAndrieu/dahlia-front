@@ -57,31 +57,6 @@ export default function reducer(state = {
                 appointments: action.payload
             }
         }
-        case "UPDATE_USER_BY_ID": {
-            return {
-                ...state
-            }
-        }
-        case "UPDATE_USER_BY_ID_REJECTED": {
-            return {
-                ...state,
-                error: action.payload
-            }
-        }
-        case "UPDATE_USER_BY_ID_FULFILLED": {
-            const users = state.users.map((user) => {
-                if (user._id === action.payload._id) {
-                    user = action.payload
-                }
-
-                return user;
-            });
-
-            return {
-                ...state,
-                users: users
-            }
-        }
         default: {
             return state;
         }
