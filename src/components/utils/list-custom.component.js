@@ -43,7 +43,16 @@ class ListCustom extends Component {
     }
 
     customPath(path, id) {
-        return path + '/' + id;
+        if(path){
+            return path + '/' + id;
+        } else {
+            return '/';
+        }
+
+    }
+
+    customSearchTitle(title) {
+        return 'Search ' + title;
     }
 
     render() {
@@ -55,7 +64,7 @@ class ListCustom extends Component {
         return (
             <div className="list">
                 <Row>
-                    <Input onChange={this.searchList} s={12} label="Search" />
+                    <Input onChange={this.searchList} s={12} label={this.customSearchTitle(this.props.title)} />
                 </Row>
                 <Collection>
                     {mappedList}

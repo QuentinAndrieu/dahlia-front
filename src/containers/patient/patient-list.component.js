@@ -26,7 +26,7 @@ class PatientList extends Component {
 
     return (
       <div>
-        <ListCustom list={this.state.patients} path="/patient" />
+        <ListCustom list={this.state.patients} path="/patient" title="patients" />
         <div className="fixed-action-btn">
           <Link to="/patient/create" className="btn-floating btn-large">
             <i className="large material-icons">add</i>

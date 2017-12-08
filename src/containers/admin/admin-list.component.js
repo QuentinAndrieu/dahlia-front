@@ -37,13 +37,13 @@ class AdminList extends Component {
         return (
             <Row>
                 <Col s={12} m={4}>
-                    <ListCustom list={this.state.users} path="/admin/update/user" />
+                    <ListCustom list={this.state.users} title="users"/>
                 </Col>
                 <Col s={12} m={4}>
-                    <ListCustom list={this.state.patients} path="/admin/update/patient" />
+                    <ListCustom list={this.state.patients} title="patients" />
                 </Col>
                 <Col s={12} m={4}>
-                    <ListCustom list={this.state.appointments} path="/admin/update/appointment" />
+                    <ListCustom list={this.state.appointments} title="appointments" />
                 </Col>
             </Row>
         );
