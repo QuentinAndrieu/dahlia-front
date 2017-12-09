@@ -38,16 +38,6 @@ class App extends Component {
     });
   }
 
-  fetchAdminData() {
-    this.props.fetchAllUsers(() => {
-      this.props.fetchAllPatients(() => {
-        this.props.fetchAllAppointments(() => {
-          this.setLoadingState(false)
-        });
-      });
-    });
-  }
-
   render() {
     let main = {
       paddingLeft: '300px'
