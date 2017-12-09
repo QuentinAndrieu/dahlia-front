@@ -1,6 +1,4 @@
-import { fetchUser, fetchAllUsers } from '../../actions/user.action';
-import { fetchAllPatients } from '../../actions/patient.action';
-import { fetchAllAppointments } from '../../actions/appointment.action';
+import { fetchUser } from '../../actions/user.action';
 import { setJWTToken, isAuthenticated } from '../../actions/authentification.action';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -18,9 +16,6 @@ const mapDispatchToProps = (dispatch) => (
     fetchUser: fetchUser,
     setJWTToken: setJWTToken,
     isAuthenticated: isAuthenticated,
-    fetchAllUsers: fetchAllUsers,
-    fetchAllPatients: fetchAllPatients,
-    fetchAllAppointments: fetchAllAppointments
   }, dispatch)
 );
 

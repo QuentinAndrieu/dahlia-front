@@ -10,10 +10,6 @@ class SideNavCustom extends Component {
     this.logOut = this.logOut.bind(this);
   }
 
-  isAdmin() {
-    return this.props.admin;
-  }
-
   logOut() {
     this.props.setJWTToken(null);
     sessionStorage.setItem('jwtToken', null);
@@ -26,15 +22,6 @@ class SideNavCustom extends Component {
 
     const sideNavLogo = {
       height: '250px'
-    }
-
-    let linkAdmin;
-
-    if (this.isAdmin()) {
-      linkAdmin = <div>
-        <SideNavItem divider />
-        <Link className="link-admin" to="/admin/users">Admin</Link>
-      </div>;
     }
 
     return (
@@ -51,7 +38,6 @@ class SideNavCustom extends Component {
         <Link to="/calendar">Calendar</Link>
         <SideNavItem divider />
         <Link to="/profile">Profile</Link>
-        {linkAdmin}
         <SideNavItem divider />
         <Link to="/signin" onClick={this.logOut}>Log out</Link>
       </SideNav >

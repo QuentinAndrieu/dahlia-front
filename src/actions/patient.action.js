@@ -37,26 +37,6 @@ export function addPatient(firstname, lastname, birthday, description, callback)
     }
 }
 
-export function fetchAllPatients(callback) {
-    return (dispatch) => {
-        dispatch({ type: 'FETCH_ALL_PATIENTS' });
-
-        getInstance(sessionStorage.getItem('jwtToken')).get('/admin/patients')
-            .then((response) => {
-                if (response.data.success) {
-                    dispatch({ type: "FETCH_ALL_PATIENTS_FULFILLED", payload: response.data.content });
-
-                    if (callback)
-                        callback();
-                } else {
-                    dispatch({ type: "FETCH_ALL_PATIENTS_REJECTED", payload: response.data.errors });
-                }
-            }).catch((err) => {
-                dispatch({ type: 'FETCH_ALL_PATIENTS_REJECTED', payload: err })
-            });
-    }
-}
-
 export function updatePatient(idPatient, firstname, lastname, birthday, description, callback) {
     return (dispatch) => {
         dispatch({ type: "UPDATE_PATIENT" });

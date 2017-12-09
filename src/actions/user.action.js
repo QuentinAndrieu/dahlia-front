@@ -54,23 +54,3 @@ export function updateUser(username, lastname, firstname, mail) {
         });
     }
 }
-
-export function fetchAllUsers(callback) {
-    return (dispatch) => {
-        dispatch({ type: 'FETCH_ALL_USERS' });
-
-        getInstance(sessionStorage.getItem('jwtToken')).get('/admin/users')
-            .then((response) => {
-                if (response.data.success) {
-                    dispatch({ type: "FETCH_ALL_USERS_FULFILLED", payload: response.data.content });
-
-                    if (callback)
-                        callback();
-                } else {
-                    dispatch({ type: "FETCH_ALL_USERS_REJECTED", payload: response.data.errors });
-                }
-            }).catch((err) => {
-                dispatch({ type: 'FETCH_ALL_USERS_REJECTED', payload: err })
-            });
-    }
-}

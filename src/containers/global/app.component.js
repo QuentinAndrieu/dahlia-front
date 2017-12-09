@@ -13,7 +13,6 @@ class App extends Component {
     }
 
     this.setLoadingState = this.setLoadingState.bind(this);
-    this.fetchAdminData = this.fetchAdminData.bind(this);
   }
 
   componentDidMount() {
@@ -23,13 +22,9 @@ class App extends Component {
       this.props.isAuthenticated(token, () => {
         this.props.setJWTToken(token);
         this.props.fetchUser(token, (user) => {
-          if (user.role === 'Admin') {
-            this.fetchAdminData();
-          } else {
-            this.setLoadingState(false)
-          }
+          this.setLoadingState(false);
         }, () => {
-          this.setLoadingState(false)
+          this.setLoadingState(false);
         });
       });
     } else {
