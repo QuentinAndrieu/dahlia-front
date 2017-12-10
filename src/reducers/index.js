@@ -9,5 +9,5 @@ export default combineReducers({
     user,
     authentification,
     router,
-    formReducer
+    form: formReducer
 })
