@@ -26,12 +26,8 @@ class Root extends Component {
                 </center>);
         }
 
-        const containerRoot = {
-            marginTop: '57px'
-        }
-
         return (
-            <div style={containerRoot}>
+            <div className="root">
                 <Switch >
                     <AuthRoute exact path='/' component={<Home />} />
                     <AuthRoute exact path='/profile' component={<UserUpdate />} />

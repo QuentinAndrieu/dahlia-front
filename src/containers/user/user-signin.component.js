@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
 import SignInForm from '../../components/form/signin-form.component';
-
 class UserSignIn extends Component {
 
     constructor(props) {
@@ -34,37 +33,19 @@ class UserSignIn extends Component {
     }
 
     render() {
-        const imgLogo = {
-            width: '200px'
-        }
-
-        const userSignIn = {
-            marginTop: '70px'
-        }
-
-        const containerSignin = {
-            border: '1px solid',
-            borderColor: '#e6e6e6',
-            padding: '20px'
-        }
-
-        const signupLink = {
-            marginTop: '40px'
-        }
-
         return (
-            <div style={userSignIn}>
+            <div className="login">
                 <Row >
                     <Col s={12} m={4}></Col>
-                    <Col style={containerSignin} s={12} m={4}>
+                    <Col className="container-login" s={12} m={4}>
                         <center>
-                            <img className="responsive-img" alt="" style={imgLogo} src="images/Dahlia.png" />
+                            <img className="responsive-img img-logo" alt="" src="images/Dahlia.png" />
                             <h4>Dahlia</h4>
                         </center>
 
                         <SignInForm onSubmit={this.submit} />
 
-                        <center style={signupLink}>
+                        <center className="login-link">
                             You don't have an account ? <Link to="/signup">Sign Up</Link>
                         </center>
                     </Col>

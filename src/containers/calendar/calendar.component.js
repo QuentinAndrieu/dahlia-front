@@ -30,15 +30,10 @@ class Calendar extends Component {
     }
 
     render() {
-
-        const calendar = {
-            minHeight: '600px'
-        }
-
         return (
             <div >
                 <BigCalendar
-                    style={calendar}
+                    className="calendar"
                     events={this.formatAppointments(this.props.appointments)}
                 />
             </div>

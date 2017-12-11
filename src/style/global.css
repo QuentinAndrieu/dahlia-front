@@ -1,0 +1,29 @@
+.main {
+    padding-left: 300px
+}
+
+.header {
+    height: 110px;
+    color: white;
+    padding-top: 15px
+}
+
+.menu {
+    cursor: pointer
+}
+
+.title {
+    margin-top: 0px
+}
+
+.root {
+    margin-top: 57px
+}
+
+.side-nav-img-logo {
+    width: 200px
+}
+
+.side-nav-logo {
+    height: 250px
+}

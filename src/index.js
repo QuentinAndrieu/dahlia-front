@@ -7,6 +7,11 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './store';
 import { Provider } from 'react-redux';
+import './style/calendar.css';
+import './style/global.css';
+import './style/index.css';
+import './style/login.css';
+import './style/patient.css';
 
 ReactDOM.render((
     <Provider store={store}>

@@ -23,7 +23,6 @@ class PatientList extends Component {
   }
 
   render() {
-
     return (
       <div>
         <ListCustom list={this.state.patients} path="/patient" title="patients" />

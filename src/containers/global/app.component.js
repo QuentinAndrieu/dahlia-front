@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Root from '../../containers/global/root.container';
 import { Container } from 'react-materialize';
-import '../../index.css';
+
+
 import SideNavCustom from '../../containers/global/side-nav-custom.container';
 
 class App extends Component {
@@ -41,24 +42,6 @@ class App extends Component {
   }
 
   render() {
-    let main = {
-      paddingLeft: '300px'
-    }
-
-    const header = {
-      height: '110px',
-      color: 'white',
-      paddingTop: '15px'
-    }
-
-    const menu = {
-      cursor: 'pointer'
-    }
-
-    const title = {
-      marginTop: '0px'
-    }
-
     if (this.state.loading) {
       return (<div></div>);
     }
@@ -67,13 +50,13 @@ class App extends Component {
       <div>
         <SideNavCustom />
 
-        <div style={main} className="main">
-          <header style={header} className="header">
-            <a style={menu} data-activates="sideNav" className="button-collapse white-text hide-on-large-only">
+        <div className="main">
+          <header className="header">
+            <a data-activates="sideNav" className="menu button-collapse white-text hide-on-large-only">
               <i className="material-icons">menu</i>
             </a>
             <center>
-              <h1 style={title}>{this.props.title}</h1>
+              <h1 className="title">{this.props.title}</h1>
             </center>
           </header>
 

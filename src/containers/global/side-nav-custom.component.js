@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class SideNavCustom extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.logOut = this.logOut.bind(this);
@@ -16,19 +16,11 @@ class SideNavCustom extends Component {
   }
 
   render() {
-    const imgLogo = {
-      width: '200px'
-    }
-
-    const sideNavLogo = {
-      height: '250px'
-    }
-
     return (
       <SideNav id="sideNav" className="side-nav fixed" trigger={< div ></div>} >
-        <div style={sideNavLogo}>
+        <div className="side-nav-img-logo">
           <center>
-            <img alt="" style={imgLogo} src="images/Dahlia.png" />
+            <img alt="" className="side-nav-logo" src="images/Dahlia.png" />
           </center>
         </div>
         <Link to="/">Home</Link>

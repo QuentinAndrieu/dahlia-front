@@ -84,14 +84,6 @@ class PatientDetail extends Component {
     render() {
         const { patient } = this.props;
 
-        const detailPatient = {
-            minHeight: '400px'
-        }
-
-        const icons = {
-            cursor: 'pointer'
-        }
-
         let mappedAppointments = this.formatAppointments(patient.appointments).map(appointment =>
             <div key={appointment._id}>
                 <Col s={11}>
@@ -100,18 +92,18 @@ class PatientDetail extends Component {
                 </Col>
                 <Col s={1}>
                     <Link to={this.customPath('/appointment/update', appointment._id)}>
-                        <i style={icons} className="small material-icons icons">create</i>
+                        <i className="icon-patient small material-icons icons">create</i>
                     </Link>
                     <p>
                         <i onClick={() => { this.removeAppointment(appointment._id) }}
-                            style={icons} className="small material-icons icons">delete</i>
+                         className="icon-patient small material-icons icons">delete</i>
                     </p>
                 </Col>
             </div>);
 
         return (
             <Row >
-                <div style={detailPatient}>
+                <div className="patient-detail">
                     <Col s={12} m={3}  >
                         <p><strong>Firstname:</strong> {patient.firstname}</p>
                         <p><strong>Lastname:</strong> {patient.lastname}</p>
@@ -123,12 +115,12 @@ class PatientDetail extends Component {
                     <Col s={1}>
                         <p>
                             <Link to={this.customPath('/patient/update', patient._id)}>
-                                <i style={icons} className="small material-icons icons">create</i>
+                                <i className="icon-patient small material-icons icons">create</i>
                             </Link>
                         </p>
                         <p>
                             <i onClick={() => { this.removePatient(patient._id) }}
-                                style={icons} className="small material-icons icons">delete</i>
+                             className="icon-patient small material-icons icons">delete</i>
                         </p>
                     </Col>
                 </div>
@@ -140,7 +132,7 @@ class PatientDetail extends Component {
                 <Col s={1}>
                     <p>
                         <i onClick={() => { this.addAppointment(this.state.description) }}
-                            style={icons} className="small material-icons icons">send</i>
+                         className="icon-patient small material-icons icons">send</i>
                     </p>
                 </Col>
                 {this.state.redirect && (

@@ -48,31 +48,13 @@ class UserSignUp extends Component {
     }
 
     render() {
-        const imgLogo = {
-            width: '200px'
-        }
-
-        const formSignUp = {
-            marginTop: '70px'
-        }
-
-        const containerSignUp = {
-            border: '1px solid',
-            borderColor: '#e6e6e6',
-            padding: '20px'
-        }
-
-        const signinLink = {
-            marginTop: '40px'
-        }
-
         return (
-            <form style={formSignUp} onSubmit={this.submit}>
+            <form className="login" onSubmit={this.submit}>
                 <Row >
                     <Col s={12} m={4}></Col>
-                    <Col style={containerSignUp} s={12} m={4}>
+                    <Col className="container-login" s={12} m={4}>
                         <center>
-                            <img className="responsive-img" alt="" style={imgLogo} src="images/Dahlia.png" />
+                            <img className="responsive-img img-logo" alt="" src="images/Dahlia.png" />
                             <h4>Dahlia</h4>
                         </center>
                         <Input s={12} placeholder="Mail" type="text" name="mail" value={this.state.mail} onChange={this.handleChange} />
@@ -81,8 +63,8 @@ class UserSignUp extends Component {
                         <center>
                             <Button s={12} type="submit">Sign Up</Button>
                         </center>
-                        <center style={signinLink}>
-                            You already have an account ? <Link to="/signin">Sign In</Link>
+                        <center className="login-link">
+                            You already have an account ? <Link to="/login">Sign In</Link>
                         </center>
                     </Col>
                     <Col s={12} m={4}></Col>
