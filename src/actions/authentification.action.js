@@ -73,7 +73,7 @@ export function setJWTToken(token) {
 
 export function isAuthenticated(token) {
     return (dispatch) => {
-        const err = new Error('User is not authenticated');
+        const err = 'User is not authenticated';
         return new Promise((resolve, reject) => {
             if (!token) {
                 dispatch({ type: "UNAUTHENTICATED" });

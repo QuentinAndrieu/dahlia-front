@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Button } from 'react-materialize';
 
-class SignInForm extends Component {
+class SignUpForm extends Component {
 
     render() {
         const { handleSubmit, submitting, error } = this.props;
@@ -36,9 +36,16 @@ class SignInForm extends Component {
                     type="password"
                     placeholder="Password"
                 />
+                <Field
+                    name="passwordCopy"
+                    label="Password Copy"
+                    component={renderField}
+                    type="password"
+                    placeholder="Password"
+                />
                 {error && <strong className="error">{error}</strong>}
                 <center>
-                    <Button disabled={submitting} s={12} type="submit">Sign In</Button>
+                    <Button disabled={submitting} s={12} type="submit">Sign Up</Button>
                 </center>
             </form>
         );
@@ -47,5 +54,5 @@ class SignInForm extends Component {
 
 
 export default reduxForm({
-    form: 'signin'
-})(SignInForm)
+    form: 'signup'
+})(SignUpForm)

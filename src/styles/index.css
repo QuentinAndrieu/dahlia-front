@@ -1,4 +1,4 @@
-@media screen and (max-width : 992px) {
+@media screen and (max-width: 992px) {
     .main {
         padding-left: 0!important;
     }
@@ -9,14 +9,14 @@
 }
 
 a {
-    color: #000078!important 
+    color: #000078!important
 }
 
 .header {
-    background-color: #B3B3D7;  
+    background-color: #B3B3D7;
 }
 
-.input-field input:focus + label, textarea:focus + label{
+.input-field input:focus+label, textarea:focus+label {
     color: #D1CAB0 !important;
 }
 
@@ -25,11 +25,11 @@ a {
     box-shadow: 0 1px 0 0 #D1CAB0 !important
 }
 
-.picker__date-display, .picker__weekday-display, .btn{
+.picker__date-display, .picker__weekday-display, .btn {
     background-color: #D1CAB0;
 }
 
-.picker__close, .picker__today{
+.picker__close, .picker__today {
     color: #D1CAB0;
 }
 
@@ -53,6 +53,14 @@ a {
     background-color: #AA0078!important;
 }
 
-.rbc-event{
+.rbc-event {
     background-color: #AA0078!important;
+}
+
+.error {
+    color: #AA0078;
+}
+
+.error-field {
+    color: #000078;
 }
