@@ -38,11 +38,12 @@ class PatientDetail extends Component {
         const duration = '60';
         const title = this.getTitle(this.props.patient.firstname, this.props.patient.lastname);
 
-        this.props.addAppointment(this.props.patient._id, description, title, date, rate, duration, () => {
-            this.setState({
-                description: ''
+        this.props.addAppointment(this.props.patient._id, description, title, date, rate, duration)
+            .then(() => {
+                this.setState({
+                    description: ''
+                });
             });
-        });
     }
 
     removeAppointment(id) {

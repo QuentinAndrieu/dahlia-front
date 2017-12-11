@@ -27,11 +27,12 @@ class AppointmentUpdate extends Component {
     }
 
     updateAppointment(id, description, title, date, rate, duration) {
-        this.props.updateAppointment(id, description, title, date, rate, duration, (idPatient) => {
-            this.setState({
-                redirect: true
+        this.props.updateAppointment(id, description, title, date, rate, duration)
+            .then((idPatient) => {
+                this.setState({
+                    redirect: true
+                });
             });
-        });
     }
 
     customPath(path, id) {

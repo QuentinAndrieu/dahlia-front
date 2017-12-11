@@ -37,11 +37,12 @@ class PatientFormUpdate extends Component {
     }
 
     updatePatient(id, firstname, lastname, birthday, description) {
-        this.props.updatePatient(id, firstname, lastname, birthday, description, (id) => {
-            this.setState({
-                redirect: true
+        this.props.updatePatient(id, firstname, lastname, birthday, description)
+            .then((id) => {
+                this.setState({
+                    redirect: true
+                });
             });
-        });
     }
 
     customPath(path, id) {

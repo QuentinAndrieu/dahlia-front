@@ -5,11 +5,11 @@ import { Button } from 'react-materialize';
 class SignInForm extends Component {
 
     render() {
-        const { handleSubmit } = this.props;
+        const { handleSubmit, submitting, error } = this.props;
 
         return (
             <form onSubmit={handleSubmit}>
-            <label htmlFor="mail">Mail</label>
+                <label htmlFor="mail">Mail</label>
                 <Field
                     name="mail"
                     component="input"
@@ -23,9 +23,9 @@ class SignInForm extends Component {
                     type="password"
                     placeholder="Password"
                 />
-
+                {error && <strong>{error}</strong>}
                 <center>
-                    <Button s={12} type="submit">Sign In</Button>
+                    <Button disabled={submitting} s={12} type="submit">Sign In</Button>
                 </center>
             </form>
         );
@@ -34,5 +34,5 @@ class SignInForm extends Component {
 
 
 export default reduxForm({
-    form: 'signin' 
+    form: 'signin'
 })(SignInForm)

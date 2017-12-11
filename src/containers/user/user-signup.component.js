@@ -32,16 +32,19 @@ class UserSignUp extends Component {
     }
 
     submit(event) {
+        event.preventDefault();
         if (this.state.password === this.state.passwordCopy) {
-            this.props.register(this.state.mail, this.state.password, () => {
-                this.props.fetchJWTToken(this.state.mail, this.state.password, () => {
+            this.props.register(this.state.mail, this.state.password)
+                .then(() => {
+                    return this.props.fetchJWTToken(this.state.mail, this.state.password);
+                }).then(() => {
                     this.setState({
                         redirect: true
                     });
+                }).catch((err) => {
+                    console.log(err);
                 });
-            });
         }
-        event.preventDefault();
     }
 
     render() {

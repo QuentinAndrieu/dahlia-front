@@ -25,12 +25,13 @@ class PatientForm extends Component {
     }
 
     addPatient(firstname, lastname, birthday, description) {
-        this.props.addPatient(firstname, lastname, birthday, description, (id) => {
-            this.setState({
-                _id: id,
-                redirect: true
+        this.props.addPatient(firstname, lastname, birthday, description)
+            .then((id) => {
+                this.setState({
+                    _id: id,
+                    redirect: true
+                });
             });
-        });
     }
 
     customPath(path, id) {

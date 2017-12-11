@@ -21,13 +21,16 @@ class UserSignIn extends Component {
 
     submit(values) {
         const props = this.props;
-        props.fetchJWTToken(values.mail, values.password, (jwtToken) => {
-            props.fetchUser(jwtToken, () => {
+        props.fetchJWTToken(values.mail, values.password)
+            .then((jwtToken) => {
+                return props.fetchUser(jwtToken);
+            }).then((user) => {
                 this.setState({
                     redirect: true
-                })
+                });
+            }).catch((err) => {
+                console.log(err);
             });
-        });
     }
 
     render() {

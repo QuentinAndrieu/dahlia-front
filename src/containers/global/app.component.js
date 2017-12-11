@@ -19,16 +19,18 @@ class App extends Component {
     const token = sessionStorage.getItem('jwtToken');
 
     if (token) {
-      this.props.isAuthenticated(token, () => {
-        this.props.setJWTToken(token);
-        this.props.fetchUser(token, (user) => {
+      this.props.isAuthenticated(token)
+        .then(() => {
+          this.props.setJWTToken(token);
+          return this.props.fetchUser(token);
+        }).then((user) => {
           this.setLoadingState(false);
-        }, () => {
+        }).catch((err) => {
+          console.log(err);
           this.setLoadingState(false);
         });
-      });
     } else {
-      this.setLoadingState(false)
+      this.setLoadingState(false);
     }
   }
 

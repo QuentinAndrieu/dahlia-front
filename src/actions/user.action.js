@@ -13,44 +13,51 @@ function getInstance(token) {
     return instance;
 }
 
-export function fetchUser(jwtToken, callback) {
+export function fetchUser(jwtToken) {
     return (dispatch) => {
-        dispatch({ type: 'FETCH_USER' });
+        return new Promise((resolve, reject) => {
+            dispatch({ type: 'FETCH_USER' });
 
-        getInstance(jwtToken).get('/user')
-            .then((response) => {
-                if (response.data.success) {
-                    if (callback)
-                        callback(response.data.content);
-
-                    dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.content });
-                } else {
-                    dispatch({ type: "FETCH_USER_REJECTED", payload: response.data.errors });
-                }
-            })
-            .catch((err) => {
-                dispatch({ type: 'FETCH_USER_REJECTED', payload: err })
-            });
+            getInstance(jwtToken).get('/user')
+                .then((response) => {
+                    if (response.data.success) {
+                        dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.content });
+                        resolve(response.data.content);
+                    } else {
+                        dispatch({ type: "FETCH_USER_REJECTED", payload: response.data.errors });
+                        resolve(response.data.errors);
+                    }
+                })
+                .catch((err) => {
+                    dispatch({ type: 'FETCH_USER_REJECTED', payload: err });
+                    reject(err);
+                });
+        });
     }
 }
 
 export function updateUser(username, lastname, firstname, mail) {
     return (dispatch) => {
-        dispatch({ type: 'UPDATE_USER' });
+        return new Promise((resolve, reject) => {
+            dispatch({ type: 'UPDATE_USER' });
 
-        getInstance(sessionStorage.getItem('jwtToken')).put('/user', {
-            username: username,
-            lastname: lastname,
-            firstname: firstname,
-            mail: mail
-        }).then((response) => {
-            if (response.data.success) {
-                dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data.content });
-            } else {
-                dispatch({ type: "UPDATE_USER_REJECTED", payload: response.data.errors });
-            }
-        }).catch((err) => {
-            dispatch({ type: 'UPDATE_USER_REJECTED', payload: err })
+            getInstance(sessionStorage.getItem('jwtToken')).put('/user', {
+                username: username,
+                lastname: lastname,
+                firstname: firstname,
+                mail: mail
+            }).then((response) => {
+                if (response.data.success) {
+                    dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data.content });
+                    resolve();
+                } else {
+                    dispatch({ type: "UPDATE_USER_REJECTED", payload: response.data.errors });
+                    reject(response.data.errors);
+                }
+            }).catch((err) => {
+                dispatch({ type: 'UPDATE_USER_REJECTED', payload: err });
+                reject(err);
+            });
         });
     }
 }

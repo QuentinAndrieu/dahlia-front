@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 
 const mapStateToProps = (state) => ({
+    authentification: state.authentification
 });
 
 const mapDispatchToProps = (dispatch) => (
