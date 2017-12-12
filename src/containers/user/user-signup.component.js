@@ -3,6 +3,7 @@ import { Row, Col } from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
 import SignUpForm from '../../components/form/signup-form.component';
 import { SubmissionError } from 'redux-form';
+import InputValidation from '../../service/input-validation.service';
 
 class UserSignUp extends Component {
 
@@ -17,46 +18,27 @@ class UserSignUp extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Sign In');
-    }
-
-    validate(mail, password, passwordCopy) {
-        let errors = {}
-        let isError = false;
-
-        if (!mail || mail.trim() === '') {
-            errors.mail = 'Required mail';
-            isError = true;
-        }
-
-        if (!password || password.trim() === '') {
-            errors.password = 'Required password';
-            isError = true;
-        }
-
-        if (!passwordCopy || password.trim() === '') {
-            errors.passwordCopy = 'Required password copy';
-            isError = true;
-        }
-
-        if (passwordCopy !== password) {
-            errors.passwordCopy = 'Password copy is different from password';
-            isError = true;
-        }
-
-        if (isError) {
-            throw new SubmissionError(
-                {
-                    ...errors,
-                    _error: 'Required input missing'
-                });
-        }
-
-        return !isError;
+        this.props.setTitle('Sign Up');
     }
 
     submit(values) {
-        if (this.validate(values.mail, values.password, values.passwordCopy)) {
+        const inputValidation = new InputValidation();
+
+        const formatValues = [{
+            key: 'mail',
+            value: values.mail
+        }, {
+            key: 'password',
+            value: values.password
+        }, {
+            key: 'passwordCopy',
+            value: values.passwordCopy
+        }];
+
+        const required = inputValidation.required(formatValues);
+        const matchPassword = inputValidation.comparePassword(values.password, values.passwordCopy);
+
+        if (required && matchPassword) {
             return this.props.register(values.mail, values.password)
                 .then(() => {
                     return this.props.fetchJWTToken(values.mail, values.password);

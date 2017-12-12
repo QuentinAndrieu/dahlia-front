@@ -3,6 +3,7 @@ import { Row, Col } from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
 import SignInForm from '../../components/form/signin-form.component';
 import { SubmissionError } from 'redux-form';
+import InputValidation from '../../service/input-validation.service';
 
 class UserSignIn extends Component {
 
@@ -20,33 +21,20 @@ class UserSignIn extends Component {
         this.props.setTitle('Sign In');
     }
 
-    validate(mail, password) {
-        let errors = {}
-        let isError = false;
-
-        if (!mail || mail.trim() === '') {
-            errors.mail = 'Required mail';
-            isError = true;
-        }
-
-        if (!password || password.trim() === '') {
-            errors.password = 'Required password';
-            isError = true;
-        }
-
-        if (isError) {
-            throw new SubmissionError(
-                {
-                    ...errors,
-                    _error: 'Required input missing'
-                });
-        }
-
-        return !isError;
-    }
-
     submit(values) {
-        if (this.validate(values.mail, values.password)) {
+        const inputValidation = new InputValidation();
+        
+        const formatValues = [{
+            key: 'mail',
+            value: values.mail
+        }, {
+            key: 'password',
+            value: values.password
+        }];
+
+        const required = inputValidation.required(formatValues);
+
+        if (required) {
             const props = this.props;
             return props.fetchJWTToken(values.mail, values.password)
                 .then((jwtToken) => {
