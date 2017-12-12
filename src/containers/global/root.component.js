@@ -8,7 +8,7 @@ import PatientDetail from '../patient/patient-detail.container';
 import PatientUpdate from '../patient/patient-update.container';
 import AppointmentUpdate from '../appointment/appointment-update.container';
 import Calendar from '../calendar/calendar.container';
-import AuthRoute from './auth-route.container';
+import AuthRoute from '../../components/utils/auth-route.container';
 import Loader from '../../components/utils/loader.component';
 
 
