@@ -4,14 +4,12 @@ import { Button } from 'react-materialize';
 
 class SignInForm extends Component {
 
-    render() {
-        const { handleSubmit, submitting, error } = this.props;
-
+    renderField({ input, label, type, meta: { touched, error } }) {
         const errorInput = {
             borderBottom: '2px solid #AA0078'
         }
 
-        const renderField = ({ input, label, type, meta: { touched, error } }) => (
+        return (
             <div>
                 <label>{label}</label>
                 <div>
@@ -19,20 +17,24 @@ class SignInForm extends Component {
                 </div>
             </div>
         )
+    }
+
+    render() {
+        const { handleSubmit, submitting, error } = this.props;
 
         return (
             <form onSubmit={handleSubmit}>
                 <Field
                     name="mail"
                     label="Mail"
-                    component={renderField}
+                    component={this.renderField}
                     type="email"
                     placeholder="Mail"
                 />
                 <Field
                     name="password"
                     label="Password"
-                    component={renderField}
+                    component={this.renderField}
                     type="password"
                     placeholder="Password"
                 />

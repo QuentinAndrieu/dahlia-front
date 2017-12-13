@@ -2,25 +2,29 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Button } from 'react-materialize';
 
-class UserForm extends Component {
+class PatientForm extends Component {
 
-    renderField({ input, label, type, meta: { touched, error } }) {
+    renderField({ input, label, textarea, type, meta: { touched, error } }) {
         const errorInput = {
             borderBottom: '2px solid #AA0078'
         }
+        
+        const inputField = <input {...input} type={type} style={(touched && error) ? errorInput : {}}
+            placeholder={label} />;
+
+        const textareaField = <textarea className="materialize-textarea" {...input} type={type} style={(touched && error) ? errorInput : {}}
+            placeholder={label} />;
 
         return (
             <div>
                 <label>{label}</label>
-                <div>
-                    <input {...input} type={type} style={(touched && error) ? errorInput : {}} placeholder={label} />
-                </div>
+                {textarea ? textareaField : inputField}
             </div>
         )
     }
 
     render() {
-        const { handleSubmit, submitting, error } = this.props;
+        const { handleSubmit, submitting, error, pristine } = this.props;
 
         return (
             <form onSubmit={handleSubmit}>
@@ -39,15 +43,23 @@ class UserForm extends Component {
                     placeholder="Firstname"
                 />
                 <Field
-                    name="mail"
-                    label="Mail"
+                    name="birthday"
+                    label="Birthday"
                     component={this.renderField}
-                    type="email"
-                    placeholder="Mail"
+                    type="date"
+                    placeholder="Birthday"
+                />
+                <Field
+                    name="description"
+                    label="Description"
+                    component={this.renderField}
+                    type="text"
+                    placeholder="Description"
+                    textarea={true}
                 />
                 {error && <strong className="error">{error}</strong>}
                 <center>
-                    <Button disabled={submitting} s={12} type="submit">Update</Button>
+                    <Button disabled={pristine || submitting} s={12} type="submit">{this.props.button}</Button>
                 </center>
             </form>
         );
@@ -56,5 +68,5 @@ class UserForm extends Component {
 
 
 export default reduxForm({
-    form: 'user'
-})(UserForm)
+    form: 'patient'
+})(PatientForm)

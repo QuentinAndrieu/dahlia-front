@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Col, Row, Input, Button } from 'react-materialize';
+import { Row} from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
+import PatientForm from '../../components/form/patient-form.container';
+import { SubmissionError } from 'redux-form';
+import InputValidation from '../../service/input-validation.service';
 
 class PatientFormUpdate extends Component {
 
@@ -8,85 +11,70 @@ class PatientFormUpdate extends Component {
         super(props);
 
         this.state = {
-            _id: '',
-            lastname: '',
-            firstname: '',
-            birthday: '',
-            description: '',
             redirect: false
         };
 
-        this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
     }
 
     componentDidMount() {
-        this.setState(this.props.patient, () => {
-            this.props.setTitle(this.getTitle(this.state.firstname,
-                this.state.lastname));
-        });
-
-    }
-
-    getTitle(firstname, lastname) {
-        if (firstname && lastname) {
-            return firstname + ' ' + lastname;
-        }
-
-        return '';
-    }
-
-    updatePatient(id, firstname, lastname, birthday, description) {
-        this.props.updatePatient(id, firstname, lastname, birthday, description)
-            .then((id) => {
-                this.setState({
-                    redirect: true
-                });
-            });
+        this.props.setTitle(this.props.patient.firstname + ' ' + this.props.patient.lastname);
     }
 
     customPath(path, id) {
         return path + '/' + id;
     }
 
-    handleChange(event) {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
+    submit(values) {
+        const inputValidation = new InputValidation();
 
-        this.setState({
-            [name]: value
-        });
-    }
+        const formatValues = [{
+            key: 'firstname',
+            value: values.firstname
+        }, {
+            key: 'lastname',
+            value: values.lastname
+        }, {
+            key: 'description',
+            value: values.description
+        }, {
+            key: 'birthday',
+            value: values.birthday
+        }];
 
-    submit(event) {
-        event.preventDefault();
-        this.updatePatient(this.state._id, this.state.firstname, this.state.lastname,
-            this.state.birthday, this.state.description);
+        const required = inputValidation.required(formatValues);
+
+        if (required) {
+            return this.props.updatePatient(this.props.patient._id, values.firstname, values.lastname,
+                values.birthday, values.description)
+                .then((id) => {
+                    this.setState({
+                        redirect: true
+                    });
+                }).catch((err) => {
+                    throw new SubmissionError({
+                        _error: err
+                    });
+                });
+        }
     }
 
     render() {
+
+
         return (
-            <form onSubmit={this.submit}>
-                <Row>
-                    <Input s={12} m={6} name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange} />
-                    <Input s={12} m={6} name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} />
-                    <Input s={12} name="description" placeholder="Description" type="textarea" value={this.state.description} onChange={this.handleChange} />
-                    <Col s={6}></Col>
-                    <Input s={6} name="birthday" placeholder="Birthday" type="date" value={this.state.birthday} onChange={this.handleChange} />
-                    <center>
-                        <Button s={12} type="submit">Submit</Button>
-                    </center>
-                </Row>
+            <Row >
+                <PatientForm onSubmit={this.submit} button="Update" patient={this.props.patient} />
+
                 <div className="fixed-action-btn">
-                    <Link to={this.customPath('/patient', this.state._id)} className="btn-floating btn-large">
+                    <Link to={this.customPath('/patient', this.props.patient._id)} className="btn-floating btn-large">
                         <i className="large material-icons">person</i>
                     </Link>
                 </div>
                 {this.state.redirect && (
-                    <Redirect to={this.customPath('/patient', this.state._id)} />
+                    <Redirect to={this.customPath('/patient', this.props.patient._id)} />
                 )}
-            </form>
+            </Row>
         );
     }
 }

@@ -44,14 +44,8 @@ class UserUpdate extends Component {
     }
 
     render() {
-        const user = {
-            lastname: this.props.user.lastname,
-            firstname: this.props.user.firstname,
-            mail: this.props.user.mail
-        }
-
         return (
-            <UserForm onSubmit={this.submit} user={user} />
+            <UserForm onSubmit={this.submit} user={this.props.user} />
         );
     }
 }
