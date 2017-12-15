@@ -4,9 +4,12 @@ import AppointmentUpdate from './appointment-update.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 import { updateAppointment } from '../../actions/appointment.action';
+import FilterService from '../../service/filter';
+
+const filterService = new FilterService();
 
 const mapStateToProps = (state, ownProps) => ({
-    appointment: getAppointment(ownProps.match.params.id, state.user.user.appointments)
+    appointment: filterService.getAppointment(ownProps.match.params.id, state.user.user.appointments)
 });
 
 const mapDispatchToProps = (dispatch) => (
@@ -15,16 +18,5 @@ const mapDispatchToProps = (dispatch) => (
         updateAppointment: updateAppointment
     }, dispatch)
 );
-
-function getAppointment(id, appointments) {
-    const appointment = appointments.filter((appointment) => {
-        return (appointment._id === id);
-    });
-
-    if (appointment[0]) {
-        return appointment[0];
-    }
-}
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppointmentUpdate));

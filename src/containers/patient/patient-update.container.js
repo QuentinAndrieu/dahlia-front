@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 import PatientUpdate from './patient-update.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
-import moment from 'moment';
+import FilterService from '../../service/filter';
+
+const filterService = new FilterService();
 
 const mapStateToProps = (state, ownProps) => ({
-    patient: getPatient(ownProps.match.params.id, state.user.user.patients)
+    patient: filterService.getPatient(ownProps.match.params.id, state.user.user.patients)
 });
 
 const mapDispatchToProps = (dispatch) => (
@@ -16,22 +18,5 @@ const mapDispatchToProps = (dispatch) => (
         setTitle: setTitle
     }, dispatch)
 );
-
-function getPatient(id, patients) {
-    const patient = patients.filter((patient) => {
-        return (patient._id === id);
-    });
-
-    if (patient[0]) {
-        const formatBirthday = moment(patient[0].birthday).format('L');
-
-        const patientUpdated = {
-            ...patient[0],
-            birthday: formatBirthday
-        };
-
-        return patientUpdated;
-    }
-}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PatientUpdate));

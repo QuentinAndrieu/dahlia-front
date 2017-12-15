@@ -5,7 +5,7 @@ import AppointmentForm from '../../components/form/appointment-form.container';
 import { SubmissionError } from 'redux-form';
 import InputValidation from '../../service/input-validation.service';
 
-class AppointmentUpdate extends Component {
+class AppointmentCreate extends Component {
 
     constructor(props) {
         super(props);
@@ -18,7 +18,7 @@ class AppointmentUpdate extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Edit Appointment');
+        this.props.setTitle('Add Appointment');
     }
 
     customPath(path, id) {
@@ -28,23 +28,26 @@ class AppointmentUpdate extends Component {
     submit(values) {
         const inputValidation = new InputValidation();
 
+        const date = new Date();
+        const title = this.props.patient.firstname + ' ' + this.props.patient.lastname;
+
         const formatValues = [{
             key: 'description',
             value: values.description
         }, {
             key: 'duration',
-            value: values.duration.toString()
+            value: values.duration && values.duration.toString()
         }, {
             key: 'rate',
-            value: values.rate.toString()
+            value: values.duration && values.rate.toString()
         }];
 
         const required = inputValidation.required(formatValues);
 
         if (required) {
-            return this.props.updateAppointment(this.props.appointment._id, values.description,
-                values.title, values.rate, values.duration)
-                .then((id) => {
+            return this.props.addAppointment(this.props.patient._id, values.description,
+                title, date, values.rate, values.duration)
+                .then(() => {
                     this.setState({
                         redirect: true
                     });
@@ -59,19 +62,19 @@ class AppointmentUpdate extends Component {
     render() {
         return (
             <Row>
-                <AppointmentForm onSubmit={this.submit} button="Update" appointment={this.props.appointment} />
+                <AppointmentForm onSubmit={this.submit} button="Submit" />
 
                 <div className="fixed-action-btn">
-                    <Link to={this.customPath('/patient', this.props.appointment.id_patient)} className="btn-floating btn-large">
+                    <Link to={this.customPath('/patient', this.props.patient._id)} className="btn-floating btn-large">
                         <i className="large material-icons">person</i>
                     </Link>
                 </div>
                 {this.state.redirect && (
-                    <Redirect to={this.customPath('/patient', this.props.appointment.id_patient)} />
+                    <Redirect to={this.customPath('/patient', this.props.patient._id)} />
                 )}
             </Row>
         );
     }
 }
 
-export default AppointmentUpdate;
+export default AppointmentCreate;

@@ -7,6 +7,7 @@ import UserUpdate from '../user/user-update.container';
 import PatientDetail from '../patient/patient-detail.container';
 import PatientUpdate from '../patient/patient-update.container';
 import AppointmentUpdate from '../appointment/appointment-update.container';
+import AppointmentCreate from '../appointment/appointment-create.container';
 import Calendar from '../calendar/calendar.container';
 import AuthRoute from '../../components/utils/auth-route.container';
 import Loader from '../../components/utils/loader.component';
@@ -35,6 +36,7 @@ class Root extends Component {
                     <AuthRoute exact path='/patient/create' component={<PatientCreate />} />
                     <AuthRoute exact path='/patient/:id' component={<PatientDetail />} />
                     <AuthRoute exact path='/patient/update/:id' component={<PatientUpdate />} />
+                    <AuthRoute exact path='/patient/:id/appointment/create' component={<AppointmentCreate />} />
                     <AuthRoute exact path='/appointment/update/:id' component={<AppointmentUpdate />} />
                     <AuthRoute exact path='/calendar' component={<Calendar />} />
                 </Switch>

@@ -1,9 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PatientDetail from './patient-detail.component';
+import AppointmentCreate from './appointment-create.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
-import { removePatient } from '../../actions/patient.action';
 import { addAppointment, removeAppointment } from '../../actions/appointment.action';
 import FilterService from '../../service/filter';
 
@@ -16,10 +15,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
         setTitle: setTitle,
-        removePatient: removePatient,
         addAppointment: addAppointment,
         removeAppointment: removeAppointment
     }, dispatch)
 );
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PatientDetail));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppointmentCreate));

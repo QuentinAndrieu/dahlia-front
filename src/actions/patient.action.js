@@ -74,7 +74,7 @@ export function removePatient(idPatient) {
             getInstance().delete('/patients/' + idPatient).then((response) => {
                 if (response.data.success) {
                     dispatch({ type: "REMOVE_PATIENT_FULFILLED", payload: response.data.content });
-                    resolve();
+                    resolve(response.data.content._id);
                 } else {
                     dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: response.data.errors });
                     reject(response.data.errors);

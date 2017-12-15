@@ -43,7 +43,7 @@ export function addAppointment(idPatient, description, title, date, rate, durati
     }
 }
 
-export function updateAppointment(idAppointment, description, title, date, rate, duration) {
+export function updateAppointment(idAppointment, description, title, rate, duration) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
             dispatch({ type: 'UPDATE_APPOINTMENT' });
@@ -51,7 +51,6 @@ export function updateAppointment(idAppointment, description, title, date, rate,
             getInstance().put('/appointments/' + idAppointment, {
                 description: description,
                 title: title,
-                date: date,
                 rate: rate,
                 duration: duration
             }).then((response) => {

@@ -134,11 +134,11 @@ export default function reducer(state = {
             }
             case "REMOVE_PATIENT_FULFILLED": {
                   const patientsUpdated = state.user.patients.filter((patient) => {
-                        return (patient._id !== action.payload);
+                        return (patient._id !== action.payload._id);
                   });
 
                   const appointmentsUpdated = state.user.appointments.filter((appointment) => {
-                        return (appointment.id_patient !== action.payload);
+                        return (appointment.id_patient !== action.payload._id);
                   });
 
                   return {

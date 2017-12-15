@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Input, Col } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 
@@ -10,40 +10,24 @@ class PatientDetail extends Component {
 
         this.state = {
             redirect: false,
-            description: '',
-            removing: false
         }
 
         this.props.setTitle('');
         this.removePatient = this.removePatient.bind(this);
-        this.addAppointment = this.addAppointment.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
-        this.props.setTitle(this.getTitle(this.props.patient.firstname, this.props.patient.lastname));
+        this.props.setTitle(this.props.patient.firstname + ' ' + this.props.patient.lastname);
     }
 
     removePatient(id) {
-        this.props.removePatient(id, () => {
-            this.setState({
-                redirect: true
-            });
+        this.props.removePatient(id).then(() => {
+            // this.setState(() => {
+            //     redirect: true
+            // });
+        }).catch((err) => {
+            console.log(err);
         });
-    }
-
-    addAppointment(description) {
-        const date = new Date();
-        const rate = '60';
-        const duration = '60';
-        const title = this.getTitle(this.props.patient.firstname, this.props.patient.lastname);
-
-        this.props.addAppointment(this.props.patient._id, description, title, date, rate, duration)
-            .then(() => {
-                this.setState({
-                    description: ''
-                });
-            });
     }
 
     removeAppointment(id) {
@@ -59,26 +43,9 @@ class PatientDetail extends Component {
         return formatAppointments;
     }
 
-    getTitle(firstname, lastname) {
-        if (firstname && lastname) {
-            return firstname + ' ' + lastname;
-        }
-
-        return '';
-    }
 
     customPath(path, id) {
         return path + '/' + id;
-    }
-
-    handleChange(event) {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
     }
 
     render() {
@@ -92,11 +59,11 @@ class PatientDetail extends Component {
                 </Col>
                 <Col s={1}>
                     <Link to={this.customPath('/appointment/update', appointment._id)}>
-                        <i className="icon-patient small material-icons icons">create</i>
+                        <i className="small material-icons icons">create</i>
                     </Link>
                     <p>
                         <i onClick={() => { this.removeAppointment(appointment._id) }}
-                         className="icon-patient small material-icons icons">delete</i>
+                            className="small material-icons icons">delete</i>
                     </p>
                 </Col>
             </div>);
@@ -109,32 +76,34 @@ class PatientDetail extends Component {
                         <p><strong>Lastname:</strong> {patient.lastname}</p>
                         <p><strong>Birthday:</strong> {patient.birthday}</p>
                     </Col>
-                    <Col s={11} m={8}>
+                    <Col s={12} m={9}>
                         <p>{patient.description}</p>
-                    </Col>
-                    <Col s={1}>
-                        <p>
-                            <Link to={this.customPath('/patient/update', patient._id)}>
-                                <i className="icon-patient small material-icons icons">create</i>
-                            </Link>
-                        </p>
-                        <p>
-                            <i onClick={() => { this.removePatient(patient._id) }}
-                             className="icon-patient small material-icons icons">delete</i>
-                        </p>
                     </Col>
                 </div>
                 {mappedAppointments}
-                <Col s={11}>
-                    <Input s={12} name="description" value={this.state.description}
-                        onChange={this.handleChange} placeholder="Add appointment" type="textarea" />
-                </Col>
-                <Col s={1}>
-                    <p>
-                        <i onClick={() => { this.addAppointment(this.state.description) }}
-                         className="icon-patient small material-icons icons">send</i>
-                    </p>
-                </Col>
+                <div className="fixed-action-btn vertical click-to-toggle">
+                    <a className="btn-floating btn-large">
+                        <i className="material-icons">menu</i>
+                    </a>
+                    <ul>
+                        <li>
+                            <Link className="btn-floating" to={this.customPath('/patient/update', patient._id)}>
+                                <i className="material-icons">create</i>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="btn-floating" to="/patients">
+                                <i onClick={() => { this.removePatient(patient._id) }}
+                                    className="material-icons">delete</i>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="btn-floating" to={patient._id + '/appointment/create'}>
+                                <i className="material-icons">add</i>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
                 {this.state.redirect && (
                     <Redirect to="/patients" />
                 )}
