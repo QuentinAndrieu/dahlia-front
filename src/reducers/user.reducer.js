@@ -71,13 +71,7 @@ export default function reducer(state = {
             case "UPDATE_USER_FULFILLED": {
                   return {
                         ...state,
-                        user: Object.assign({},
-                              state.user,
-                              action.payload,
-                              {
-                                    appointments: state.user.appointments,
-                                    patients: state.user.patients
-                              })
+                        user: action.payload
                   }
             }
             case "ADD_PATIENT": {
@@ -89,10 +83,7 @@ export default function reducer(state = {
             case "ADD_PATIENT_FULFILLED": {
                   return {
                         ...state,
-                        user: {
-                              ...state.user,
-                              patients: [...state.user.patients, action.payload]
-                        }
+                        user: action.payload
                   }
             }
             case "UPDATE_PATIENT": {
@@ -102,52 +93,25 @@ export default function reducer(state = {
                   return { ...state, error: action.payload }
             }
             case "UPDATE_PATIENT_FULFILLED": {
-                  const patientsUpdated = state.user.patients.map((patient) => {
-                        if (patient._id === action.payload._id) {
-                              return Object.assign({},
-                                    patient,
-                                    action.payload,
-                                    {
-                                          appointments: patient.appointments
-                                    });
-                        } else {
-                              return patient;
-                        }
-                  });
 
                   return {
                         ...state,
-                        user: {
-                              ...state.user,
-                              patients: patientsUpdated
-                        }
+                        user: action.payload
                   }
             }
-            case "REMOVE_PATIENT": {
+            case "UPDATE_TO_TRASH_PATIENT": {
                   return { ...state }
             }
-            case "REMOVE_PATIENT_REJECTED": {
+            case "UPDATE_TO_TRASH_PATIENT_REJECTED": {
                   return {
                         ...state,
                         error: action.payload
                   }
             }
-            case "REMOVE_PATIENT_FULFILLED": {
-                  const patientsUpdated = state.user.patients.filter((patient) => {
-                        return (patient._id !== action.payload._id);
-                  });
-
-                  const appointmentsUpdated = state.user.appointments.filter((appointment) => {
-                        return (appointment.id_patient !== action.payload._id);
-                  });
-
+            case "UPDATE_TO_TRASH_PATIENT_FULFILLED": {
                   return {
                         ...state,
-                        user: {
-                              ...state.user,
-                              patients: patientsUpdated,
-                              appointments: appointmentsUpdated
-                        }
+                        user: action.payload
                   }
             }
             case "ADD_APPOINTMENT": {
@@ -157,20 +121,9 @@ export default function reducer(state = {
                   return { ...state, error: action.payload }
             }
             case "ADD_APPOINTMENT_FULFILLED": {
-                  const patientsUpdated = state.user.patients.map((patient) => {
-                        if (patient._id === action.payload.id_patient) {
-                              patient.appointments = [...patient.appointments, action.payload]
-                        }
-                        return patient;
-                  });
-
                   return {
                         ...state,
-                        user: {
-                              ...state.user,
-                              patients: patientsUpdated,
-                              appointments: [...state.user.appointments, action.payload]
-                        },
+                        user: action.payload
                   }
             }
             case "UPDATE_APPOINTMENT": {
@@ -180,64 +133,24 @@ export default function reducer(state = {
                   return { ...state, error: action.payload }
             }
             case "UPDATE_APPOINTMENT_FULFILLED": {
-                  const patientsUpdated = state.user.patients.map((patient) => {
-                        if (patient._id === action.payload.id_patient) {
-                              patient.appointments = patient.appointments.map((appointment) => {
-                                    if (appointment._id === action.payload._id) {
-                                          appointment = action.payload
-                                    }
-                                    return appointment;
-                              });
-                        }
-                        return patient;
-                  });
-
-                  const appointmentsUpdated = state.user.appointments.map((appointment) => {
-                        if (appointment._id === action.payload._id) {
-                              appointment = action.payload
-                        }
-                        return appointment;
-                  });
-
                   return {
                         ...state,
-                        user: {
-                              ...state.user,
-                              patients: patientsUpdated,
-                              appointments: appointmentsUpdated
-                        },
+                        user: action.payload
                   }
             }
-            case "REMOVE_APPOINTMENT": {
+            case "UPDATE_TO_TRASH_APPOINTMENT": {
                   return { ...state }
             }
-            case "REMOVE_APPOINTMENT_REJECTED": {
+            case "UPDATE_TO_TRASH_APPOINTMENT_REJECTED": {
                   return {
                         ...state,
                         error: action.payload
                   }
             }
-            case "REMOVE_APPOINTMENT_FULFILLED": {
-                  const patientsUpdated = state.user.patients.map((patient) => {
-                        if (patient._id === action.payload.id_patient) {
-                              patient.appointments = patient.appointments.filter((appointment) => {
-                                    return (appointment._id !== action.payload._id);
-                              });
-                        }
-                        return patient;
-                  });
-
-                  const appointmentsUpdated = state.user.appointments.filter((appointment) => {
-                        return (appointment._id !== action.payload._id);
-                  });
-
+            case "UPDATE_TO_TRASH_APPOINTMENT_FULFILLED": {
                   return {
                         ...state,
-                        user: {
-                              ...state.user,
-                              patients: patientsUpdated,
-                              appointments: appointmentsUpdated
-                        }
+                        user: action.payload
                   }
             }
             default: {

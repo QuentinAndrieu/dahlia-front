@@ -28,8 +28,8 @@ export function addAppointment(idPatient, description, title, date, rate, durati
                 duration: duration
             }).then((response) => {
                 if (response.data.success) {
-                    dispatch({ type: 'ADD_APPOINTMENT_FULFILLED', payload: response.data.content });
-                    resolve(response.data.content._id);
+                    dispatch({ type: 'ADD_APPOINTMENT_FULFILLED', payload: response.data.user });
+                    resolve(response.data.appointment._id);
                 }
                 else {
                     dispatch({ type: 'ADD_APPOINTMENT_REJECTED', payload: response.data.errors });
@@ -55,8 +55,8 @@ export function updateAppointment(idAppointment, description, title, rate, durat
                 duration: duration
             }).then((response) => {
                 if (response.data.success) {
-                    dispatch({ type: 'UPDATE_APPOINTMENT_FULFILLED', payload: response.data.content });
-                    resolve(response.data.content._id);
+                    dispatch({ type: 'UPDATE_APPOINTMENT_FULFILLED', payload: response.data.user });
+                    resolve(response.data.appointment._id);
                 }
                 else {
                     dispatch({ type: 'UPDATE_APPOINTMENT_REJECTED', payload: response.data.errors });
@@ -70,22 +70,22 @@ export function updateAppointment(idAppointment, description, title, rate, durat
     }
 }
 
-export function removeAppointment(idAppointment) {
+export function updateToTrashAppointment(idAppointment) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            dispatch({ type: 'REMOVE_APPOINTMENT' });
+            dispatch({ type: 'UPDATE_TO_TRASH_APPOINTMENT' });
 
             getInstance().delete('/appointments/' + idAppointment).then((response) => {
                 if (response.data.success) {
-                    dispatch({ type: 'REMOVE_APPOINTMENT_FULFILLED', payload: response.data.content });
+                    dispatch({ type: 'UPDATE_TO_TRASH_APPOINTMENT_FULFILLED', payload: response.data.user });
                     resolve();
                 }
                 else {
-                    dispatch({ type: 'REMOVE_APPOINTMENT_REJECTED', payload: response.data.errors });
+                    dispatch({ type: 'UPDATE_TO_TRASH_APPOINTMENT_REJECTED', payload: response.data.errors });
                     reject(response.data.errors);
                 }
             }).catch((err) => {
-                dispatch({ type: 'REMOVE_APPOINTMENT_REJECTED', payload: err });
+                dispatch({ type: 'UPDATE_TO_TRASH_APPOINTMENT_REJECTED', payload: err });
                 reject(err);
             });
         });

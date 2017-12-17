@@ -25,8 +25,8 @@ export function addPatient(firstname, lastname, birthday, description) {
                 description: description
             }).then((response) => {
                 if (response.data.success) {
-                    dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data.content });
-                    resolve(response.data.content._id);
+                    dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data.user });
+                    resolve(response.data.patient._id);
                 } else {
                     dispatch({ type: "ADD_PATIENT_REJECTED", payload: response.data.errors });
                     reject(response.data.errors);
@@ -51,8 +51,8 @@ export function updatePatient(idPatient, firstname, lastname, birthday, descript
                 description: description
             }).then((response) => {
                 if (response.data.success) {
-                    dispatch({ type: "UPDATE_PATIENT_FULFILLED", payload: response.data.content });
-                    resolve(response.data.content._id);
+                    dispatch({ type: "UPDATE_PATIENT_FULFILLED", payload: response.data.user });
+                    resolve(response.data.patient._id);
                 } else {
                     dispatch({ type: "UPDATE_PATIENT_REJECTED", payload: response.data.errors });
                     reject(response.data.errors);
@@ -66,21 +66,21 @@ export function updatePatient(idPatient, firstname, lastname, birthday, descript
     }
 }
 
-export function removePatient(idPatient) {
+export function updateToTrashPatient(idPatient) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
-            dispatch({ type: "REMOVE_PATIENT" });
+            dispatch({ type: "UPDATE_TO_TRASH_PATIENT" });
 
             getInstance().delete('/patients/' + idPatient).then((response) => {
                 if (response.data.success) {
-                    dispatch({ type: "REMOVE_PATIENT_FULFILLED", payload: response.data.content });
-                    resolve(response.data.content._id);
+                    dispatch({ type: "UPDATE_TO_TRASH_PATIENT_FULFILLED", payload: response.data.user });
+                    resolve(response.data.patient);
                 } else {
-                    dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: response.data.errors });
+                    dispatch({ type: "UPDATE_TO_TRASH_PATIENT_REJECTED", payload: response.data.errors });
                     reject(response.data.errors);
                 }
             }).catch((err) => {
-                dispatch({ type: "REMOVE_PATIENT_REJECTED", payload: err });
+                dispatch({ type: "UPDATE_TO_TRASH_PATIENT_REJECTED", payload: err });
                 reject(err);
             });
         });

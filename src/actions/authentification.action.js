@@ -23,9 +23,9 @@ export function fetchJWTToken(mail, password) {
                 password: password
             }).then((response) => {
                 if (response.data.success) {
-                    sessionStorage.setItem('jwtToken', response.data.content.token);
-                    dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.content.token });
-                    resolve(response.data.content.token);
+                    sessionStorage.setItem('jwtToken', response.data.token);
+                    dispatch({ type: "FETCH_JWT_TOKEN_FULFILLED", payload: response.data.token });
+                    resolve(response.data.token);
                 } else {
                     dispatch({ type: "FETCH_JWT_TOKEN_REJECTED", payload: response.data.errors });
                     reject(response.data.errors);
@@ -49,8 +49,8 @@ export function register(mail, password) {
                 password: password
             }).then((response) => {
                 if (response.data.success) {
-                    dispatch({ type: "REGISTER_FULFILLED", payload: response.data.content });
-                    resolve(response.data.content);
+                    dispatch({ type: "REGISTER_FULFILLED", payload: response.data.user });
+                    resolve(response.data.user);
                 } else {
                     dispatch({ type: "REGISTER_REJECTED", payload: response.data.errors });
                     reject(response.data.errors);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import { Link, Redirect } from 'react-router-dom';
-import moment from 'moment';
 
 class PatientDetail extends Component {
 
@@ -9,37 +8,38 @@ class PatientDetail extends Component {
         super(props);
 
         this.state = {
-            redirect: false,
+            redirect: false
         }
 
         this.props.setTitle('');
-        this.removePatient = this.removePatient.bind(this);
+        this.updateToTrashPatient = this.updateToTrashPatient.bind(this);
     }
 
     componentDidMount() {
         this.props.setTitle(this.props.patient.firstname + ' ' + this.props.patient.lastname);
     }
 
-    removePatient(id) {
-        this.props.removePatient(id).then(() => {
-            // this.setState(() => {
-            //     redirect: true
-            // });
+    updateToTrashPatient(id) {
+        this.props.updateToTrashPatient(id).then((patient) => {
+            this.setState({
+                redirect: true
+            });
         }).catch((err) => {
             console.log(err);
         });
     }
 
-    removeAppointment(id) {
-        this.props.removeAppointment(id);
+    updateToTrashAppointment(id) {
+        this.props.updateToTrashAppointment(id).catch((err) => {
+            console.log(err);
+        });
     }
 
     formatAppointments(appointments) {
-        const formatAppointments = appointments.map((appointment) => {
-            appointment.date = moment(appointment.date).format('LLLL');
-            return appointment;
+        const formatAppointments = appointments.filter((appointment) => {
+            return appointment.trash ==='false';
         });
-
+        
         return formatAppointments;
     }
 
@@ -62,8 +62,10 @@ class PatientDetail extends Component {
                         <i className="small material-icons icons">create</i>
                     </Link>
                     <p>
-                        <i onClick={() => { this.removeAppointment(appointment._id) }}
-                            className="small material-icons icons">delete</i>
+                        <Link to="#">
+                            <i onClick={() => { this.updateToTrashAppointment(appointment._id) }}
+                                className="small material-icons icons">delete</i>
+                        </Link>
                     </p>
                 </Col>
             </div>);
@@ -92,8 +94,8 @@ class PatientDetail extends Component {
                             </Link>
                         </li>
                         <li>
-                            <Link className="btn-floating" to="/patients">
-                                <i onClick={() => { this.removePatient(patient._id) }}
+                            <Link className="btn-floating" to="#">
+                                <i onClick={() => { this.updateToTrashPatient(patient._id) }}
                                     className="material-icons">delete</i>
                             </Link>
                         </li>

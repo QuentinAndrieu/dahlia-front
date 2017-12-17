@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PatientDetail from './patient-detail.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
-import { removePatient } from '../../actions/patient.action';
-import { addAppointment, removeAppointment } from '../../actions/appointment.action';
+import { updateToTrashPatient } from '../../actions/patient.action';
+import { addAppointment, updateToTrashAppointment } from '../../actions/appointment.action';
 import FilterService from '../../service/filter';
 
 const filterService = new FilterService();
@@ -16,9 +16,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
         setTitle: setTitle,
-        removePatient: removePatient,
+        updateToTrashPatient: updateToTrashPatient,
         addAppointment: addAppointment,
-        removeAppointment: removeAppointment
+        updateToTrashAppointment: updateToTrashAppointment
     }, dispatch)
 );
 

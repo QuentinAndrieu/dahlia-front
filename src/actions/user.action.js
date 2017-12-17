@@ -21,8 +21,8 @@ export function fetchUser(jwtToken) {
             getInstance(jwtToken).get('/user')
                 .then((response) => {
                     if (response.data.success) {
-                        dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.content });
-                        resolve(response.data.content);
+                        dispatch({ type: "FETCH_USER_FULFILLED", payload: response.data.user });
+                        resolve(response.data.user);
                     } else {
                         dispatch({ type: "FETCH_USER_REJECTED", payload: response.data.errors });
                         resolve(response.data.errors);
@@ -48,7 +48,7 @@ export function updateUser(username, lastname, firstname, mail) {
                 mail: mail
             }).then((response) => {
                 if (response.data.success) {
-                    dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data.content });
+                    dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data.user });
                     resolve();
                 } else {
                     dispatch({ type: "UPDATE_USER_REJECTED", payload: response.data.errors });

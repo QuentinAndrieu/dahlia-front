@@ -16,8 +16,16 @@ class Calendar extends Component {
         this.props.setTitle('Calendar');
     }
 
+    filterList(list) {
+        const listUpdated = list.filter((item) => {
+            return item.trash !== 'true';
+        });
+
+        return listUpdated;
+    }
+
     formatAppointments(appointments) {
-        const formatAppointments = appointments.map((appointment) => {
+        const formatAppointments = this.filterList(appointments).map((appointment) => {
             appointment = {
                 'title': appointment.title,
                 'start': moment(appointment.date).toDate(),

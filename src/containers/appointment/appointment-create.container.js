@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import AppointmentCreate from './appointment-create.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
-import { addAppointment, removeAppointment } from '../../actions/appointment.action';
+import { addAppointment, updateToTrashAppointment } from '../../actions/appointment.action';
 import FilterService from '../../service/filter';
 
 const filterService = new FilterService();
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
         setTitle: setTitle,
         addAppointment: addAppointment,
-        removeAppointment: removeAppointment
+        updateToTrashAppointment: updateToTrashAppointment
     }, dispatch)
 );
 

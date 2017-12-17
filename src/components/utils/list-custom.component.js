@@ -16,14 +16,14 @@ class ListCustom extends Component {
 
     componentDidMount() {
         this.setState({
-            list: this.props.list
+            list: this.filterList(this.props.list)
         });
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.list !== this.state.list) {
+        if (this.filterList(nextProps.list) !== this.state.list) {
             this.setState({
-                list: nextProps.list
+                list: this.filterList(nextProps.list)
             })
         }
     }
@@ -32,7 +32,7 @@ class ListCustom extends Component {
         const target = event.target;
         const value = target.value;
 
-        const updatedList = this.props.list.filter((element) => {
+        const updatedList = this.filterList(this.props.list).filter((element) => {
             return element.link.toLowerCase().search(
                 value.toLowerCase()) !== -1;
         });
@@ -43,12 +43,20 @@ class ListCustom extends Component {
     }
 
     customPath(path, id) {
-        if(path){
+        if (path) {
             return path + '/' + id;
         } else {
             return '/';
         }
+    }
 
+
+    filterList(list) {
+        const listUpdated = list.filter((item) => {
+            return item.trash !== 'true';
+        });
+
+        return listUpdated;
     }
 
     customSearchTitle(title) {
