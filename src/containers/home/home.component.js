@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 
 class Home extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.setTitle('Dahlia');
     }
 
     render() {
         return (
             <div className='home'>
-                <h1>Work in progress...</h1>
+                <p>App design to manage patients and appointments.</p>
+                <p>Still in prototype state</p>
             </div>
         );
     }

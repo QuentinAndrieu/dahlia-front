@@ -50,10 +50,9 @@ class ListCustom extends Component {
         }
     }
 
-
     filterList(list) {
         const listUpdated = list.filter((item) => {
-            return item.trash !== 'true';
+            return !item.trash;
         });
 
         return listUpdated;

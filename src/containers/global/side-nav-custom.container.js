@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { setJWTToken } from '../../actions/authentification.action';
 
 const mapStateToProps = (state) => ({
-  username: state.user.user.username
 });
 
 const mapDispatchToProps = (dispatch) => (

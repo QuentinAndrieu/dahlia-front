@@ -1,7 +1,7 @@
 # Dahlia Front
 
 
-## Demo (still in progress...)
+## Demo (still in prototye state)
 
 https://dahlia-front.herokuapp.com/
 

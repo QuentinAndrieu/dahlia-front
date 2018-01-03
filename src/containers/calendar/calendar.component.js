@@ -3,7 +3,6 @@ import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-
 class Calendar extends Component {
 
     componentWillMount() {
@@ -18,7 +17,7 @@ class Calendar extends Component {
 
     filterList(list) {
         const listUpdated = list.filter((item) => {
-            return item.trash !== 'true';
+            return !item.trash;
         });
 
         return listUpdated;

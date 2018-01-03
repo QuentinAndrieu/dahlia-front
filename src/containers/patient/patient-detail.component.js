@@ -37,7 +37,7 @@ class PatientDetail extends Component {
 
     formatAppointments(appointments) {
         const formatAppointments = appointments.filter((appointment) => {
-            return appointment.trash ==='false';
+            return !appointment.trash;
         });
         
         return formatAppointments;
