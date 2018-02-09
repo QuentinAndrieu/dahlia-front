@@ -9,60 +9,60 @@
 }
 
 a {
-    color: #000078!important
+    color: #2C6700!important
 }
 
 .header {
-    background-color: #B3B3D7;
+    background-color: #92CD00;
 }
 
 .input-field input:focus+label, textarea:focus+label {
-    color: #D1CAB0 !important;
+    color: #E5E4D7 !important;
 }
 
 .row .input-field input:focus, textarea:focus {
-    border-bottom: 1px solid #D1CAB0 !important;
-    box-shadow: 0 1px 0 0 #D1CAB0 !important
+    border-bottom: 1px solid #E5E4D7 !important;
+    box-shadow: 0 1px 0 0 #E5E4D7 !important
 }
 
 .picker__date-display, .picker__weekday-display, .btn {
-    background-color: #D1CAB0;
+    background-color: #E5E4D7;
 }
 
 .picker__close, .picker__today {
-    color: #D1CAB0;
+    color: #E5E4D7;
 }
 
 .btn {
-    background-color: #D1CAB0;
+    background-color: #2C6700;
 }
 
 .btn:hover {
-    background-color: #ada99a;
+    background-color: #92CD00;
 }
 
 .btn:focus {
-    background-color: #D1CAB0;
+    background-color: #92CD00;
 }
 
 .icons {
-    color: #000078;
+    color: #2C6700;
 }
 
 .btn-floating  {
-    background-color: #AA0078!important;
+    background-color: #FFCF79!important;
 }
 
 .rbc-event {
-    background-color: #AA0078!important;
+    background-color: #FFCF79!important;
 }
 
 .error {
-    color: #AA0078;
+    color: #FFCF79;
 }
 
 .error-field {
-    color: #000078;
+    color: #2C6700;
 }
 
 .pointer {
