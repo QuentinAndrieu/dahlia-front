@@ -10,6 +10,9 @@
     border: 1px solid;
     border-color: #e6e6e6;
     padding: 30px!important;
+    background-color: white;
+    box-shadow: 2px 4px #E5E4D7;
+    height: 700px;
 }
 
 .login-link {

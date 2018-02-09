@@ -1,36 +1,35 @@
-@media screen and (max-width: 992px) {
-    .main {
-        padding-left: 0!important;
-    }
-}
-
 .container {
-    width: 90%
+    width: 90%;
+    background-color: white;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    box-shadow: 2px 4px #E5E4D7;
+    min-height: 600px;
+    margin-bottom: 50px;
+    margin-top: -30px; 
 }
 
 a {
-    color: #2C6700!important
+    color: #616161!important
 }
 
-.header {
-    background-color: #92CD00;
+body {
+    background-color: #f5f5f5;
+}
+
+header {
+    height: 70px;
+    background-color: white;
 }
 
 .input-field input:focus+label, textarea:focus+label {
-    color: #E5E4D7 !important;
+    color: #2C6700 !important;
 }
 
 .row .input-field input:focus, textarea:focus {
-    border-bottom: 1px solid #E5E4D7 !important;
-    box-shadow: 0 1px 0 0 #E5E4D7 !important
-}
-
-.picker__date-display, .picker__weekday-display, .btn {
-    background-color: #E5E4D7;
-}
-
-.picker__close, .picker__today {
-    color: #E5E4D7;
+    border-bottom: 1px solid #2C6700 !important;
+    box-shadow: 0 1px 0 0 #2C6700 !important
 }
 
 .btn {
@@ -49,16 +48,16 @@ a {
     color: #2C6700;
 }
 
-.btn-floating  {
-    background-color: #FFCF79!important;
+.btn-floating {
+    background-color: #92CD00!important;
 }
 
 .rbc-event {
-    background-color: #FFCF79!important;
+    background-color: #92CD00!important;
 }
 
 .error {
-    color: #FFCF79;
+    color: #92CD00;
 }
 
 .error-field {
