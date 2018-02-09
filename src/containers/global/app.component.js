@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Root from '../../containers/global/root.container';
-import { Container, Row, Col } from 'react-materialize';
-import SideNavCustom from '../../containers/global/side-nav-custom.container';
+import { Container, Row, Col, Parallax } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import { animateScroll as scroll, scroller } from 'react-scroll'
 
 class App extends Component {
 
@@ -13,6 +13,20 @@ class App extends Component {
     }
 
     this.setLoadingState = this.setLoadingState.bind(this);
+    this.logOut = this.logOut.bind(this);
+  }
+
+  scrollTo() {
+    scroller.scrollTo('scroll-to-element', {
+      duration: 800,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    })
+  }
+
+  logOut() {
+    this.props.setJWTToken(null);
+    sessionStorage.setItem('jwtToken', null);
   }
 
   componentDidMount() {
@@ -47,18 +61,7 @@ class App extends Component {
 
     return (
       <div>
-        {/* <SideNavCustom /> */}
-
         <div className="main">
-          {/* <header className="header">
-            <a data-activates="sideNav" className="menu button-collapse white-text hide-on-large-only">
-              <i className="material-icons">menu</i>
-            </a>
-            <center>
-              <h1 className="title">{this.props.title}</h1>
-            </center>
-          </header> */}
-
           <header>
             <Row>
               <Col s={1}>
@@ -72,25 +75,29 @@ class App extends Component {
           <nav>
             <div className="nav-wrapper white">
               <ul id="nav-mobile" className="left hide-on-med-and-down">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/patients">Patients</Link></li>
-                <li><Link to="/calendar">Calendar</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
-                <li><Link to="/signin" onClick={this.logOut}>Log out</Link></li>
+                <li><Link onClick={() => scroll.scrollTo(440)} to="/">Home</Link></li>
+                <li><Link onClick={() => scroll.scrollTo(440)} to="/patients">Patients</Link></li>
+                <li><Link onClick={() => scroll.scrollTo(440)} to="/calendar">Calendar</Link></li>
+                <li><Link onClick={() => scroll.scrollTo(440)} to="/profile">Profile</Link></li>
+                <li><Link onClick={this.logOut} to="/signin" >Log out</Link></li>
               </ul>
             </div>
           </nav>
 
-          <div className="main-header">
-          </div>
+          <div>
+            <Parallax imageSrc="images/dahlia-parallax.png" />
+            <div className="section">
+              <div className="row">
+                <div class="feature-description">
+                  {this.props.title}
+                </div>
 
-          <div class="feature-description">
-            {this.props.title}
+                <Container >
+                  <Root />
+                </Container>
+              </div>
+            </div>
           </div>
-
-          <Container >
-            <Root />
-          </Container>
         </div>
       </div>
     );
