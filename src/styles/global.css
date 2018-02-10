@@ -12,10 +12,6 @@
     margin-top: 0px
 }
 
-.root {
-    margin-top: 57px
-}
-
 .nav-logo {
     height: 64px;
     width: 64px
@@ -30,4 +26,10 @@
     margin-bottom: 10px;
     margin-left: 5%;
     width: 90%;
+}
+
+.main-root {
+    border: 1px solid #cfcfcf;
+    padding: 10px!important;
+    box-shadow: 2px 4px #E5E4D7;
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ListCustom from '../../components/utils/list-custom.component';
-import { Link } from 'react-router-dom';
 
 class PatientList extends Component {
 
@@ -24,14 +23,7 @@ class PatientList extends Component {
 
   render() {
     return (
-      <div>
-        <ListCustom list={this.state.patients} path="/patient" title="patients" />
-        <div className="fixed-action-btn">
-          <Link to="/patient/create" className="btn-floating btn-large">
-            <i className="large material-icons">add</i>
-          </Link>
-        </div>
-      </div>
+      <ListCustom list={this.state.patients} path="/patient" title="patients" />
     );
   }
 }

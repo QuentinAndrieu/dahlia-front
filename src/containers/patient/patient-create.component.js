@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Row } from 'react-materialize';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PatientForm from '../../components/form/patient-form.container';
 import { SubmissionError } from 'redux-form';
 import InputValidation from '../../service/input-validation.service';
@@ -61,18 +60,13 @@ class PatientCreate extends Component {
 
     render() {
         return (
-            <Row>
+            <div>
                 <PatientForm onSubmit={this.submit} button="Submit" />
 
-                <div className="fixed-action-btn">
-                    <Link to="/patients" className="btn-floating btn-large">
-                        <i className="large material-icons">list</i>
-                    </Link>
-                </div>
                 {this.state.redirect && (
                     <Redirect to={this.customPath('/patient', this.state._id)} />
                 )}
-            </Row>
+            </div>
         );
     }
 }

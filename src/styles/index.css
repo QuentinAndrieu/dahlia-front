@@ -1,19 +1,15 @@
 .container {
-    width: 90%;
+    width: 100%;
     background-color: white;
     padding-left: 2%;
     padding-right: 2%;
     padding-bottom: 2%;
-    min-height: 500px;
+    min-height: 620px;
     margin-bottom: 50px;
 }
 
 a {
-    color: #616161!important
-}
-
-body {
-    background-color: #f5f5f5;
+    color: #2C6700!important
 }
 
 header {
@@ -47,7 +43,8 @@ header {
 }
 
 .btn-floating {
-    background-color: #92CD00!important;
+    background-color: #2C6700!important;
+    margin: 5px;
 }
 
 .rbc-event {
@@ -68,4 +65,4 @@ header {
 
 .parallax-container {
     height: 300px;
-  }
+}

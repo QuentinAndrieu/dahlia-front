@@ -3,6 +3,7 @@ import Root from '../../containers/global/root.container';
 import { Container, Row, Col, Parallax } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import { animateScroll as scroll, scroller } from 'react-scroll'
+import SideNavCustom from './side-nav-custom.container';
 
 class App extends Component {
 
@@ -87,15 +88,16 @@ class App extends Component {
           <div>
             <Parallax imageSrc="images/dahlia-parallax.png" />
             <div className="section">
-              <div className="row">
-                <div class="feature-description">
-                  {this.props.title}
-                </div>
-
-                <Container >
-                  <Root />
-                </Container>
-              </div>
+              <Container>
+                <Row>
+                  <Col s={12} m={4}>
+                    <SideNavCustom />
+                  </Col>
+                  <Col className="main-root" s={12} m={8}>
+                    <Root />
+                  </Col>
+                </Row>
+              </Container>
             </div>
           </div>
         </div>

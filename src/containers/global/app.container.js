@@ -7,7 +7,6 @@ import App from './app.component';
 
 const mapStateToProps = (state) => ({
   fetched: state.user.fetched,
-  title: state.router.title,
   authenticated: state.authentification.authenticated
 });
 

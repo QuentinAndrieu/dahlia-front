@@ -39,7 +39,7 @@ class PatientDetail extends Component {
         const formatAppointments = appointments.filter((appointment) => {
             return !appointment.trash;
         });
-        
+
         return formatAppointments;
     }
 
@@ -53,63 +53,56 @@ class PatientDetail extends Component {
 
         let mappedAppointments = this.formatAppointments(patient.appointments).map(appointment =>
             <div key={appointment._id}>
-                <Col s={11}>
-                    <p>{appointment.description}</p>
-                    <p>{appointment.date}</p>
-                </Col>
-                <Col s={1}>
-                    <Link to={this.customPath('/appointment/update', appointment._id)}>
-                        <i className="small material-icons icons">create</i>
-                    </Link>
-                    <p>
-                        <Link to="#">
-                            <i onClick={() => { this.updateToTrashAppointment(appointment._id) }}
-                                className="small material-icons icons">delete</i>
+                <Row>
+                    <Col s={12}>{appointment.description}</Col>
+                    <Col s={1}>
+                        <Link to={this.customPath('/appointment/update', appointment._id)}>
+                            <strong>Update</strong>
                         </Link>
-                    </p>
-                </Col>
+                    </Col>
+                    <Col s={1}>
+                        <Link onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
+                            <strong>Delete</strong>
+                        </Link>
+                    </Col>
+                    <Col s={10}></Col>
+                </Row>
             </div>);
 
         return (
-            <Row >
+            <div>
                 <div className="patient-detail">
-                    <Col s={12} m={3}  >
-                        <p><strong>Firstname:</strong> {patient.firstname}</p>
-                        <p><strong>Lastname:</strong> {patient.lastname}</p>
-                        <p><strong>Birthday:</strong> {patient.birthday}</p>
-                    </Col>
-                    <Col s={12} m={9}>
-                        <p>{patient.description}</p>
-                    </Col>
+                    <Row>
+                        <Col m={12} l={7} >
+                            <h4>Quentin Andrieu</h4>
+                        </Col>
+                        <Col m={12} l={5} >
+                            <Col s={3}>
+                                <Link to={this.customPath('/patient/update', patient._id)}>
+                                    <strong>Update</strong>
+                                </Link>
+                            </Col>
+                            <Col s={3}>
+                                <Link onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
+                                    <strong>Delete</strong>
+                                </Link>
+                            </Col>
+                            <Col s={6}>
+                                <Link to={patient._id + '/appointment/create'}>
+                                    <strong>Add appointment</strong>
+                                </Link>
+                            </Col>
+                        </Col>
+                        <Col s={12}>
+                            <p>{patient.description}</p>
+                        </Col>
+                    </Row>
                 </div>
                 {mappedAppointments}
-                <div className="fixed-action-btn vertical click-to-toggle">
-                    <a className="btn-floating btn-large">
-                        <i className="material-icons">menu</i>
-                    </a>
-                    <ul>
-                        <li>
-                            <Link className="btn-floating" to={this.customPath('/patient/update', patient._id)}>
-                                <i className="material-icons">create</i>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="btn-floating" to="#">
-                                <i onClick={() => { this.updateToTrashPatient(patient._id) }}
-                                    className="material-icons">delete</i>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="btn-floating" to={patient._id + '/appointment/create'}>
-                                <i className="material-icons">add</i>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
                 {this.state.redirect && (
                     <Redirect to="/patients" />
                 )}
-            </Row>
+            </div>
         );
     }
 }
