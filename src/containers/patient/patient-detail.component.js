@@ -56,12 +56,12 @@ class PatientDetail extends Component {
                 <Row>
                     <Col s={12}>{appointment.description}</Col>
                     <Col s={1}>
-                        <Link to={this.customPath('/appointment/update', appointment._id)}>
+                        <Link className="green-link" to={this.customPath('/appointment/update', appointment._id)}>
                             <strong>Update</strong>
                         </Link>
                     </Col>
                     <Col s={1}>
-                        <Link onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
+                        <Link className="green-link" onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
                             <strong>Delete</strong>
                         </Link>
                     </Col>
@@ -73,22 +73,22 @@ class PatientDetail extends Component {
             <div>
                 <div className="patient-detail">
                     <Row>
-                        <Col m={12} l={7} >
+                        <Col s={12} m={12} l={7} >
                             <h4>{patient.firstname} {patient.lastname}</h4>
                         </Col>
-                        <Col m={12} l={5} >
+                        <Col s={12} m={12} l={5} >
                             <Col s={3}>
-                                <Link to={this.customPath('/patient/update', patient._id)}>
+                                <Link className="green-link" to={this.customPath('/patient/update', patient._id)}>
                                     <strong>Update</strong>
                                 </Link>
                             </Col>
                             <Col s={3}>
-                                <Link onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
+                                <Link className="green-link" onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
                                     <strong>Delete</strong>
                                 </Link>
                             </Col>
                             <Col s={6}>
-                                <Link to={patient._id + '/appointment/create'}>
+                                <Link className="green-link" to={patient._id + '/appointment/create'}>
                                     <strong>Add appointment</strong>
                                 </Link>
                             </Col>

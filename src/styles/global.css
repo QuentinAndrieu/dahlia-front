@@ -1,5 +1,6 @@
-.menu {
-    cursor: pointer
+header {
+    height: 70px;
+    background-color: white;
 }
 
 .title {
@@ -17,6 +18,10 @@
     box-shadow: 2px 4px #E5E4D7;
 }
 
-.side-nav-custom{
+.side-nav-custom {
     border: 0px;
+}
+
+.green-link {
+    color: #2C6700!important;
 }
