@@ -74,7 +74,7 @@ class PatientDetail extends Component {
                 <div className="patient-detail">
                     <Row>
                         <Col m={12} l={7} >
-                            <h4>Quentin Andrieu</h4>
+                            <h4>{patient.firstname} {patient.lastname}</h4>
                         </Col>
                         <Col m={12} l={5} >
                             <Col s={3}>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Row } from 'react-materialize';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import AppointmentForm from '../../components/form/appointment-form.container';
 import { SubmissionError } from 'redux-form';
 import InputValidation from '../../service/input-validation.service';
@@ -61,18 +60,12 @@ class AppointmentCreate extends Component {
 
     render() {
         return (
-            <Row>
+            <div>
                 <AppointmentForm onSubmit={this.submit} button="Submit" />
-
-                <div className="fixed-action-btn">
-                    <Link to={this.customPath('/patient', this.props.patient._id)} className="btn-floating btn-large">
-                        <i className="large material-icons">person</i>
-                    </Link>
-                </div>
                 {this.state.redirect && (
                     <Redirect to={this.customPath('/patient', this.props.patient._id)} />
                 )}
-            </Row>
+            </div>
         );
     }
 }

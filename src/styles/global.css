@@ -1,9 +1,3 @@
-.header {
-    height: 110px;
-    color: white;
-    padding-top: 15px
-}
-
 .menu {
     cursor: pointer
 }
@@ -17,19 +11,12 @@
     width: 64px
 }
 
-.feature-description {
-    width: 100%;
-    height: 80px;
-    border-bottom: 1px solid #cfcfcf;
-    font-size: 1.3em;
-    padding-top: 45px;
-    margin-bottom: 10px;
-    margin-left: 5%;
-    width: 90%;
-}
-
 .main-root {
     border: 1px solid #cfcfcf;
     padding: 10px!important;
     box-shadow: 2px 4px #E5E4D7;
+}
+
+.side-nav-custom{
+    border: 0px;
 }

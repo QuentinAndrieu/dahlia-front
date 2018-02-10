@@ -42,11 +42,6 @@ header {
     color: #2C6700;
 }
 
-.btn-floating {
-    background-color: #2C6700!important;
-    margin: 5px;
-}
-
 .rbc-event {
     background-color: #92CD00!important;
 }
@@ -65,4 +60,7 @@ header {
 
 .parallax-container {
     height: 300px;
+}
+.collection{
+    margin-top: 0px;
 }
