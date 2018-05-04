@@ -17,7 +17,7 @@ class PatientFormUpdate extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle(this.props.patient.firstname + ' ' + this.props.patient.lastname);
+        this.props.setTitle('patient-update');
     }
 
     customPath(path, id) {

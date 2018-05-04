@@ -11,7 +11,7 @@ class PatientDetail extends Component {
             redirect: false
         }
 
-        this.props.setTitle('');
+        this.props.setTitle('patient-detail');
         this.updateToTrashPatient = this.updateToTrashPatient.bind(this);
     }
 

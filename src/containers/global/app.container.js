@@ -6,8 +6,6 @@ import { bindActionCreators } from 'redux';
 import App from './app.component';
 
 const mapStateToProps = (state) => ({
-  fetched: state.user.fetched,
-  authenticated: state.authentification.authenticated
 });
 
 const mapDispatchToProps = (dispatch) => (

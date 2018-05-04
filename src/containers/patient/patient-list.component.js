@@ -18,7 +18,7 @@ class PatientList extends Component {
   }
 
   componentDidMount() {
-    this.props.setTitle('List patients');
+    this.props.setTitle('list-patient');
   }
 
   render() {

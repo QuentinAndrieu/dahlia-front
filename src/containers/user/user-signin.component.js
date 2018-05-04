@@ -18,7 +18,7 @@ class UserSignIn extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Sign In');
+        this.props.setTitle('signin');
     }
 
     submit(values) {

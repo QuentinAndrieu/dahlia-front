@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 
 const mapStateToProps = (state) => ({
-    update: false
 });
 
 const mapDispatchToProps = (dispatch) => (

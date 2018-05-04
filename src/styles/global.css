@@ -12,16 +12,14 @@ header {
     width: 64px
 }
 
-.main-root {
-    border: 1px solid #cfcfcf;
-    padding: 10px!important;
-    box-shadow: 2px 4px #E5E4D7;
-}
-
 .side-nav-custom {
     border: 0px;
 }
 
 .green-link {
-    color: #2C6700!important;
+    color: #2C6700 !important;
+}
+
+.side-nav-menu {
+    margin-top: 18px;
 }

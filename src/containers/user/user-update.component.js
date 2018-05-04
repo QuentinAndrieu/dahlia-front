@@ -12,7 +12,7 @@ class UserUpdate extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Profile');
+        this.props.setTitle('profile');
     }
 
     submit(values) {

@@ -17,7 +17,7 @@ class AppointmentCreate extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Add Appointment');
+        this.props.setTitle('add-appointment');
     }
 
     customPath(path, id) {

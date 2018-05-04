@@ -12,7 +12,7 @@ class Calendar extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Calendar');
+        this.props.setTitle('calendar');
     }
 
     filterList(list) {

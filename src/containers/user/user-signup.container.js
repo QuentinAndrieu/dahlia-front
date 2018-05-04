@@ -6,7 +6,6 @@ import { setTitle } from '../../actions/router.action';
 import { register, fetchJWTToken } from '../../actions/authentification.action';
 
 const mapStateToProps = (state) => ({
-    update: true
 });
 
 const mapDispatchToProps = (dispatch) => (

@@ -17,7 +17,7 @@ class PatientCreate extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Create Patient');
+        this.props.setTitle('create-patient');
     }
 
     customPath(path, id) {

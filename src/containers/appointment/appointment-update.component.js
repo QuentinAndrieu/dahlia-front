@@ -17,7 +17,7 @@ class AppointmentUpdate extends Component {
     }
 
     componentDidMount() {
-        this.props.setTitle('Edit Appointment');
+        this.props.setTitle('edit-appointment');
     }
 
     customPath(path, id) {

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Home extends Component {
 
     componentDidMount() {
-        this.props.setTitle('Dahlia');
+        this.props.setTitle('home');
     }
 
     render() {
