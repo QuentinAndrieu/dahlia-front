@@ -1,24 +1,12 @@
-.container {
-    width: 100%;
-    background-color: white;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-bottom: 2%;
-    min-height: 620px;
-    margin-bottom: 50px;
-}
-
 a {
     color: black !important
 }
 
-.input-field input:focus+label,
-textarea:focus+label {
+.input-field input:focus+label, textarea:focus+label {
     color: #2C6700 !important;
 }
 
-.row .input-field input:focus,
-textarea:focus {
+.row .input-field input:focus, textarea:focus {
     border-bottom: 1px solid #2C6700 !important;
     box-shadow: 0 1px 0 0 #2C6700 !important
 }
@@ -44,7 +32,7 @@ textarea:focus {
 }
 
 .error {
-    color: #92CD00;
+    color: #AA0078;
 }
 
 .error-field {
@@ -57,6 +45,8 @@ textarea:focus {
 
 .collection {
     margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .collection .collection-item.active {

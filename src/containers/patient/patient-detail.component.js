@@ -55,17 +55,17 @@ class PatientDetail extends Component {
             <div key={appointment._id}>
                 <Row>
                     <Col s={12}>{appointment.description}</Col>
-                    <Col s={1}>
+                    <Col s={2} m={1} l={1}>
                         <Link className="green-link" to={this.customPath('/appointment/update', appointment._id)}>
                             <strong>Update</strong>
                         </Link>
                     </Col>
-                    <Col s={1}>
-                        <Link className="green-link" onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
+                    <Col s={2} m={1} l={1}>
+                        <Link className="violet-link" onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
                             <strong>Delete</strong>
                         </Link>
                     </Col>
-                    <Col s={10}></Col>
+                    <Col s={8} m={10} l={10}></Col>
                 </Row>
             </div>);
 
@@ -83,7 +83,7 @@ class PatientDetail extends Component {
                                 </Link>
                             </Col>
                             <Col s={3}>
-                                <Link className="green-link" onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
+                                <Link className="violet-link" onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
                                     <strong>Delete</strong>
                                 </Link>
                             </Col>
