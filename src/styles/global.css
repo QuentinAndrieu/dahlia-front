@@ -9,7 +9,14 @@ header {
 
 .nav-logo {
     height: 64px;
-    width: 64px
+    width: 64px;
+    margin-left: 14px;
+    margin-top: 10px;
+}
+
+.text-logo {
+    color: #1DBD63;
+    margin-top: 22px;
 }
 
 .side-nav-custom {
@@ -17,7 +24,7 @@ header {
 }
 
 .green-link {
-    color: #2C6700 !important;
+    color: #1DBD63 !important;
 }
 
 .violet-link {
@@ -35,5 +42,5 @@ header {
 }
 
 .link-nav .active {
-    color: #92CD00;
+    color: #1DBD63;
 }

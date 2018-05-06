@@ -3,16 +3,16 @@ a {
 }
 
 .input-field input:focus+label, textarea:focus+label {
-    color: #2C6700 !important;
+    color: #1DBD63 !important;
 }
 
 .row .input-field input:focus, textarea:focus {
-    border-bottom: 1px solid #2C6700 !important;
-    box-shadow: 0 1px 0 0 #2C6700 !important
+    border-bottom: 1px solid #1DBD63 !important;
+    box-shadow: 0 1px 0 0 #1DBD63 !important
 }
 
 .btn {
-    background-color: #2C6700;
+    background-color: #1DBD63;
 }
 
 .btn:hover {
@@ -24,7 +24,7 @@ a {
 }
 
 .icons {
-    color: #2C6700;
+    color: #1DBD63;
 }
 
 .rbc-event {
@@ -36,7 +36,7 @@ a {
 }
 
 .error-field {
-    color: #2C6700;
+    color: #1DBD63;
 }
 
 .pointer {
@@ -50,5 +50,5 @@ a {
 }
 
 .collection .collection-item .active {
-    color: #92CD00;
+    color: #1DBD63;
 }

@@ -13,7 +13,7 @@ function getInstance() {
     return instance;
 }
 
-export function addPatient(firstname, lastname, birthday, description) {
+export function addPatient(firstname, lastname, birthday, description, occupation) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
             dispatch({ type: "ADD_PATIENT" });
@@ -22,7 +22,8 @@ export function addPatient(firstname, lastname, birthday, description) {
                 lastname: lastname,
                 firstname: firstname,
                 birthday: birthday,
-                description: description
+                description: description,
+                occupation: occupation
             }).then((response) => {
                 if (response.data.success) {
                     dispatch({ type: "ADD_PATIENT_FULFILLED", payload: response.data.user });

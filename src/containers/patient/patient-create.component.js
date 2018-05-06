@@ -39,12 +39,15 @@ class PatientCreate extends Component {
         }, {
             key: 'birthday',
             value: values.birthday
+        }, {
+            key: 'occupation',
+            value: values.occupation
         }];
 
         const required = inputValidation.required(formatValues);
 
         if (required) {
-            return this.props.addPatient(values.firstname, values.lastname, values.birthday, values.description)
+            return this.props.addPatient(values.firstname, values.lastname, values.birthday, values.description, values.occupation)
                 .then((id) => {
                     this.setState({
                         _id: id,

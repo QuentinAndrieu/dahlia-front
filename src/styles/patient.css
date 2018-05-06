@@ -1,3 +1,7 @@
 .patient-detail {
-    min-height: 400px
+    margin-bottom: 40px
+}
+
+.patient-detail p {
+    margin-top: 2px;
 }

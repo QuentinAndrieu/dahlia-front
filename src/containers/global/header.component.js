@@ -11,7 +11,7 @@ class Header extends Component {
                         <img alt="" className="nav-logo" src="images/Dahlia.png" />
                     </Col>
                     <Col s={8} m={11}>
-                        <h4>Dahlia</h4>
+                        <h4 className="text-logo">Dahlia</h4>
                     </Col>
                 </Row>
             </header>

@@ -8,7 +8,7 @@ class PatientForm extends Component {
         const errorInput = {
             borderBottom: '2px solid #AA0078'
         }
-        
+
         const inputField = <input {...input} type={type} style={(touched && error) ? errorInput : {}}
             placeholder={label} />;
 
@@ -48,6 +48,13 @@ class PatientForm extends Component {
                     component={this.renderField}
                     type="date"
                     placeholder="Birthday"
+                />
+                <Field
+                    name="occupation"
+                    label="Occupation"
+                    component={this.renderField}
+                    type="text"
+                    placeholder="occupation"
                 />
                 <Field
                     name="description"

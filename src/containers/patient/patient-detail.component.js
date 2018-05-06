@@ -53,21 +53,23 @@ class PatientDetail extends Component {
 
         let mappedAppointments = this.formatAppointments(patient.appointments).map(appointment =>
             <div key={appointment._id}>
-                <Row>
-                    <Col s={12}>{appointment.description}</Col>
-                    <Col s={2} m={1} l={1}>
-                        <Link className="green-link" to={this.customPath('/appointment/update', appointment._id)}>
-                            <strong>Update</strong>
-                        </Link>
-                    </Col>
-                    <Col s={2} m={1} l={1}>
-                        <Link className="violet-link" onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
-                            <strong>Delete</strong>
-                        </Link>
-                    </Col>
-                    <Col s={8} m={10} l={10}></Col>
-                </Row>
+                <Col s={12}>
+                    <p>{appointment.description}</p>
+                </Col>
+                <Col s={2} m={1} l={1}>
+                    <Link className="green-link" to={this.customPath('/appointment/update', appointment._id)}>
+                        <strong>Update</strong>
+                    </Link>
+                </Col>
+                <Col s={2} m={1} l={1}>
+                    <Link className="violet-link" onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
+                        <strong>Delete</strong>
+                    </Link>
+                </Col>
+                <Col s={8} m={10} l={10}></Col>
             </div>);
+
+        const appointmentsLabel = mappedAppointments.length > 0 ? 'Appointments' : '';
 
         return (
             <div>
@@ -93,12 +95,24 @@ class PatientDetail extends Component {
                                 </Link>
                             </Col>
                         </Col>
-                        <Col s={12}>
+                        <Col l={6} m={6} s={12}>
+                            <label>About</label>
                             <p>{patient.description}</p>
+                        </Col>
+                        <Col l={6} m={6} s={12}>
+                            <label>Occupation</label>
+                            <p>{patient.occupation}</p>
+                            <label>Birthday</label>
+                            <p>{patient.birthday}</p>
                         </Col>
                     </Row>
                 </div>
-                {mappedAppointments}
+                <Row>
+                    <Col s={12}>
+                        <label>{appointmentsLabel}</label>
+                    </Col>
+                    {mappedAppointments}
+                </Row>
                 {this.state.redirect && (
                     <Redirect to="/patients" />
                 )}
