@@ -49,7 +49,6 @@ a {
     margin-right: 10px;
 }
 
-.collection .collection-item.active {
-    background-color: lightgrey;
-    color: white;
+.collection .collection-item .active {
+    color: #92CD00;
 }

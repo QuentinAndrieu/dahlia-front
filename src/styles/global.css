@@ -27,3 +27,13 @@ header {
 .side-nav-menu {
     margin-top: 18px;
 }
+
+.icon-sidenav {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 30px;
+}
+
+.link-nav .active {
+    color: #92CD00;
+}
