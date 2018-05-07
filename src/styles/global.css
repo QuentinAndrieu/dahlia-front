@@ -8,9 +8,8 @@ header {
 }
 
 .nav-logo {
-    height: 64px;
-    width: 64px;
-    margin-left: 14px;
+    height: 120px;
+    /* width: 64px; */
     margin-top: 10px;
 }
 
@@ -23,7 +22,7 @@ header {
     border: 0px;
 }
 
-.green-link {
+.dahlia-green {
     color: #1DBD63 !important;
 }
 

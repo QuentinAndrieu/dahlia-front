@@ -7,11 +7,8 @@ class Header extends Component {
         return (
             <header>
                 <Row>
-                    <Col s={4} m={1} >
+                    <Col s={12}>
                         <img alt="" className="nav-logo" src="images/Dahlia.png" />
-                    </Col>
-                    <Col s={8} m={11}>
-                        <h4 className="text-logo">Dahlia</h4>
                     </Col>
                 </Row>
             </header>

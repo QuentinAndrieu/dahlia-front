@@ -57,8 +57,8 @@ class UserSignIn extends Component {
                 <Col s={12} m={3} l={4}></Col>
                 <Col className="container-login" s={12} m={6} l={4}>
                     <center>
-                        <img className="responsive-img img-logo" alt="" src="images/Dahlia.png" />
-                        <h4>Dahlia</h4>
+                        <img className="responsive-img img-logo" alt="" src="images/DahliaB.png" />
+                        <h4 className="dahlia-green">Dahlia</h4>
                     </center>
 
                     <SignInForm onSubmit={this.submit} />
