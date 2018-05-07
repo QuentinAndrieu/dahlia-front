@@ -57,12 +57,12 @@ class PatientDetail extends Component {
                     <p>{appointment.description}</p>
                 </Col>
                 <Col s={2} m={1} l={1}>
-                    <Link className="dahlia-green" to={this.customPath('/appointment/update', appointment._id)}>
+                    <Link to={this.customPath('/appointment/update', appointment._id)}>
                         <strong>Update</strong>
                     </Link>
                 </Col>
                 <Col s={2} m={1} l={1}>
-                    <Link className="violet-link" onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
+                    <Link onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
                         <strong>Delete</strong>
                     </Link>
                 </Col>
@@ -80,17 +80,17 @@ class PatientDetail extends Component {
                         </Col>
                         <Col s={12} m={12} l={5} >
                             <Col s={3}>
-                                <Link className="dahlia-green" to={this.customPath('/patient/update', patient._id)}>
+                                <Link to={this.customPath('/patient/update', patient._id)}>
                                     <strong>Update</strong>
                                 </Link>
                             </Col>
                             <Col s={3}>
-                                <Link className="violet-link" onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
+                                <Link onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
                                     <strong>Delete</strong>
                                 </Link>
                             </Col>
                             <Col s={6}>
-                                <Link className="dahlia-green" to={patient._id + '/appointment/create'}>
+                                <Link to={patient._id + '/appointment/create'}>
                                     <strong>Add appointment</strong>
                                 </Link>
                             </Col>

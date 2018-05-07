@@ -64,9 +64,11 @@ class ListCustom extends Component {
 
     render() {
         let mappedList = this.state.list.map(element =>
-            <CollectionItem key={element._id} className="grey-text">
-                <Link to={this.customPath(this.props.path, element._id)}>{element.link}</Link>
-            </CollectionItem>);
+            <Link to={this.customPath(this.props.path, element._id)}>
+                <CollectionItem key={element._id} className="grey-text">
+                    {element.link}
+                </CollectionItem>
+            </Link>);
 
         return (
             <div className="list">
