@@ -38,6 +38,7 @@ header {
     display: inline-flex;
     vertical-align: middle;
     margin-right: 30px;
+    color: black;
 }
 
 .link-nav .active {

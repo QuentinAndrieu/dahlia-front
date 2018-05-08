@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import { Link, Redirect } from 'react-router-dom';
+import moment from 'moment';
 
 class PatientDetail extends Component {
 
@@ -48,13 +49,20 @@ class PatientDetail extends Component {
         return path + '/' + id;
     }
 
+    formatDate(date) {
+        return moment(date).format('MMMM Do YYYY, h:mm:ss a')
+    }
+
     render() {
         const { patient } = this.props;
 
         let mappedAppointments = this.formatAppointments(patient.appointments).map(appointment =>
-            <div key={appointment._id}>
+            <div className="patient-detail-appointment" key={appointment._id}>
                 <Col s={12}>
                     <p>{appointment.description}</p>
+                    <label>
+                        {this.formatDate(appointment.createdAt)} / {appointment.duration} minutes / {appointment.rate} dollars
+                     </label>
                 </Col>
                 <Col s={2} m={1} l={1}>
                     <Link to={this.customPath('/appointment/update', appointment._id)}>
@@ -78,7 +86,7 @@ class PatientDetail extends Component {
                         <Col s={12} m={12} l={7} >
                             <h4>{patient.firstname} {patient.lastname}</h4>
                         </Col>
-                        <Col s={12} m={12} l={5} >
+                        <Col s={12} m={12} l={5} className="hide-on-med-and-down" >
                             <Col s={3}>
                                 <Link to={this.customPath('/patient/update', patient._id)}>
                                     <strong>Update</strong>
@@ -95,11 +103,11 @@ class PatientDetail extends Component {
                                 </Link>
                             </Col>
                         </Col>
-                        <Col l={6} m={6} s={12}>
+                        <Col l={7} m={8} s={12}>
                             <label>About</label>
                             <p>{patient.description}</p>
                         </Col>
-                        <Col l={6} m={6} s={12}>
+                        <Col l={5} m={4} s={12}>
                             <label>Occupation</label>
                             <p>{patient.occupation}</p>
                             <label>Birthday</label>

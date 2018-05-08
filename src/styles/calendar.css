@@ -1,3 +1,15 @@
 .calendar {
     min-height: 600px
 }
+
+.rbc-event {
+    background-color: #1DBD63 !important;
+}
+
+.rbc-calendar {
+    color: #9E9E9D !important;
+}
+
+.rbc-btn-group button{
+    color: #9E9E9D !important;
+}

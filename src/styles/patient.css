@@ -5,3 +5,12 @@
 .patient-detail p {
     margin-top: 2px;
 }
+
+.patient-detail-appointment p {
+    margin-bottom: 0px;
+}
+
+.patient-detail-appointment label {
+    float: right;
+    margin-right: 15px;
+}
