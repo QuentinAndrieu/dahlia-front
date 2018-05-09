@@ -36,12 +36,12 @@ class PatientDetail extends Component {
         });
     }
 
-    formatAppointments(appointments) {
-        const formatAppointments = appointments.filter((appointment) => {
+    getActiveAppointments(appointments) {
+        const activeAppointments = appointments.filter((appointment) => {
             return !appointment.trash;
         });
 
-        return formatAppointments;
+        return activeAppointments;
     }
 
 
@@ -56,7 +56,7 @@ class PatientDetail extends Component {
     render() {
         const { patient } = this.props;
 
-        let mappedAppointments = this.formatAppointments(patient.appointments).map(appointment =>
+        let mappedAppointments = this.getActiveAppointments(patient.appointments).map(appointment =>
             <div className="patient-detail-appointment" key={appointment._id}>
                 <Col s={12}>
                     <p>{appointment.description}</p>

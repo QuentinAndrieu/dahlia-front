@@ -3,27 +3,20 @@ import ListCustom from '../../components/utils/list-custom.component';
 
 class PatientList extends Component {
 
-  constructor(props) {
-    super(props);
-
-    const updatedPatients = this.props.patients.map((patient) => {
-      patient.link = patient.firstname + ' ' + patient.lastname;
-      return patient;
-    });
-
-    this.state = {
-      patients: updatedPatients
-    }
-
-  }
-
   componentDidMount() {
     this.props.setTitle('list-patient');
   }
 
   render() {
+    let patients = this.props.patients;
+    
+    patients.map((patient) => {
+      patient.link = patient.firstname + ' ' + patient.lastname;
+      return patient;
+    });
+
     return (
-      <ListCustom list={this.state.patients} path="/patient" title="patients" />
+      <ListCustom list={patients} path="/patient" title="patients" />
     );
   }
 }
