@@ -33,7 +33,10 @@ class BarChartCustom extends Component {
         let BarChart = Chart.Bar;
 
         return (
-            <BarChart data={chartData} width="1000" height="300" />
+            <BarChart width="1000" height="300" data={chartData} options={{
+                responsive: true,
+                maintainAspectRatio: true
+            }} />
         )
     }
 }

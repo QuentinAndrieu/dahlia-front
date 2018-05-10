@@ -4,8 +4,6 @@ import Chart from 'react-chartjs';
 class LineChartCustom extends Component {
 
     render() {
-        console.log("this.props.firstDataSet", this.props.firstDataSet);
-
         let chartData = {
             labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             datasets: [
@@ -33,9 +31,13 @@ class LineChartCustom extends Component {
         };
 
         let LineChart = Chart.Line;
+        console.log("LineChart", LineChart);
 
         return (
-            <LineChart data={chartData} width="1000" height="300" />
+            <LineChart width="1000" height="300" data={chartData} options={{
+                responsive: true,
+                maintainAspectRatio: true
+            }} />
         )
     }
 }

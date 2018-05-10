@@ -49,17 +49,15 @@ class App extends Component {
       <div>
         <Header />
 
-        <div>
-          <div className="section">
-            <Row>
-              <Col className="side-nav-menu" s={12} m={12} l={3}>
-                <SideNav />
-              </Col>
-              <Col s={12} m={12} l={9}>
-                <Root />
-              </Col>
-            </Row>
-          </div>
+        <div className="section">
+          <Row>
+            <Col className="side-nav-menu" s={12} m={12} l={3}>
+              <SideNav />
+            </Col>
+            <Col s={12} m={12} l={9}>
+              <Root />
+            </Col>
+          </Row>
         </div>
       </div>
     );
