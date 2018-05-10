@@ -5,6 +5,30 @@ import { Row, Col } from 'react-materialize';
 
 class Statistic extends Component {
 
+    constructor(props) {
+        super(props);
+
+        const onGoingYear = new Date().getFullYear();
+        const pastYear = new Date().getFullYear() - 1;
+
+        this.state = {
+            lineChartDataSet: [{
+                data: this.getIncomes(pastYear),
+                label: 'Icomes from ' + pastYear,
+            }, {
+                data: this.getIncomes(onGoingYear),
+                label: 'Icomes from ' + onGoingYear,
+            }],
+            barChartDataSet: [{
+                data: this.getAppointments(pastYear),
+                label: 'Appointment from ' + pastYear,
+            }, {
+                data: this.getAppointments(onGoingYear),
+                label: 'Appointment from ' + onGoingYear,
+            }]
+        }
+    }
+
     componentDidMount() {
         this.props.setTitle('statistic');
     }
@@ -43,35 +67,16 @@ class Statistic extends Component {
     }
 
     render() {
-        const onGoingYear = new Date().getFullYear();
-        const pastYear = new Date().getFullYear() - 1;
-
-        const lineChartDataSet = [{
-            data: this.getIncomes(pastYear),
-            label: 'Icomes from ' + pastYear,
-        }, {
-            data: this.getIncomes(onGoingYear),
-            label: 'Icomes from ' + onGoingYear,
-        }];
-
-        const barChartDataSet = [{
-            data: this.getAppointments(pastYear),
-            label: 'Appointment from ' + pastYear,
-        }, {
-            data: this.getAppointments(onGoingYear),
-            label: 'Appointment from ' + onGoingYear,
-        }];
-
         return (
             <div>
                 <Row>
                     <Col s={12}>
                         <label>Icomes 2018</label>
-                        <LineChartCustom dataSet={lineChartDataSet} />
+                        <LineChartCustom dataSet={this.state.lineChartDataSet} />
                     </Col>
                     <Col s={12}>
                         <label>Appoinments 2018</label>
-                        <BarChartCustom dataSet={barChartDataSet} />
+                        <BarChartCustom dataSet={this.state.barChartDataSet} />
                     </Col>
                 </Row>
             </div>
