@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PatientForm from '../../components/form/patient-form.container';
 import { SubmissionError } from 'redux-form';
-import InputValidation from '../../service/input-validation.service';
+import InputValidationService from '../../service/input-validation.service';
 
 class PatientFormUpdate extends Component {
 
@@ -25,7 +25,7 @@ class PatientFormUpdate extends Component {
     }
 
     submit(values) {
-        const inputValidation = new InputValidation();
+        const inputValidationService = new InputValidationService();
 
         const formatValues = [{
             key: 'firstname',
@@ -41,7 +41,7 @@ class PatientFormUpdate extends Component {
             value: values.birthday
         }];
 
-        const required = inputValidation.required(formatValues);
+        const required = inputValidationService.required(formatValues);
 
         if (required) {
             return this.props.updatePatient(this.props.patient._id, values.firstname, values.lastname,

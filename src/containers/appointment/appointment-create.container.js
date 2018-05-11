@@ -4,7 +4,7 @@ import AppointmentCreate from './appointment-create.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 import { addAppointment, updateToTrashAppointment } from '../../actions/appointment.action';
-import FilterService from '../../service/filter';
+import FilterService from '../../service/filter.service';
 
 const filterService = new FilterService();
 

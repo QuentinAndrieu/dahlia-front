@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import AppointmentForm from '../../components/form/appointment-form.container';
 import { SubmissionError } from 'redux-form';
-import InputValidation from '../../service/input-validation.service';
+import InputValidationService from '../../service/input-validation.service';
 
 class AppointmentCreate extends Component {
 
@@ -25,7 +25,7 @@ class AppointmentCreate extends Component {
     }
 
     submit(values) {
-        const inputValidation = new InputValidation();
+        const inputValidationService = new InputValidationService();
 
         const date = new Date();
         const title = this.props.patient.firstname + ' ' + this.props.patient.lastname;
@@ -41,7 +41,7 @@ class AppointmentCreate extends Component {
             value: values.duration && values.rate.toString()
         }];
 
-        const required = inputValidation.required(formatValues);
+        const required = inputValidationService.required(formatValues);
 
         if (required) {
             return this.props.addAppointment(this.props.patient._id, values.description,

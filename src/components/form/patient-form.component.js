@@ -1,65 +1,48 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Button } from 'react-materialize';
+import FieldService from '../../service/field.service';
 
 class PatientForm extends Component {
 
-    renderField({ input, label, textarea, type, meta: { touched, error } }) {
-        const errorInput = {
-            borderBottom: '2px solid #AA0078'
-        }
-
-        const inputField = <input {...input} type={type} style={(touched && error) ? errorInput : {}}
-            placeholder={label} />;
-
-        const textareaField = <textarea className="materialize-textarea" {...input} type={type} style={(touched && error) ? errorInput : {}}
-            placeholder={label} />;
-
-        return (
-            <div>
-                <label>{label}</label>
-                {textarea ? textareaField : inputField}
-            </div>
-        )
-    }
-
     render() {
         const { handleSubmit, submitting, error, pristine } = this.props;
+        const field = new FieldService();
 
         return (
             <form onSubmit={handleSubmit}>
                 <Field
                     name="lastname"
                     label="Lastname"
-                    component={this.renderField}
+                    component={field.renderField}
                     type="text"
                     placeholder="Lastname"
                 />
                 <Field
                     name="firstname"
                     label="Firstname"
-                    component={this.renderField}
+                    component={field.renderField}
                     type="text"
                     placeholder="Firstname"
                 />
                 <Field
                     name="birthday"
                     label="Birthday"
-                    component={this.renderField}
+                    component={field.renderField}
                     type="date"
                     placeholder="Birthday"
                 />
                 <Field
                     name="occupation"
                     label="Occupation"
-                    component={this.renderField}
+                    component={field.renderField}
                     type="text"
                     placeholder="occupation"
                 />
                 <Field
                     name="description"
                     label="Description"
-                    component={this.renderField}
+                    component={field.renderField}
                     type="text"
                     placeholder="Description"
                     textarea={true}

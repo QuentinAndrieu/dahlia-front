@@ -3,7 +3,7 @@ import { Row, Col } from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
 import SignUpForm from '../../components/form/signup-form.component';
 import { SubmissionError } from 'redux-form';
-import InputValidation from '../../service/input-validation.service';
+import InputValidationService from '../../service/input-validation.service';
 
 class UserSignUp extends Component {
 
@@ -22,7 +22,7 @@ class UserSignUp extends Component {
     }
 
     submit(values) {
-        const inputValidation = new InputValidation();
+        const inputValidationService = new InputValidationService();
 
         const formatValues = [{
             key: 'mail',
@@ -35,8 +35,8 @@ class UserSignUp extends Component {
             value: values.passwordCopy
         }];
 
-        const required = inputValidation.required(formatValues);
-        const matchPassword = inputValidation.comparePassword(values.password, values.passwordCopy);
+        const required = inputValidationService.required(formatValues);
+        const matchPassword = inputValidationService.comparePassword(values.password, values.passwordCopy);
 
         if (required && matchPassword) {
             return this.props.register(values.mail, values.password)

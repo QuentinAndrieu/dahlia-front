@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-class InputValidation {
+class InputValidationService {
 
     required(inputs) {
         let errors = {};
@@ -40,4 +40,4 @@ class InputValidation {
     }
 }
 
-export default InputValidation;
+export default InputValidationService;

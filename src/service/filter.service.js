@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-class Filter {
+class FilterService {
 
     getPatient(id, patients) {
         const patient = patients.filter((patient) => {
@@ -30,4 +30,4 @@ class Filter {
     }
 }
 
-export default Filter;
+export default FilterService;

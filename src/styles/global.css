@@ -9,7 +9,6 @@ header {
 
 .nav-logo {
     height: 120px;
-    /* width: 64px; */
     margin-top: 10px;
 }
 
@@ -24,10 +23,6 @@ header {
 
 .dahlia-green {
     color: #1DBD63 !important;
-}
-
-.violet-link {
-    color: rgb(211, 9, 21) !important;
 }
 
 .side-nav-menu {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import AppointmentForm from '../../components/form/appointment-form.container';
 import { SubmissionError } from 'redux-form';
-import InputValidation from '../../service/input-validation.service';
+import InputValidationService from '../../service/input-validation.service';
 
 class AppointmentUpdate extends Component {
 
@@ -25,7 +25,7 @@ class AppointmentUpdate extends Component {
     }
 
     submit(values) {
-        const inputValidation = new InputValidation();
+        const inputValidationService = new InputValidationService();
 
         const formatValues = [{
             key: 'description',
@@ -38,7 +38,7 @@ class AppointmentUpdate extends Component {
             value: values.rate.toString()
         }];
 
-        const required = inputValidation.required(formatValues);
+        const required = inputValidationService.required(formatValues);
 
         if (required) {
             return this.props.updateAppointment(this.props.appointment._id, values.description,

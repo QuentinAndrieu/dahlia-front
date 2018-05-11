@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PatientUpdate from './patient-update.component';
 import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
-import FilterService from '../../service/filter';
+import FilterService from '../../service/filter.service';
 
 const filterService = new FilterService();
 

@@ -3,7 +3,7 @@ import { Row, Col } from 'react-materialize';
 import { Redirect, Link } from 'react-router-dom';
 import SignInForm from '../../components/form/signin-form.component';
 import { SubmissionError } from 'redux-form';
-import InputValidation from '../../service/input-validation.service';
+import InputValidationService from '../../service/input-validation.service';
 
 class UserSignIn extends Component {
 
@@ -22,7 +22,7 @@ class UserSignIn extends Component {
     }
 
     submit(values) {
-        const inputValidation = new InputValidation();
+        const inputValidationService = new InputValidationService();
         
         const formatValues = [{
             key: 'mail',
@@ -32,7 +32,7 @@ class UserSignIn extends Component {
             value: values.password
         }];
 
-        const required = inputValidation.required(formatValues);
+        const required = inputValidationService.required(formatValues);
 
         if (required) {
             const props = this.props;

@@ -1,47 +1,34 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Button } from 'react-materialize';
+import FieldService from '../../service/field.service';
 
 class UserForm extends Component {
 
-    renderField({ input, label, type, meta: { touched, error } }) {
-        const errorInput = {
-            borderBottom: '2px solid #AA0078'
-        }
-
-        return (
-            <div>
-                <label>{label}</label>
-                <div>
-                    <input {...input} type={type} style={(touched && error) ? errorInput : {}} placeholder={label} />
-                </div>
-            </div>
-        )
-    }
-
     render() {
         const { handleSubmit, submitting, error } = this.props;
+        const field = new FieldService();
 
         return (
             <form onSubmit={handleSubmit}>
                 <Field
                     name="lastname"
                     label="Lastname"
-                    component={this.renderField}
+                    component={field.renderField}
                     type="text"
                     placeholder="Lastname"
                 />
                 <Field
                     name="firstname"
                     label="Firstname"
-                    component={this.renderField}
+                    component={field.renderField}
                     type="text"
                     placeholder="Firstname"
                 />
                 <Field
                     name="mail"
                     label="Mail"
-                    component={this.renderField}
+                    component={field.renderField}
                     type="email"
                     placeholder="Mail"
                 />

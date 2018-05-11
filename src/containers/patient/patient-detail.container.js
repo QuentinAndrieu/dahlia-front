@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { setTitle } from '../../actions/router.action';
 import { updateToTrashPatient } from '../../actions/patient.action';
 import { addAppointment, updateToTrashAppointment } from '../../actions/appointment.action';
-import FilterService from '../../service/filter';
+import FilterService from '../../service/filter.service';
 
 const filterService = new FilterService();
 

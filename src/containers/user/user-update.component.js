@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserForm from '../../components/form/user-form.container';
 import { SubmissionError } from 'redux-form';
-import InputValidation from '../../service/input-validation.service';
+import InputValidationService from '../../service/input-validation.service';
 
 class UserUpdate extends Component {
 
@@ -16,7 +16,7 @@ class UserUpdate extends Component {
     }
 
     submit(values) {
-        const inputValidation = new InputValidation();
+        const inputValidationService = new InputValidationService();
 
         const formatValues = [{
             key: 'mail',
@@ -29,7 +29,7 @@ class UserUpdate extends Component {
             value: values.lastname
         }];
 
-        const required = inputValidation.required(formatValues);
+        const required = inputValidationService.required(formatValues);
 
         if (required) {
             const username = values.lastname + ' ' + values.firstname;
