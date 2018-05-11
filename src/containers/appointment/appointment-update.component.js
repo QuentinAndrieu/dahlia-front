@@ -42,12 +42,13 @@ class AppointmentUpdate extends Component {
 
         if (required) {
             return this.props.updateAppointment(this.props.appointment._id, values.description,
-                values.title, values.rate, values.duration)
+                values.title, values.rate, values.duration, this.props.appointment.date)
                 .then((id) => {
                     this.setState({
                         redirect: true
                     });
-                }).catch((err) => {
+                })
+                .catch((err) => {
                     throw new SubmissionError({
                         _error: err
                     });

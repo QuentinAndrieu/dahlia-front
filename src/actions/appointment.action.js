@@ -43,7 +43,7 @@ export function addAppointment(idPatient, description, title, date, rate, durati
     }
 }
 
-export function updateAppointment(idAppointment, description, title, rate, duration) {
+export function updateAppointment(idAppointment, description, title, rate, duration, date) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
             dispatch({ type: 'UPDATE_APPOINTMENT' });
@@ -52,7 +52,8 @@ export function updateAppointment(idAppointment, description, title, rate, durat
                 description: description,
                 title: title,
                 rate: rate,
-                duration: duration
+                duration: duration,
+                date: date,
             }).then((response) => {
                 if (response.data.success) {
                     dispatch({ type: 'UPDATE_APPOINTMENT_FULFILLED', payload: response.data.user });

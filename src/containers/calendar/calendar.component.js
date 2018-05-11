@@ -2,8 +2,42 @@ import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+
+const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 class Calendar extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            events: this.formatAppointments(this.props.appointments),
+        }
+
+        this.moveEvent = this.moveEvent.bind(this);
+    }
+
+    moveEvent({ event, start, end }) {
+        const { events } = this.state;
+        const idx = events.indexOf(event);
+        const updatedEvent = { ...event, start, end };
+        const nextEvents = [...events];
+
+        this.setState({
+            events: nextEvents
+        });
+
+        nextEvents.splice(idx, 1, updatedEvent);
+        
+        this.props.updateAppointment(event._id, event.description, event.title, event.rate,
+            event.duration, updatedEvent.start).then((id) => {
+                console.log('updated appointment');
+            }).catch((err)=>{
+                console.log('error update appointment');
+            })
+    }
 
     componentWillMount() {
         BigCalendar.setLocalizer(
@@ -16,36 +50,37 @@ class Calendar extends Component {
     }
 
     filterList(list) {
-        const listUpdated = list.filter((item) => {
+        return list.filter((item) => {
             return !item.trash;
         });
-
-        return listUpdated;
     }
 
     formatAppointments(appointments) {
-        const formatAppointments = this.filterList(appointments).map((appointment) => {
-            appointment = {
+        return this.filterList(appointments).map((appointment) => {
+            return {
+                '_id': appointment._id,
                 'title': appointment.title,
+                'description': appointment.description,
+                'rate': appointment.rate,
+                'duration': appointment.duration,
+                'date': appointment.date,
                 'start': moment(appointment.date).toDate(),
-                'end': moment(appointment.date).add(appointment.duration, 'm').toDate()
+                'end': moment(appointment.date).add(appointment.duration, 'm').toDate(),
             }
-            return appointment;
         });
-
-        return formatAppointments;
     }
 
     render() {
         return (
-            <div >
-                <BigCalendar
-                    className="calendar"
-                    events={this.formatAppointments(this.props.appointments)}
-                />
-            </div>
+            <DragAndDropCalendar
+                className="calendar"
+                selectable
+                events={this.state.events}
+                onEventDrop={this.moveEvent}
+                defaultView="week"
+            />
         )
     }
 }
 
-export default Calendar;
+export default DragDropContext(HTML5Backend)(Calendar);
