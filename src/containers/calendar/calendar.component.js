@@ -30,12 +30,12 @@ class Calendar extends Component {
         });
 
         nextEvents.splice(idx, 1, updatedEvent);
-        
+
         this.props.updateAppointment(event._id, event.description, event.title, event.rate,
             event.duration, updatedEvent.start).then((id) => {
-                console.log('updated appointment');
-            }).catch((err)=>{
-                console.log('error update appointment');
+                window.M.toast({ html: 'Appointment updated', classes: 'toast-custom' }, 2000);
+            }).catch((err) => {
+                window.M.toast({ html: 'Error during appointment update' }, 2000);
             })
     }
 
@@ -43,6 +43,10 @@ class Calendar extends Component {
         BigCalendar.setLocalizer(
             BigCalendar.momentLocalizer(moment)
         );
+    }
+
+    undoMoveEvent() {
+        alert('test');
     }
 
     componentDidMount() {

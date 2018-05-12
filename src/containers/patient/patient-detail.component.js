@@ -61,7 +61,7 @@ class PatientDetail extends Component {
                 <Col s={12}>
                     <p>{appointment.description}</p>
                     <label>
-                        {this.formatDate(appointment.createdAt)} / {appointment.duration} minutes / {appointment.rate} dollars
+                        {this.formatDate(appointment.date)} / {appointment.duration} minutes / {appointment.rate} dollars
                      </label>
                 </Col>
                 <Col s={2} m={1} l={1}>
