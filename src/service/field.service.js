@@ -1,26 +1,36 @@
 import React from 'react';
 
+const errorInput = {
+    borderBottom: '2px solid #FF0000'
+}
+
 class FieldService {
 
-    renderField({ input, label, textarea, type, meta: { touched, error } }) {
-        const errorInput = {
-            borderBottom: '2px solid #FF0000'
-        }
-
-        const inputField = <input {...input} type={type} style={(touched && error) ? errorInput : {}}
-            placeholder={label} />;
-
-        const textareaField = <textarea className="materialize-textarea" {...input} type={type} style={(touched && error) ? errorInput : {}}
-            placeholder={label} />;
-
+    renderInput({ input, label, type, meta: { touched, error } }) {
         return (
             <div>
                 <label>{label}</label>
-                {textarea ? textareaField : inputField}
+                <input {...input}
+                    type={type}
+                    style={(touched && error) ? errorInput : {}}
+                    placeholder={label} />
             </div>
         )
     }
 
+    renderTextarea({ input, label, type, meta: { touched, error } }) {
+        return (
+            <div>
+                <label>{label}</label>
+                <textarea
+                    {...input}
+                    className="materialize-textarea"
+                    type={type}
+                    style={(touched && error) ? errorInput : {}}
+                    placeholder={label} />
+            </div>
+        )
+    }
 }
 
 export default FieldService;

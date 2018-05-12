@@ -14,21 +14,21 @@ class UserForm extends Component {
                 <Field
                     name="lastname"
                     label="Lastname"
-                    component={field.renderField}
+                    component={field.renderInput}
                     type="text"
                     placeholder="Lastname"
                 />
                 <Field
                     name="firstname"
                     label="Firstname"
-                    component={field.renderField}
+                    component={field.renderInput}
                     type="text"
                     placeholder="Firstname"
                 />
                 <Field
                     name="mail"
                     label="Mail"
-                    component={field.renderField}
+                    component={field.renderInput}
                     type="email"
                     placeholder="Mail"
                 />

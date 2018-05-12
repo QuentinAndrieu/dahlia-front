@@ -14,14 +14,14 @@ class SignInForm extends Component {
                 <Field
                     name="mail"
                     label="Mail"
-                    component={field.renderField}
+                    component={field.renderInput}
                     type="email"
                     placeholder="Mail"
                 />
                 <Field
                     name="password"
                     label="Password"
-                    component={field.renderField}
+                    component={field.renderInput}
                     type="password"
                     placeholder="Password"
                 />

@@ -52,3 +52,7 @@
 .collection a.collection-item {
     color: black !important;
 }
+
+textarea.materialize-textarea {
+    min-height: 7rem;
+}

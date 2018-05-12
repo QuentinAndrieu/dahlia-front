@@ -14,7 +14,7 @@ class AppointmentForm extends Component {
                 <Field
                     name="description"
                     label="Description"
-                    component={field.renderField}
+                    component={field.renderTextarea}
                     type="text"
                     placeholder="Description"
                     textarea={true}
@@ -22,14 +22,14 @@ class AppointmentForm extends Component {
                 <Field
                     name="rate"
                     label="Rate"
-                    component={field.renderField}
+                    component={field.renderInput}
                     type="text"
                     placeholder="Rate"
                 />
                 <Field
                     name="duration"
                     label="Duration"
-                    component={field.renderField}
+                    component={field.renderInput}
                     type="text"
                     placeholder="Duration"
                 />
