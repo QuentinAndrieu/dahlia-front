@@ -50,6 +50,7 @@ class PatientFormUpdate extends Component {
                     this.setState({
                         redirect: true
                     });
+                    window.M.toast({ html: 'Patient updated', classes: 'toast-green' }, 2000);
                 }).catch((err) => {
                     throw new SubmissionError({
                         _error: err

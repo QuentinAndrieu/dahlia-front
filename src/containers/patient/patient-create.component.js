@@ -53,6 +53,7 @@ class PatientCreate extends Component {
                         _id: id,
                         redirect: true
                     });
+                    window.M.toast({ html: 'Patient created', classes: 'toast-green' }, 2000);
                 }).catch((err) => {
                     throw new SubmissionError({
                         _error: err

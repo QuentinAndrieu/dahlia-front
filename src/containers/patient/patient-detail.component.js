@@ -25,14 +25,17 @@ class PatientDetail extends Component {
             this.setState({
                 redirect: true
             });
+            window.M.toast({ html: 'Patient deleted', classes: 'toast-green' }, 2000);
         }).catch((err) => {
-            console.log(err);
+            window.M.toast({ html: err, classes: 'toast-green' }, 2000);
         });
     }
 
     updateToTrashAppointment(id) {
-        this.props.updateToTrashAppointment(id).catch((err) => {
-            console.log(err);
+        this.props.updateToTrashAppointment(id).then((appointment) => {
+            window.M.toast({ html: 'Appointment deleted', classes: 'toast-green' }, 2000);
+        }).catch((err) => {
+            window.M.toast({ html: err, classes: 'toast-green' }, 2000);
         });
     }
 

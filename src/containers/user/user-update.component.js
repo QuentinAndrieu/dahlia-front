@@ -34,8 +34,9 @@ class UserUpdate extends Component {
         if (required) {
             const username = values.lastname + ' ' + values.firstname;
             return this.props.updateUser(username, values.lastname, values.firstname,
-                values.mail)
-                .catch((err) => {
+                values.mail).then((user)=>{
+                    window.M.toast({ html: 'User updated', classes: 'toast-green' }, 2000);
+                }).catch((err) => {
                     throw new SubmissionError({
                         _error: err
                     });

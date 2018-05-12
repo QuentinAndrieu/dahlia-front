@@ -50,6 +50,7 @@ class AppointmentCreate extends Component {
                     this.setState({
                         redirect: true
                     });
+                    window.M.toast({ html: 'Appointment created', classes: 'toast-green' }, 2000);
                 }).catch((err) => {
                     throw new SubmissionError({
                         _error: err

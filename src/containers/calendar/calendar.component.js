@@ -33,9 +33,9 @@ class Calendar extends Component {
 
         this.props.updateAppointment(event._id, event.description, event.title, event.rate,
             event.duration, updatedEvent.start).then((id) => {
-                window.M.toast({ html: 'Appointment updated', classes: 'toast-custom' }, 2000);
+                window.M.toast({ html: 'Appointment updated', classes: 'toast-green' }, 2000);
             }).catch((err) => {
-                window.M.toast({ html: 'Error during appointment update' }, 2000);
+                window.M.toast({ html: 'Error during appointment update', classes: 'toast-green' }, 2000);
             })
     }
 
