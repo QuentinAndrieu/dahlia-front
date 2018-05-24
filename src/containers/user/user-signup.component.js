@@ -42,11 +42,13 @@ class UserSignUp extends Component {
             return this.props.register(values.mail, values.password)
                 .then(() => {
                     return this.props.fetchJWTToken(values.mail, values.password);
-                }).then(() => {
+                })
+                .then(() => {
                     this.setState({
                         redirect: true
                     });
-                }).catch((err) => {
+                })
+                .catch((err) => {
                     throw new SubmissionError(
                         {
                             _error: err

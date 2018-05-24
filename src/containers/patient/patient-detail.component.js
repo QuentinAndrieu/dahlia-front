@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import { Link, Redirect } from 'react-router-dom';
-import moment from 'moment';
+import ModalCustom from '../../components/modal/modal-custom.component';
+import AppointmentCreate from '../appointment/appointment-create.container';
+import AppoinmentDetail from '../appointment/appointment-detail.container';
 
 class PatientDetail extends Component {
 
@@ -9,15 +11,14 @@ class PatientDetail extends Component {
         super(props);
 
         this.state = {
-            redirect: false
+            redirect: false,
+            modalIsOpenAddAppointment: false
         }
 
         this.props.setTitle('patient-detail');
         this.updateToTrashPatient = this.updateToTrashPatient.bind(this);
-    }
-
-    componentDidMount() {
-        this.props.setTitle(this.props.patient.firstname + ' ' + this.props.patient.lastname);
+        this.openModalAddAppointment = this.openModalAddAppointment.bind(this);
+        this.closeModalAddAppointment = this.closeModalAddAppointment.bind(this);
     }
 
     updateToTrashPatient(id) {
@@ -25,17 +26,17 @@ class PatientDetail extends Component {
             this.setState({
                 redirect: true
             });
-            window.M.toast({ html: 'Patient deleted', classes: 'toast-green' }, 2000);
+            window.M.toast({
+                html: 'Patient deleted',
+                classes: 'toast-custom',
+                displayLength: 1000
+            });
         }).catch((err) => {
-            window.M.toast({ html: err, classes: 'toast-green' }, 2000);
-        });
-    }
-
-    updateToTrashAppointment(id) {
-        this.props.updateToTrashAppointment(id).then((appointment) => {
-            window.M.toast({ html: 'Appointment deleted', classes: 'toast-green' }, 2000);
-        }).catch((err) => {
-            window.M.toast({ html: err, classes: 'toast-green' }, 2000);
+            window.M.toast({
+                html: 'Error during patient delete',
+                classes: 'toast-custom-error',
+                displayLength: 1000
+            });
         });
     }
 
@@ -47,39 +48,26 @@ class PatientDetail extends Component {
         return activeAppointments;
     }
 
+    openModalAddAppointment() {
+        this.setState({
+            modalIsOpenAddAppointment: true
+        });
+    }
+
+    closeModalAddAppointment() {
+        this.setState({
+            modalIsOpenAddAppointment: false
+        });
+    }
 
     customPath(path, id) {
         return path + '/' + id;
     }
 
-    formatDate(date) {
-        return moment(date).format('MMMM Do YYYY, h:mm:ss a')
-    }
-
     render() {
         const { patient } = this.props;
-
-        let mappedAppointments = this.getActiveAppointments(patient.appointments).map(appointment =>
-            <div className="patient-detail-appointment" key={appointment._id}>
-                <Col s={12}>
-                    <p>{appointment.description}</p>
-                    <label>
-                        {this.formatDate(appointment.date)} / {appointment.duration} minutes / {appointment.rate} dollars
-                     </label>
-                </Col>
-                <Col s={2} m={1} l={1}>
-                    <Link to={this.customPath('/appointment/update', appointment._id)}>
-                        <strong>Update</strong>
-                    </Link>
-                </Col>
-                <Col s={2} m={1} l={1}>
-                    <Link onClick={() => { this.updateToTrashAppointment(appointment._id) }} to="#">
-                        <strong>Delete</strong>
-                    </Link>
-                </Col>
-                <Col s={8} m={10} l={10}></Col>
-            </div>);
-
+        const mappedAppointments = this.getActiveAppointments(patient.appointments).map(appointment =>
+            <AppoinmentDetail appointment={appointment} />);
         const appointmentsLabel = mappedAppointments.length > 0 ? 'Appointments' : '';
 
         return (
@@ -101,9 +89,19 @@ class PatientDetail extends Component {
                                 </Link>
                             </Col>
                             <Col s={6}>
-                                <Link to={patient._id + '/appointment/create'}>
+                                <Link to="#" onClick={this.openModalAddAppointment}>
                                     <strong>Add appointment</strong>
                                 </Link>
+                                <ModalCustom
+                                    label="Add appointment"
+                                    modalIsOpen={this.state.modalIsOpenAddAppointment}
+                                    closeModal={this.closeModalAddAppointment}
+                                    component={
+                                        <AppointmentCreate
+                                            closeModal={this.closeModalAddAppointment}
+                                            patient={patient}
+                                        />}
+                                />
                             </Col>
                         </Col>
                         <Col l={7} m={8} s={12}>

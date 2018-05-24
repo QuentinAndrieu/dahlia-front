@@ -61,8 +61,14 @@ textarea.materialize-textarea {
     min-height: 7rem;
 }
 
-.toast-green {
-    background-color: #1DBD63;
+.toast-custom {
+    background-color: #336699;
+    color: white;
+    font-size: bold;
+}
+
+.toast-custom-error {
+    background-color: #FF0000;
     color: white;
     font-size: bold;
 }

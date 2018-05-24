@@ -39,3 +39,8 @@ header {
 .link-nav .active {
     color: #1DBD63;
 }
+
+.modal-header {
+    color: #1DBD63;
+    font-weight: bold;
+}

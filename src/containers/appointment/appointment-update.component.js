@@ -47,7 +47,11 @@ class AppointmentUpdate extends Component {
                     this.setState({
                         redirect: true
                     });
-                    window.M.toast({ html: 'Appoinment updated', classes: 'toast-green' }, 2000);
+                    window.M.toast({
+                        html: 'Appoinment updated',
+                        classes: 'toast-custom',
+                        displayLength: 1000
+                    });
                 })
                 .catch((err) => {
                     throw new SubmissionError({
