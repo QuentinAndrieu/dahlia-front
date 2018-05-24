@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import AppointmentForm from '../../components/form/appointment-form.container';
 import { SubmissionError } from 'redux-form';
 import InputValidationService from '../../service/input-validation.service';
