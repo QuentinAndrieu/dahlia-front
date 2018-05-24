@@ -61,14 +61,15 @@ textarea.materialize-textarea {
     min-height: 7rem;
 }
 
-.toast-custom {
-    background-color: #336699;
-    color: white;
-    font-size: bold;
+.ReactModal__Body--open {
+    overflow-y: hidden;
+    position: fixed;
 }
 
-.toast-custom-error {
-    background-color: #FF0000;
-    color: white;
-    font-size: bold;
+.ReactModalPortal {
+    overflow-y: auto;
+}
+
+.ReactModal__Overlay {
+    overflow-y: auto;
 }

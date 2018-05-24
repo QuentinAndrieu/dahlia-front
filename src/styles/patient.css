@@ -6,11 +6,19 @@
     margin-top: 2px;
 }
 
-.patient-detail-appointment p {
+.detail-appointment {
+    margin-bottom: 10px;
+}
+
+.detail-appointment p {
     margin-bottom: 0px;
 }
 
-.patient-detail-appointment label {
+.detail-appointment label {
     float: right;
     margin-right: 15px;
+}
+
+.appointments-label {
+    margin-bottom: 5px;
 }

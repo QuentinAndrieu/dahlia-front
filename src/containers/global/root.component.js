@@ -5,7 +5,6 @@ import PatientList from '../patient/patient-list.container';
 import PatientCreate from '../patient/patient-create.container';
 import UserUpdate from '../user/user-update.container';
 import PatientDetail from '../patient/patient-detail.container';
-import PatientUpdate from '../patient/patient-update.container';
 import AppointmentUpdate from '../appointment/appointment-update.container';
 import Calendar from '../calendar/calendar.container';
 import Statistic from '../statistic/statistic.container';
@@ -35,7 +34,6 @@ class Root extends Component {
                     <AuthRoute exact path='/patients' component={<PatientList />} />
                     <AuthRoute exact path='/patient/create' component={<PatientCreate />} />
                     <AuthRoute exact path='/patient/:id' component={<PatientDetail />} />
-                    <AuthRoute exact path='/patient/update/:id' component={<PatientUpdate />} />
                     <AuthRoute exact path='/appointment/update/:id' component={<AppointmentUpdate />} />
                     <AuthRoute exact path='/calendar' component={<Calendar />} />
                     <AuthRoute exact path='/statistic' component={<Statistic />} />

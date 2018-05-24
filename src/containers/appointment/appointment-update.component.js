@@ -9,15 +9,7 @@ class AppointmentUpdate extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            redirect: false
-        };
-
         this.submit = this.submit.bind(this);
-    }
-
-    componentDidMount() {
-        this.props.setTitle('edit-appointment');
     }
 
     customPath(path, id) {
@@ -44,14 +36,13 @@ class AppointmentUpdate extends Component {
             return this.props.updateAppointment(this.props.appointment._id, values.description,
                 values.title, values.rate, values.duration, this.props.appointment.date)
                 .then((id) => {
-                    this.setState({
-                        redirect: true
-                    });
                     window.M.toast({
                         html: 'Appoinment updated',
                         classes: 'toast-custom',
                         displayLength: 1000
                     });
+
+                    this.props.closeModal();
                 })
                 .catch((err) => {
                     throw new SubmissionError({
@@ -63,13 +54,7 @@ class AppointmentUpdate extends Component {
 
     render() {
         return (
-            <div>
-                <AppointmentForm onSubmit={this.submit} button="Update" appointment={this.props.appointment} />
-
-                {this.state.redirect && (
-                    <Redirect to={this.customPath('/patient', this.props.appointment.id_patient)} />
-                )}
-            </div>
+            <AppointmentForm onSubmit={this.submit} button="Update" appointment={this.props.appointment} />
         );
     }
 }

@@ -22,7 +22,6 @@ class ModalCustom extends Component {
                 onRequestClose={this.props.closeModal}
                 style={customStyles}
                 contentLabel={this.props.label}>
-                <h4 className="modal-header">{this.props.label}</h4>
 
                 {this.props.component}
             </Modal>

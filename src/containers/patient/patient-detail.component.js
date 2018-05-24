@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ModalCustom from '../../components/modal/modal-custom.component';
 import AppointmentCreate from '../appointment/appointment-create.container';
 import AppoinmentDetail from '../appointment/appointment-detail.container';
+import PatientUpdate from '../patient/patient-update.container';
 
 class PatientDetail extends Component {
 
@@ -12,13 +13,16 @@ class PatientDetail extends Component {
 
         this.state = {
             redirect: false,
-            modalIsOpenAddAppointment: false
+            modalIsOpenAddAppointment: false,
+            modalIsOpenUpdatePatient: false
         }
 
         this.props.setTitle('patient-detail');
         this.updateToTrashPatient = this.updateToTrashPatient.bind(this);
         this.openModalAddAppointment = this.openModalAddAppointment.bind(this);
         this.closeModalAddAppointment = this.closeModalAddAppointment.bind(this);
+        this.openModalUpdatePatient = this.openModalUpdatePatient.bind(this);
+        this.closeModalUpdatePatient = this.closeModalUpdatePatient.bind(this);
     }
 
     updateToTrashPatient(id) {
@@ -41,11 +45,9 @@ class PatientDetail extends Component {
     }
 
     getActiveAppointments(appointments) {
-        const activeAppointments = appointments.filter((appointment) => {
+        return appointments.filter((appointment) => {
             return !appointment.trash;
         });
-
-        return activeAppointments;
     }
 
     openModalAddAppointment() {
@@ -60,6 +62,18 @@ class PatientDetail extends Component {
         });
     }
 
+    openModalUpdatePatient() {
+        this.setState({
+            modalIsOpenUpdatePatient: true
+        });
+    }
+
+    closeModalUpdatePatient() {
+        this.setState({
+            modalIsOpenUpdatePatient: false
+        });
+    }
+
     customPath(path, id) {
         return path + '/' + id;
     }
@@ -71,57 +85,65 @@ class PatientDetail extends Component {
         const appointmentsLabel = mappedAppointments.length > 0 ? 'Appointments' : '';
 
         return (
-            <div>
-                <div className="patient-detail">
-                    <Row>
-                        <Col s={12} m={12} l={7} >
-                            <h4>{patient.firstname} {patient.lastname}</h4>
-                        </Col>
-                        <Col s={12} m={12} l={5} className="hide-on-med-and-down" >
-                            <Col s={3}>
-                                <Link to={this.customPath('/patient/update', patient._id)}>
-                                    <strong>Update</strong>
-                                </Link>
-                            </Col>
-                            <Col s={3}>
-                                <Link onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
-                                    <strong>Delete</strong>
-                                </Link>
-                            </Col>
-                            <Col s={6}>
-                                <Link to="#" onClick={this.openModalAddAppointment}>
-                                    <strong>Add appointment</strong>
-                                </Link>
-                                <ModalCustom
-                                    label="Add appointment"
-                                    modalIsOpen={this.state.modalIsOpenAddAppointment}
-                                    closeModal={this.closeModalAddAppointment}
-                                    component={
-                                        <AppointmentCreate
-                                            closeModal={this.closeModalAddAppointment}
-                                            patient={patient}
-                                        />}
-                                />
-                            </Col>
-                        </Col>
-                        <Col l={7} m={8} s={12}>
-                            <label>About</label>
-                            <p>{patient.description}</p>
-                        </Col>
-                        <Col l={5} m={4} s={12}>
-                            <label>Occupation</label>
-                            <p>{patient.occupation}</p>
-                            <label>Birthday</label>
-                            <p>{patient.birthday}</p>
-                        </Col>
-                    </Row>
-                </div>
+            <div className="patient-detail">
                 <Row>
+                    <Col s={12} m={12} l={7} >
+                        <h4>{patient.firstname} {patient.lastname}</h4>
+                    </Col>
+                    <Col s={12} m={12} l={5} className="hide-on-med-and-down" >
+                        <Col s={3}>
+                            <Link to="#" onClick={this.openModalUpdatePatient}>
+                                <strong>Update</strong>
+                            </Link>
+                            <ModalCustom
+                                label="Update patient"
+                                modalIsOpen={this.state.modalIsOpenUpdatePatient}
+                                closeModal={this.closeModalUpdatePatient}
+                                component={
+                                    <PatientUpdate
+                                        closeModal={this.closeModalUpdatePatient}
+                                        patient={patient}
+                                    />}
+                            />
+                        </Col>
+                        <Col s={3}>
+                            <Link onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
+                                <strong>Delete</strong>
+                            </Link>
+                        </Col>
+                        <Col s={6}>
+                            <Link to="#" onClick={this.openModalAddAppointment}>
+                                <strong>Add appointment</strong>
+                            </Link>
+                            <ModalCustom
+                                label="Add appointment"
+                                modalIsOpen={this.state.modalIsOpenAddAppointment}
+                                closeModal={this.closeModalAddAppointment}
+                                component={
+                                    <AppointmentCreate
+                                        closeModal={this.closeModalAddAppointment}
+                                        patient={patient}
+                                    />}
+                            />
+                        </Col>
+                    </Col>
+                    <Col l={7} m={8} s={12}>
+                        <label>About</label>
+                        <p>{patient.description}</p>
+                    </Col>
+                    <Col l={5} m={4} s={12}>
+                        <label>Occupation</label>
+                        <p>{patient.occupation}</p>
+                        <label>Birthday</label>
+                        <p>{patient.birthday}</p>
+                    </Col>
+                </Row>
+                <Row className="appointments-label">
                     <Col s={12}>
                         <label>{appointmentsLabel}</label>
                     </Col>
-                    {mappedAppointments}
                 </Row>
+                {mappedAppointments}
                 {this.state.redirect && (
                     <Redirect to="/patients" />
                 )}
