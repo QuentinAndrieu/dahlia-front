@@ -58,7 +58,7 @@ class UserSignIn extends Component {
 
                 <Col className="container-login" s={12} m={6} l={4}>
                     <center>
-                        <img className="responsive-img img-logo" alt="" src="images/DahliaB.png" />
+                        <img className="responsive-img img-logo" alt="" src="images/Dahliab.png" />
                         <h4 className="dahlia-green">Dahlia</h4>
                     </center>
 
