@@ -1,4 +1,3 @@
-import { updateUser } from '../../actions/user.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Setting  from './setting.component';
