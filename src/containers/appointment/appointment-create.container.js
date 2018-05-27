@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { addAppointment, updateToTrashAppointment } from '../../actions/appointment.action';
 
 const mapStateToProps = (state, ownProps) => ({
+    user: state.user.user
 });
 
 const mapDispatchToProps = (dispatch) => (

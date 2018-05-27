@@ -12,17 +12,7 @@ class PatientForm extends Component {
         return (
             <form onSubmit={handleSubmit}>
                 <Row>
-                    <Col s={12} className="form-field-custom">
-                        <Field
-                            name="lastname"
-                            label="Lastname"
-                            component={InputCustom}
-                            type="text"
-                            placeholder="Lastname"
-                        />
-                    </Col>
-
-                    <Col s={12} className="form-field-custom">
+                    <Col s={12} m={6} l={6} className="form-field-custom">
                         <Field
                             name="firstname"
                             label="Firstname"
@@ -32,7 +22,17 @@ class PatientForm extends Component {
                         />
                     </Col>
 
-                    <Col s={12} className="form-field-custom">
+                    <Col s={12} m={6} l={6} className="form-field-custom">
+                        <Field
+                            name="lastname"
+                            label="Lastname"
+                            component={InputCustom}
+                            type="text"
+                            placeholder="Lastname"
+                        />
+                    </Col>
+
+                    <Col s={12} m={6} l={6} className="form-field-custom">
                         <Field
                             name="birthday"
                             label="Birthday"
@@ -42,7 +42,7 @@ class PatientForm extends Component {
                         />
                     </Col>
 
-                    <Col s={12} className="form-field-custom">
+                    <Col s={12} m={6} l={6} className="form-field-custom">
                         <Field
                             name="occupation"
                             label="Occupation"

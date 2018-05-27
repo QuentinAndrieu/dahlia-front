@@ -32,17 +32,7 @@ class UserForm extends Component {
         return (
             <form onSubmit={handleSubmit}>
                 <Row>
-                    <Col s={12} className="form-field-custom">
-                        <Field
-                            name="lastname"
-                            label="Lastname"
-                            component={InputCustom}
-                            type="text"
-                            placeholder="Lastname"
-                        />
-                    </Col>
-
-                    <Col s={12} className="form-field-custom">
+                    <Col s={12} m={6} l={6} className="form-field-custom">
                         <Field
                             name="firstname"
                             label="Firstname"
@@ -52,13 +42,13 @@ class UserForm extends Component {
                         />
                     </Col>
 
-                    <Col s={12} className="form-field-custom">
+                    <Col s={12} m={6} l={6} className="form-field-custom">
                         <Field
-                            name="mail"
-                            label="Mail"
+                            name="lastname"
+                            label="Lastname"
                             component={InputCustom}
-                            type="email"
-                            placeholder="Mail"
+                            type="text"
+                            placeholder="Lastname"
                         />
                     </Col>
 
@@ -81,6 +71,16 @@ class UserForm extends Component {
                             values={this.getValuesSelectBoxDurations()}
                         />
                         {error && <strong className="error">{error}</strong>}
+                    </Col>
+
+                    <Col s={12} className="form-field-custom">
+                        <Field
+                            name="mail"
+                            label="Mail"
+                            component={InputCustom}
+                            type="email"
+                            placeholder="Mail"
+                        />
                     </Col>
 
                     <Col s={12}>

@@ -85,7 +85,7 @@ class Calendar extends Component {
                 selectable
                 events={this.state.events}
                 onEventDrop={this.moveEvent}
-                defaultView="week"
+                defaultView="month"
             />
         )
     }

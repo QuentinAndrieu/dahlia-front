@@ -8,6 +8,13 @@ class AppointmentCreate extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            appointment: {
+                rate: this.props.user.defaultRate,
+                duration: this.props.user.defaultDuration
+            }
+        }
+
         this.submit = this.submit.bind(this);
     }
 
@@ -55,7 +62,7 @@ class AppointmentCreate extends Component {
 
     render() {
         return (
-            <AppointmentForm onSubmit={this.submit} button="Submit" />
+            <AppointmentForm onSubmit={this.submit} appointment={this.state.appointment} button="Submit" />
         );
     }
 }
