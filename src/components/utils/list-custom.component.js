@@ -39,7 +39,7 @@ class ListCustom extends Component {
 
         this.setState({
             list: updatedList
-        });
+        })
     }
 
     customPath(path, id) {
@@ -64,7 +64,7 @@ class ListCustom extends Component {
 
     render() {
         let mappedList = this.state.list.map(element => <Link key={element._id} to={this.customPath(this.props.path, element._id)}>
-            <CollectionItem key={element._id} className="grey-text">
+            <CollectionItem key={element._id}>
                 {element.link}
             </CollectionItem>
         </Link>);
@@ -73,12 +73,12 @@ class ListCustom extends Component {
             <div className="list">
                 <Row>
                     <Input onChange={this.searchList} s={12} label={this.customSearchTitle(this.props.title)} />
-                <Collection>
-                    {mappedList}
-                </Collection>
+                    <Collection>
+                        {mappedList}
+                    </Collection>
                 </Row>
             </div>
-        );
+        )
     }
 }
 

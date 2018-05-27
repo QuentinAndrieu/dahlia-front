@@ -1,44 +1,57 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Button } from 'react-materialize';
-import FieldService from '../../service/field.service';
+import { Button, Row, Col } from 'react-materialize';
+import TextareaCustom from '../field/textarea-custom.component';
+import InputCustom from '../field/input-custom.component';
 
 class AppointmentForm extends Component {
 
     render() {
         const { handleSubmit, submitting, error, pristine } = this.props;
-        const field = new FieldService();
 
         return (
             <form onSubmit={handleSubmit}>
-                <Field
-                    name="description"
-                    label="Description"
-                    component={field.renderTextarea}
-                    type="text"
-                    placeholder="Description"
-                    textarea={true}
-                />
-                <Field
-                    name="rate"
-                    label="Rate"
-                    component={field.renderInput}
-                    type="text"
-                    placeholder="Rate"
-                />
-                <Field
-                    name="duration"
-                    label="Duration"
-                    component={field.renderInput}
-                    type="text"
-                    placeholder="Duration"
-                />
-                {error && <strong className="error">{error}</strong>}
-                <center>
-                    <Button disabled={pristine || submitting} s={12} type="submit">{this.props.button}</Button>
-                </center>
+                <Row>
+                    <Col s={12} className="form-field-custom">
+                        <Field
+                            name="description"
+                            label="Description"
+                            component={TextareaCustom}
+                            type="text"
+                            placeholder="Description"
+                            textarea={true}
+                        />
+                    </Col>
+
+                    <Col s={12} m={6} l={6} className="form-field-custom">
+                        <Field
+                            name="rate"
+                            label="Rate"
+                            component={InputCustom}
+                            type="text"
+                            placeholder="Rate"
+                        />
+                    </Col>
+
+                    <Col s={12} m={6} l={6} className="form-field-custom">
+                        <Field
+                            name="duration"
+                            label="Duration"
+                            component={InputCustom}
+                            type="text"
+                            placeholder="Duration"
+                        />
+                        {error && <strong className="error">{error}</strong>}
+                    </Col>
+
+                    <Col s={12} className="form-field-custom">
+                        <center>
+                            <Button className="submit-button" disabled={pristine || submitting} s={12} type="submit">{this.props.button}</Button>
+                        </center>
+                    </Col>
+                </Row>
             </form>
-        );
+        )
     }
 }
 

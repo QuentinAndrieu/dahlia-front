@@ -11,10 +11,6 @@ class UserUpdate extends Component {
         this.submit = this.submit.bind(this);
     }
 
-    componentDidMount() {
-        this.props.setTitle('profile');
-    }
-
     submit(values) {
         const inputValidationService = new InputValidationService();
 
@@ -27,6 +23,12 @@ class UserUpdate extends Component {
         }, {
             key: 'lastname',
             value: values.lastname
+        }, {
+            key: 'defaultRate',
+            value: values.defaultRate
+        }, {
+            key: 'defaultDuration',
+            value: values.defaultDuration
         }];
 
         const required = inputValidationService.required(formatValues);
@@ -34,12 +36,14 @@ class UserUpdate extends Component {
         if (required) {
             const username = values.lastname + ' ' + values.firstname;
             return this.props.updateUser(username, values.lastname, values.firstname,
-                values.mail).then((user) => {
+                values.mail, values.defaultRate, values.defaultDuration).then((user) => {
                     window.M.toast({
                         html: 'User updated',
                         classes: 'toast-custom',
                         displayLength: 1000
                     });
+
+                    this.props.closeModal();
                 }).catch((err) => {
                     throw new SubmissionError({
                         _error: err

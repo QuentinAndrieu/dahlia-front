@@ -90,11 +90,13 @@ class PatientDetail extends Component {
                     <Col s={12} m={12} l={7} >
                         <h4>{patient.firstname} {patient.lastname}</h4>
                     </Col>
+
                     <Col s={12} m={12} l={5} className="hide-on-med-and-down" >
                         <Col s={3}>
                             <Link to="#" onClick={this.openModalUpdatePatient}>
                                 <strong>Update</strong>
                             </Link>
+
                             <ModalCustom
                                 label="Update patient"
                                 modalIsOpen={this.state.modalIsOpenUpdatePatient}
@@ -106,15 +108,18 @@ class PatientDetail extends Component {
                                     />}
                             />
                         </Col>
+
                         <Col s={3}>
                             <Link onClick={() => { this.updateToTrashPatient(patient._id) }} to="#">
                                 <strong>Delete</strong>
                             </Link>
                         </Col>
+
                         <Col s={6}>
                             <Link to="#" onClick={this.openModalAddAppointment}>
                                 <strong>Add appointment</strong>
                             </Link>
+
                             <ModalCustom
                                 label="Add appointment"
                                 modalIsOpen={this.state.modalIsOpenAddAppointment}
@@ -127,17 +132,21 @@ class PatientDetail extends Component {
                             />
                         </Col>
                     </Col>
+
                     <Col l={7} m={8} s={12}>
                         <label>About</label>
                         <p>{patient.description}</p>
                     </Col>
+                    
                     <Col l={5} m={4} s={12}>
                         <label>Occupation</label>
                         <p>{patient.occupation}</p>
+                        
                         <label>Birthday</label>
                         <p>{patient.birthday}</p>
                     </Col>
                 </Row>
+
                 <Row className="appointments-label">
                     <Col s={12}>
                         <label>{appointmentsLabel}</label>

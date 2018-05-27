@@ -53,10 +53,6 @@ class Calendar extends Component {
         );
     }
 
-    undoMoveEvent() {
-        alert('test');
-    }
-
     componentDidMount() {
         this.props.setTitle('calendar');
     }

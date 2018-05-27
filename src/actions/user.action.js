@@ -36,7 +36,7 @@ export function fetchUser(jwtToken) {
     }
 }
 
-export function updateUser(username, lastname, firstname, mail) {
+export function updateUser(username, lastname, firstname, mail, defaultRate, defaultDuration) {
     return (dispatch) => {
         return new Promise((resolve, reject) => {
             dispatch({ type: 'UPDATE_USER' });
@@ -45,7 +45,9 @@ export function updateUser(username, lastname, firstname, mail) {
                 username: username,
                 lastname: lastname,
                 firstname: firstname,
-                mail: mail
+                mail: mail,
+                defaultRate: defaultRate,
+                defaultDuration: defaultDuration
             }).then((response) => {
                 if (response.data.success) {
                     dispatch({ type: "UPDATE_USER_FULFILLED", payload: response.data.user });

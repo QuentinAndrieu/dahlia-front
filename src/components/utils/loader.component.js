@@ -4,7 +4,6 @@ import { Row, Col, Preloader } from 'react-materialize';
 class Loader extends Component {
 
     render() {
-
         return (
             <Row>
                 <Col s={12}>

@@ -7,7 +7,7 @@ class InputValidationService {
         let isError = false;
 
         inputs.forEach(input => {
-            if (!input.value || input.value.trim() === '') {
+            if (!input.value || input.value.toString().trim() === '') {
                 isError = true;
                 errors[input.key] = 'Required ' + input.key
             }

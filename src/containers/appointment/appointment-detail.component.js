@@ -62,14 +62,17 @@ class AppointmentDetail extends Component {
             <Row className="detail-appointment" key={this.props.appointment._id}>
                 <Col s={12}>
                     <p>{this.props.appointment.description}</p>
+
                     <label>
                         {this.formatDate(this.props.appointment.date)} / {this.props.appointment.duration} minutes / {this.props.appointment.rate} dollars
                      </label>
                 </Col>
+
                 <Col s={2} m={1} l={1}>
                     <Link to="#" onClick={this.openModalUpdateAppointment}>
                         <strong>Update</strong>
                     </Link>
+                    
                     <ModalCustom
                         label="Update appointment"
                         modalIsOpen={this.state.modalIsOpenUpdateAppointment}
@@ -81,14 +84,16 @@ class AppointmentDetail extends Component {
                             />}
                     />
                 </Col>
+
                 <Col s={2} m={1} l={1}>
                     <Link onClick={() => { this.updateToTrashAppointment(this.props.appointment._id) }} to="#">
                         <strong>Delete</strong>
                     </Link>
                 </Col>
+
                 <Col s={8} m={10} l={10}></Col>
             </Row>
-        );
+        )
     }
 }
 

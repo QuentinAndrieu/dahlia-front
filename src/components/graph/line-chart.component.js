@@ -31,8 +31,7 @@ class LineChartCustom extends Component {
         };
 
         let LineChart = Chart.Line;
-        console.log("LineChart", LineChart);
-
+        
         return (
             <LineChart width="1000" height="300" data={chartData} options={{
                 responsive: true,

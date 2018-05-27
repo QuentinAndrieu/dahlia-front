@@ -61,9 +61,10 @@ class UserSignUp extends Component {
         return (
             <Row className="login">
                 <Col s={12} m={3} l={4}></Col>
+
                 <Col className="container-login" s={12} m={6} l={4}>
                     <center>
-                        <img className="responsive-img img-logo" alt="" src="images/Dahlia.png" />
+                        <img className="responsive-img img-logo" alt="" src="images/Dahliab.png" />
                         <h4>Dahlia</h4>
                     </center>
 
@@ -73,6 +74,7 @@ class UserSignUp extends Component {
                         You already have an account ? <Link to="/signin">Sign In</Link>
                     </center>
                 </Col>
+                
                 <Col s={12} m={3} l={4}></Col>
                 {this.state.redirect && (
                     <Redirect to="" />

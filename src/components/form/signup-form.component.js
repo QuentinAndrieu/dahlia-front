@@ -1,43 +1,55 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Button } from 'react-materialize';
-import FieldService from '../../service/field.service';
+import { Button, Col, Row } from 'react-materialize';
+import InputCustom from '../field/input-custom.component';
 
 class SignUpForm extends Component {
-
+    
     render() {
         const { handleSubmit, submitting, error } = this.props;
-        const field = new FieldService();
 
         return (
             <form onSubmit={handleSubmit}>
-                <Field
-                    name="mail"
-                    label="Mail"
-                    component={field.renderInput}
-                    type="email"
-                    placeholder="Mail"
-                />
-                <Field
-                    name="password"
-                    label="Password"
-                    component={field.renderInput}
-                    type="password"
-                    placeholder="Password"
-                />
-                <Field
-                    name="passwordCopy"
-                    label="Password Copy"
-                    component={field.renderInput}
-                    type="password"
-                    placeholder="Password"
-                />
-                {error && <strong className="error">{error}</strong>}
-                <center>
-                    <Button disabled={submitting} s={12} type="submit">Sign Up</Button>
-                </center>
+                <Row>
+                    <Col s={12} className="form-field-custom">
+                        <Field
+                            name="mail"
+                            label="Mail"
+                            component={InputCustom}
+                            type="email"
+                            placeholder="Mail"
+                        />
+                    </Col>
+
+                    <Col s={12} className="form-field-custom">
+                        <Field
+                            name="password"
+                            label="Password"
+                            component={InputCustom}
+                            type="password"
+                            placeholder="Password"
+                        />
+                    </Col>
+
+                    <Col s={12} className="form-field-custom">
+                        <Field
+                            name="passwordCopy"
+                            label="Password Copy"
+                            component={InputCustom}
+                            type="password"
+                            placeholder="Password"
+                        />
+                        {error && <strong className="error">{error}</strong>}
+                    </Col>
+
+                    <Col s={12} className="form-field-custom">
+                        <center>
+                            <Button className="submit-button" disabled={submitting} s={12} type="submit">Sign Up</Button>
+                        </center>
+                    </Col>
+                </Row>
             </form>
-        );
+        )
     }
 }
 

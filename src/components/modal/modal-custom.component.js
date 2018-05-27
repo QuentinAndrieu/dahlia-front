@@ -22,10 +22,9 @@ class ModalCustom extends Component {
                 onRequestClose={this.props.closeModal}
                 style={customStyles}
                 contentLabel={this.props.label}>
-
                 {this.props.component}
             </Modal>
-        );
+        )
     }
 }
 

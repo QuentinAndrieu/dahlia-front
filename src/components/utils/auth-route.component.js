@@ -1,10 +1,5 @@
-import React, {
-    Component
-} from 'react';
-import {
-    Route,
-    Redirect
-} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 class AuthRoute extends Component {
 
@@ -16,21 +11,21 @@ class AuthRoute extends Component {
     }
 
     render() {
-        return ( <
-            Route exact path = {
+        return (<
+            Route exact path={
                 this.props.path
             }
-            render = {
+            render={
                 () => (
                     this.props.authenticated ? (
                         this.props.component
-                    ) : ( <
-                        Redirect to = '/signin' / >
-                    )
+                    ) : (<
+                        Redirect to='/signin' />
+                        )
                 )
             }
-            />
-        );
+        />
+        )
     }
 }
 
