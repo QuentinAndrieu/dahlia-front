@@ -88,7 +88,7 @@ class PatientDetail extends Component {
             <div className="patient-detail">
                 <Row>
                     <Col s={12} m={12} l={7} >
-                        <h4>{patient.firstname} {patient.lastname}</h4>
+                        <h4 className="patient-title">{patient.firstname} {patient.lastname}</h4>
                     </Col>
 
                     <Col s={12} m={12} l={5} className="hide-on-med-and-down" >

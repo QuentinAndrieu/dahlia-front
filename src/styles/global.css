@@ -1,6 +1,10 @@
 header {
-    height: 70px;
     background-color: white;
+    border-bottom: 2px solid rgb(73, 76, 78, 0.2);
+    min-height: 150px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .title {

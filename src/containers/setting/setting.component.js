@@ -44,10 +44,31 @@ class Setting extends Component {
             <div className="setting">
                 <Row>
                     <Col s={9}>
-                        <label>Firstname</label>
-                        <p>{user.firstname}</p>
-                    </Col>
+                        <Col s={12} m={6} m={6}>
+                            <label>Firstname</label>
+                            <p>{user.firstname}</p>
+                        </Col>
 
+                        <Col s={12} m={6} m={6}>
+                            <label>Lastname</label>
+                            <p>{user.lastname}</p>
+                        </Col>
+
+                        <Col s={12} m={6} m={6}>
+                            <label>Default rate appointment</label>
+                            <p>{user.defaultRate}$</p>
+                        </Col>
+
+                        <Col s={12} m={6} m={6}>
+                            <label>Default duration appointment</label>
+                            <p>{user.defaultDuration}$</p>
+                        </Col>
+
+                        <Col s={12} m={6} m={6}>
+                            <label>Email</label>
+                            <p>{user.mail}</p>
+                        </Col>
+                    </Col>
                     <Col s={3}>
                         <Link to="#" onClick={this.openModalUpdateUser}>
                             <strong>Update</strong>
@@ -63,26 +84,6 @@ class Setting extends Component {
                                     user={user}
                                 />}
                         />
-                    </Col>
-
-                    <Col s={12}>
-                        <label>Lastname</label>
-                        <p>{user.lastname}</p>
-                    </Col>
-
-                    <Col s={12}>
-                        <label>Email</label>
-                        <p>{user.mail}</p>
-                    </Col>
-
-                    <Col s={12}>
-                        <label>Default rate appointment</label>
-                        <p>{user.defaultRate}$</p>
-                    </Col>
-
-                    <Col s={12}>
-                        <label>Default duration appointment</label>
-                        <p>{user.defaultDuration}$</p>
                     </Col>
                 </Row>
             </div>

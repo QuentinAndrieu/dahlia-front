@@ -52,45 +52,39 @@ class SideNav extends Component {
                     </Link>
                 </ul>
                 <Row className="hide-on-large-only">
-                    <Col s={1}>
+                    <Col s={2}>
                         <Link className="link-nav" to="/">
                             <i className={'small material-icons icon-sidenav ' + this.isActive('home')}>home</i>
                         </Link>
                     </Col>
 
-                    <Col s={1}>
+                    <Col s={2}>
                         <Link className="link-nav" to="/patients">
                             <i className={'small material-icons icon-sidenav ' + this.isActive('list-patient')}>list</i>
                         </Link>
                     </Col>
 
-                    <Col s={1}>
+                    <Col s={2}>
                         <Link className="link-nav" to="/patient/create">
                             <i className={'small material-icons icon-sidenav ' + this.isActive('create-patient')}>create</i>
                         </Link>
                     </Col>
 
-                    <Col s={1}>
+                    <Col s={2}>
                         <Link className="link-nav" to="/calendar">
                             <i className={'small material-icons icon-sidenav ' + this.isActive('calendar')}>perm_contact_calendar</i>
                         </Link>
                     </Col>
 
-                    <Col s={1}>
+                    <Col s={2}>
                         <Link className="link-nav" to="/statistic">
                             <i className={'small material-icons icon-sidenav ' + this.isActive('statistic')}>show_chart</i>
                         </Link>
                     </Col>
 
-                    <Col s={1}>
+                    <Col s={2}>
                         <Link className="link-nav" to="/setting">
-                            <i className={'small material-icons icon-sidenav ' + this.isActive('setting')}>person</i>
-                        </Link>
-                    </Col>
-
-                    <Col s={1}>
-                        <Link className="link-nav" onClick={this.logOut} to="/signin">
-                            <i className="small material-icons icon-sidenav">arrow_drop_down_circle</i>
+                            <i className={'small material-icons icon-sidenav ' + this.isActive('setting')}>settings</i>
                         </Link>
                     </Col>
                 </Row>

@@ -1,3 +1,10 @@
+body {
+    border: 8px solid #494c4e;
+    margin: 0px;
+    min-height: 900px;
+    padding: 10px;
+}
+
 .input-field input:focus+label, textarea:focus+label {
     color: #1DBD63 !important;
 }
@@ -64,6 +71,7 @@ textarea.materialize-textarea {
 .ReactModal__Body--open {
     overflow-y: hidden;
     position: fixed;
+    width: 100%;
 }
 
 .ReactModalPortal {
@@ -93,4 +101,8 @@ textarea.materialize-textarea {
 
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default) {
     height: 34px;
+}
+
+.main_section {
+    margin-top: 15px;
 }
