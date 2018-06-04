@@ -33,9 +33,9 @@ class LineChartCustom extends Component {
         let LineChart = Chart.Line;
         
         return (
-            <LineChart width="1000" height="300" data={chartData} options={{
+            <LineChart width="700" height="300" data={chartData} options={{
                 responsive: true,
-                maintainAspectRatio: true
+                maintainAspectRatio: false
             }} />
         )
     }
