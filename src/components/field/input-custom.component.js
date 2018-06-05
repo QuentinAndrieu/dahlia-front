@@ -7,8 +7,14 @@ export default class InputCustom extends Component {
     }
 
     render() {
-        const errorInput = {
-            borderBottom: '2px solid #FF0000'
+        const errorInputStyle = {
+            border: '2px solid #FF0000'
+        }
+
+        const inputStyle = {
+            border: '1px solid #efefef',
+            backgroundColor: 'rgb(250, 250, 250)',
+            paddingLeft: '5px'
         }
 
         return (
@@ -16,8 +22,7 @@ export default class InputCustom extends Component {
                 <label>{this.props.label}</label>
                 <input {...this.props.input}
                     type={this.props.type}
-                    style={(this.props.touched && this.props.error) ? errorInput : {}}
-                    placeholder={this.props.label} />
+                    style={(this.props.touched && this.props.error) ? errorInputStyle : inputStyle} />
             </div>
         )
     }

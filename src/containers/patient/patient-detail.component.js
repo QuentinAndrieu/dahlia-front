@@ -81,7 +81,7 @@ class PatientDetail extends Component {
     render() {
         const { patient } = this.props;
         const mappedAppointments = this.getActiveAppointments(patient.appointments).map(appointment =>
-            <AppoinmentDetail appointment={appointment} />);
+            <AppoinmentDetail key={appointment._id} appointment={appointment} />);
         const appointmentsLabel = mappedAppointments.length > 0 ? 'Appointments' : '';
 
         return (
@@ -137,11 +137,11 @@ class PatientDetail extends Component {
                         <label>About</label>
                         <p>{patient.description}</p>
                     </Col>
-                    
+
                     <Col l={5} m={4} s={12}>
                         <label>Occupation</label>
                         <p>{patient.occupation}</p>
-                        
+
                         <label>Birthday</label>
                         <p>{patient.birthday}</p>
                     </Col>

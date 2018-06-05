@@ -59,7 +59,7 @@ class AppointmentDetail extends Component {
 
     render() {
         return (
-            <Row className="detail-appointment" key={this.props.appointment._id}>
+            <Row className="detail-appointment">
                 <Col s={12}>
                     <p>{this.props.appointment.description}</p>
 

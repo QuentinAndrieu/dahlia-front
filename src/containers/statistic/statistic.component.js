@@ -14,10 +14,10 @@ class Statistic extends Component {
         this.state = {
             lineChartDataSet: [{
                 data: this.getIncomes(pastYear),
-                label: 'Icomes from ' + pastYear,
+                label: 'Incomes from ' + pastYear,
             }, {
                 data: this.getIncomes(onGoingYear),
-                label: 'Icomes from ' + onGoingYear,
+                label: 'Incomes from ' + onGoingYear,
             }],
             barChartDataSet: [{
                 data: this.getAppointments(pastYear),
@@ -34,16 +34,16 @@ class Statistic extends Component {
     }
 
     getIncomes(year) {
-        let icomesArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let incomesArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
         const appointmentsFilter = this.filterActiveAppoinmentPerYear(this.props.appointments, year);
 
         appointmentsFilter.forEach(appointment => {
             const month = new Date(appointment.createdAt).getMonth();
-            icomesArray[month] += appointment.rate;
+            incomesArray[month] += appointment.rate;
         });
 
-        return icomesArray;
+        return incomesArray;
     }
 
     getAppointments(year) {
@@ -71,7 +71,7 @@ class Statistic extends Component {
             <div>
                 <Row>
                     <Col s={12}>
-                        <label>Icomes 2018</label>
+                        <label>Incomes 2018</label>
                         <LineChartCustom dataSet={this.state.lineChartDataSet} />
                     </Col>
                     
