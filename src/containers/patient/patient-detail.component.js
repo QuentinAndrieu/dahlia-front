@@ -87,11 +87,11 @@ class PatientDetail extends Component {
         return (
             <div className="patient-detail">
                 <Row>
-                    <Col s={12} m={12} l={7} >
+                    <Col s={12} m={12} l={6} >
                         <h4 className="patient-title">{patient.firstname} {patient.lastname}</h4>
                     </Col>
 
-                    <Col s={12} m={12} l={5} className="hide-on-med-and-down" >
+                    <Col s={12} m={12} l={6} className="hide-on-med-and-down" >
                         <Col s={3}>
                             <Link to="#" onClick={this.openModalUpdatePatient}>
                                 <strong>Update</strong>
@@ -133,12 +133,12 @@ class PatientDetail extends Component {
                         </Col>
                     </Col>
 
-                    <Col l={7} m={8} s={12}>
+                    <Col l={9} m={10} s={12}>
                         <label>About</label>
                         <p>{patient.description}</p>
                     </Col>
 
-                    <Col l={5} m={4} s={12}>
+                    <Col l={3} m={2} s={12}>
                         <label>Occupation</label>
                         <p>{patient.occupation}</p>
 

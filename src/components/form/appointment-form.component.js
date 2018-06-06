@@ -45,9 +45,7 @@ class AppointmentForm extends Component {
                     </Col>
 
                     <Col s={12} className="form-field-custom">
-                        <center>
-                            <Button className="submit-button" disabled={pristine || submitting} s={12} type="submit">{this.props.button}</Button>
-                        </center>
+                        <Button className="submit-button" disabled={pristine || submitting} s={12} type="submit">{this.props.button}</Button>
                     </Col>
                 </Row>
             </form>

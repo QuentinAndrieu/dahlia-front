@@ -33,9 +33,7 @@ class SignInForm extends Component {
                     </Col>
 
                     <Col s={12} className="form-field-custom">
-                        <center>
-                            <Button className="submit-button" disabled={submitting} s={12} type="submit">Sign In</Button>
-                        </center>
+                        <Button className="submit-button" disabled={submitting} s={12} type="submit">Sign In</Button>
                     </Col>
                 </Row>
             </form>

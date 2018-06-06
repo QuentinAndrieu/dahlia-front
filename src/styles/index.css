@@ -1,9 +1,24 @@
+html {
+    height: 100%;
+}
+
 body {
     border: 8px solid #494c4e;
     margin: 0px;
-    min-height: 900px;
+    min-height: 100%;
     padding: 10px;
 }
+
+#root {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+p {
+    line-height: 1.6em;
+}
+
 
 .input-field input:focus+label, textarea:focus+label {
     color: #1DBD63 !important;
@@ -12,22 +27,6 @@ body {
 .row .input-field input:focus, textarea:focus {
     border-bottom: 1px solid #1DBD63 !important;
     box-shadow: 0 1px 0 0 #1DBD63 !important
-}
-
-.btn {
-    background-color: #1DBD63;
-}
-
-.btn:hover {
-    background-color: whitesmoke;
-    color: #1DBD63;
-    font-size: bold;
-}
-
-.btn:focus {
-    background-color: whitesmoke;
-    color: #1DBD63;
-    font-size: bold;
 }
 
 .icons {

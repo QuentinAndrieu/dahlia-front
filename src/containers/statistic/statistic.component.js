@@ -74,7 +74,7 @@ class Statistic extends Component {
                         <label>Incomes 2018</label>
                         <LineChartCustom dataSet={this.state.lineChartDataSet} />
                     </Col>
-                    
+
                     <Col s={12}>
                         <label>Appoinments 2018</label>
                         <BarChartCustom dataSet={this.state.barChartDataSet} />

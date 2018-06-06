@@ -4,7 +4,7 @@ import { Button, Col, Row } from 'react-materialize';
 import InputCustom from '../field/input-custom.component';
 
 class SignUpForm extends Component {
-    
+
     render() {
         const { handleSubmit, submitting, error } = this.props;
 
@@ -43,9 +43,7 @@ class SignUpForm extends Component {
                     </Col>
 
                     <Col s={12} className="form-field-custom">
-                        <center>
-                            <Button className="submit-button" disabled={submitting} s={12} type="submit">Sign Up</Button>
-                        </center>
+                        <Button className="submit-button" disabled={submitting} s={12} type="submit">Sign Up</Button>
                     </Col>
                 </Row>
             </form>
