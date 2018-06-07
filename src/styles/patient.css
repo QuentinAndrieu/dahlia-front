@@ -24,5 +24,18 @@
 }
 
 .patient-title {
-     margin-top: 0px;
+    margin-top: 0px;
+}
+
+.patient-preview {
+    margin-top: 73px;
+    min-height: 300px!important;
+    padding: 5px!important;
+    border: 1px solid rgb(228, 228, 228);
+}
+
+.description-patient-list{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

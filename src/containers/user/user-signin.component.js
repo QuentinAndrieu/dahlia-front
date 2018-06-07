@@ -23,7 +23,7 @@ class UserSignIn extends Component {
 
     submit(values) {
         const inputValidationService = new InputValidationService();
-        
+
         const formatValues = [{
             key: 'mail',
             value: values.mail
@@ -62,13 +62,15 @@ class UserSignIn extends Component {
                         <h4 className="dahlia-green">Dahlia</h4>
                     </center>
 
-                    <SignInForm onSubmit={this.submit} />
+                    <center>
+                        <SignInForm onSubmit={this.submit} />
+                    </center>
 
                     <center className="login-link">
                         You don't have an account ? <Link to="/signup">Sign Up</Link>
                     </center>
                 </Col>
-                
+
                 <Col s={12} m={3} l={4}></Col>
                 {this.state.redirect && (
                     <Redirect to="" />

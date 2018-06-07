@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import ListCustom from '../../components/utils/list-custom.component';
+import Col from 'react-materialize/lib/Col';
+import Row from 'react-materialize/lib/Row';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
+
 
 class PatientList extends Component {
 
@@ -12,7 +17,24 @@ class PatientList extends Component {
     });
 
     this.state = {
-      patients: updatedPatients
+      patients: updatedPatients,
+      patient: null
+    }
+
+    this.setPatient = this.setPatient.bind(this);
+  }
+
+  setPatient(patient) {
+    this.setState({
+      patient: patient
+    })
+  }
+
+  customPath(path, id) {
+    if (path) {
+      return path + '/' + id;
+    } else {
+      return '/';
     }
   }
 
@@ -21,8 +43,37 @@ class PatientList extends Component {
   }
 
   render() {
+
+    const patientDetail = this.state.patient ?
+      <div className="patient-preview">
+        <p>
+          <Link to={this.customPath('/patient', this.state.patient._id)}>
+            <strong>{this.state.patient.firstname} {this.state.patient.lastname}</strong>
+          </Link>
+        </p>
+        <label>Occupation</label>
+        <p>
+          {this.state.patient.occupation}
+        </p>
+        <label>Birthday</label>
+        <p>
+          {moment(this.state.patient.birthday).format('MM-DD-YYYY')}
+        </p>
+        <label>Description</label>
+        <p className="description-patient-list">
+          {this.state.patient.description}
+        </p>
+      </div> : <div></div>;
+
     return (
-      <ListCustom list={this.state.patients} path="/patient" title="patients" />
+      <Row>
+        <Col s={8}>
+          <ListCustom list={this.state.patients} path="/patient" title="patients" setItem={this.setPatient} />
+        </Col>
+        <Col s={4}>
+          {patientDetail}
+        </Col>
+      </Row>
     );
   }
 }

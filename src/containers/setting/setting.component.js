@@ -55,7 +55,7 @@ class Setting extends Component {
 
                     <Col s={12} m={2} l={2} className="hide-on-small-only">
                         <Link to="#" onClick={this.openModalUpdateUser}>
-                            <strong>Update</strong>
+                            <strong>Edit</strong>
                         </Link>
 
                         <ModalCustom

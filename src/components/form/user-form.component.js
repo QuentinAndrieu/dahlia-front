@@ -84,7 +84,7 @@ class UserForm extends Component {
                     </Col>
 
                     <Col s={12}>
-                        <Button className="submit-button" disabled={submitting} s={12} type="submit">Update</Button>
+                        <Button className="submit-button" disabled={submitting} s={12} type="submit">Edit</Button>
                     </Col>
                 </Row>
             </form>

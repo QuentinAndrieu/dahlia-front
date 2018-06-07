@@ -94,7 +94,7 @@ class PatientDetail extends Component {
                     <Col s={12} m={12} l={6} className="hide-on-med-and-down" >
                         <Col s={3}>
                             <Link to="#" onClick={this.openModalUpdatePatient}>
-                                <strong>Update</strong>
+                                <strong>Edit</strong>
                             </Link>
 
                             <ModalCustom

@@ -63,17 +63,18 @@ class ListCustom extends Component {
     }
 
     render() {
-        let mappedList = this.state.list.map(element => <Link key={element._id} to={this.customPath(this.props.path, element._id)}>
-            <CollectionItem key={element._id}>
-                {element.link}
-            </CollectionItem>
-        </Link>);
+        let mappedList = this.state.list.map(element =>
+            <Link key={element._id} to="#" onClick={() => { this.props.setItem(element) }}>
+                <CollectionItem key={element._id}>
+                    {element.link}
+                </CollectionItem>
+            </Link>);
 
         return (
             <div className="list">
                 <Row>
                     <Input onChange={this.searchList} s={12} label={this.customSearchTitle(this.props.title)} />
-                    <Collection >
+                    <Collection>
                         {mappedList}
                     </Collection>
                 </Row>

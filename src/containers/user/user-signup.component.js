@@ -67,19 +67,21 @@ class UserSignUp extends Component {
                         <img className="responsive-img img-logo" alt="" src="images/Dahliab.png" />
                         <h4>Dahlia</h4>
                     </center>
-
-                    <SignUpForm onSubmit={this.submit} />
-
+                    <center>
+                        <SignUpForm onSubmit={this.submit} />
+                    </center>
                     <center className="login-link">
                         You already have an account ? <Link to="/signin">Sign In</Link>
                     </center>
                 </Col>
-                
+
                 <Col s={12} m={3} l={4}></Col>
-                {this.state.redirect && (
-                    <Redirect to="" />
-                )}
-            </Row>
+                {
+                    this.state.redirect && (
+                        <Redirect to="" />
+                    )
+                }
+            </Row >
         );
     }
 }

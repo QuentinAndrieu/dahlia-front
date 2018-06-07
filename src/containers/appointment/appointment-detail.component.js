@@ -70,7 +70,7 @@ class AppointmentDetail extends Component {
 
                 <Col s={2} m={1} l={1}>
                     <Link to="#" onClick={this.openModalUpdateAppointment}>
-                        <strong>Update</strong>
+                        <strong>Edit</strong>
                     </Link>
                     
                     <ModalCustom
