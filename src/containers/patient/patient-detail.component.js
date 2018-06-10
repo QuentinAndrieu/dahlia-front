@@ -117,11 +117,11 @@ class PatientDetail extends Component {
 
                         <Col s={6}>
                             <Link to="#" onClick={this.openModalAddAppointment}>
-                                <strong>Add appointment</strong>
+                                <strong>New appointment</strong>
                             </Link>
 
                             <ModalCustom
-                                label="Add appointment"
+                                label="New appointment"
                                 modalIsOpen={this.state.modalIsOpenAddAppointment}
                                 closeModal={this.closeModalAddAppointment}
                                 component={

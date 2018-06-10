@@ -19,7 +19,6 @@ p {
     line-height: 1.6em;
 }
 
-
 .input-field input:focus+label, textarea:focus+label {
     color: #1DBD63 !important;
 }

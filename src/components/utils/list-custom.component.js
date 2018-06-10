@@ -73,7 +73,7 @@ class ListCustom extends Component {
         return (
             <div className="list">
                 <Row>
-                    <Input onChange={this.searchList} s={12} label={this.customSearchTitle(this.props.title)} />
+                    <Input onChange={this.searchList} s={12} placeholder={this.customSearchTitle(this.props.title)} />
                     <Collection>
                         {mappedList}
                     </Collection>
