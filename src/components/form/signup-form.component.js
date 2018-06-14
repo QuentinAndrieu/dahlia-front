@@ -39,6 +39,9 @@ class SignUpForm extends Component {
                             type="password"
                             placeholder="Password"
                         />
+                    </Col>
+
+                    <Col s={12} className="form-field-custom">
                         {error && <strong className="error">{error}</strong>}
                     </Col>
 

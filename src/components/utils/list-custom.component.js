@@ -64,7 +64,7 @@ class ListCustom extends Component {
 
     render() {
         let mappedList = this.state.list.map(element =>
-            <Link key={element._id} to="#" onClick={() => { this.props.setItem(element) }}>
+            <Link key={element._id} to={this.customPath(this.props.path, element._id)} onClick={() => { this.props.setItem(element) }}>
                 <CollectionItem key={element._id}>
                     {element.link}
                 </CollectionItem>

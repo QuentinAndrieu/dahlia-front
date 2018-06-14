@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideNav from './side-nav.component';
 import { withRouter } from 'react-router-dom';
-import { setJWTToken } from '../../actions/authentification.action';
+import { setJWTToken, unauthenticated } from '../../actions/authentification.action';
 
 const mapStateToProps = (state, ownProps) => ({
     title: state.router.title
@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
-        setJWTToken: setJWTToken
+        setJWTToken: setJWTToken,
+        unauthenticated: unauthenticated
     }, dispatch)
 );
 

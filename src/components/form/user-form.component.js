@@ -70,7 +70,6 @@ class UserForm extends Component {
                             type="text"
                             values={this.getValuesSelectBoxDurations()}
                         />
-                        {error && <strong className="error">{error}</strong>}
                     </Col>
 
                     <Col s={12} className="form-field-custom">
@@ -81,6 +80,10 @@ class UserForm extends Component {
                             type="email"
                             placeholder="Mail"
                         />
+                    </Col>
+
+                    <Col s={12} className="form-field-custom">
+                        {error && <strong className="error">{error}</strong>}
                     </Col>
 
                     <Col s={12}>

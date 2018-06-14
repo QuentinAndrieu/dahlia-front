@@ -71,6 +71,12 @@ export function setJWTToken(token) {
     }
 }
 
+export function unauthenticated() {
+    return {
+        type: 'UNAUTHENTICATED'
+    }
+}
+
 export function isAuthenticated(token) {
     return (dispatch) => {
         const err = 'User is not authenticated';

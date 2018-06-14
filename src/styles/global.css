@@ -37,7 +37,7 @@ header {
     display: inline-flex;
     vertical-align: middle;
     margin-right: 30px;
-    color: black;
+    color: #17301C;
 }
 
 .link-nav .active {
@@ -45,18 +45,18 @@ header {
 }
 
 .modal-header {
-    color: #336699;
+    color: #4FB0C6;
     font-weight: bold;
 }
 
 .toast-custom {
-    background-color: #336699;
+    background-color: #4FB0C6;
     color: white;
     font-size: bold;
 }
 
 .toast-custom-error {
-    background-color: #FF0000;
+    background-color: #DB93B0;
     color: white;
     font-size: bold;
 }
@@ -72,3 +72,16 @@ p {
 .form-field-custom {
     margin-top: 10px;
 }
+
+.card-list-patient {
+    background-color: #1DBD63;
+}
+
+.card-calendar {
+    background-color: #4FB0C6;
+}
+
+.card-statistic {
+    background-color: #744fc6;
+}
+

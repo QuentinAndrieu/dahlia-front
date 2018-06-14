@@ -10,7 +10,9 @@ export default class SelectBoxCustom extends Component {
 
     render() {
         const errorInputStyle = {
-            border: '2px solid #FF0000'
+            border: '1px solid #DB93B0',
+            backgroundColor: 'rgb(250, 250, 250)',
+            paddingLeft: '5px'
         }
 
         const inputStyle = {
@@ -28,7 +30,7 @@ export default class SelectBoxCustom extends Component {
                     value={this.props.input.value}
                     onChange={(value) => this.props.input.onChange(value)}
                     onBlur={(value) => this.props.input.onBlur(value)}
-                    style={(this.props.touched && this.props.error) ? errorInputStyle : inputStyle}
+                    style={(this.props.meta.touched && this.props.meta.error) ? errorInputStyle : inputStyle}
                     options={this.props.values}
                     searchable={false}
                     simpleValue

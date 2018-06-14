@@ -26,22 +26,26 @@ class PatientDetail extends Component {
     }
 
     updateToTrashPatient(id) {
-        this.props.updateToTrashPatient(id).then((patient) => {
-            this.setState({
-                redirect: true
+        let confirm = window.confirm('Are you sure you want to delete this patient ?');
+
+        if (confirm) {
+            this.props.updateToTrashPatient(id).then((patient) => {
+                this.setState({
+                    redirect: true
+                });
+                window.M.toast({
+                    html: 'Patient deleted',
+                    classes: 'toast-custom',
+                    displayLength: 1000
+                });
+            }).catch((err) => {
+                window.M.toast({
+                    html: 'Error during patient delete',
+                    classes: 'toast-custom-error',
+                    displayLength: 1000
+                });
             });
-            window.M.toast({
-                html: 'Patient deleted',
-                classes: 'toast-custom',
-                displayLength: 1000
-            });
-        }).catch((err) => {
-            window.M.toast({
-                html: 'Error during patient delete',
-                classes: 'toast-custom-error',
-                displayLength: 1000
-            });
-        });
+        }
     }
 
     getActiveAppointments(appointments) {

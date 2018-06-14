@@ -19,12 +19,12 @@ class BarChartCustom extends Component {
                 },
                 {
                     label: this.props.dataSet[1].label,
-                    fillColor: "rgba(26,154,221,0.2)",
-                    strokeColor: "rgba(26,154,221,1)",
-                    pointColor: "rgba(26,154,221,1)",
+                    fillColor: "rgb(116,79,198,0.2)",
+                    strokeColor: "rgb(116,79,198,1)",
+                    pointColor: "rgb(116,79,198,1)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(26,154,221,1)",
+                    pointHighlightStroke: "rgb(116,79,198,1)",
                     data: this.props.dataSet[1].data
                 }
             ]

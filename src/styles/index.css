@@ -7,12 +7,27 @@ body {
     margin: 0px;
     min-height: 100%;
     padding: 10px;
+    color: #17301C;
+}
+
+a {
+    color: #4FB0C6;
+}
+
+.btn {
+    background-color: #4F86C6;
+}
+
+.btn:hover {
+    background-color: #4FB0C6;
 }
 
 #root {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+    background-color: white;
+    height: 100%;
 }
 
 p {
@@ -33,11 +48,7 @@ p {
 }
 
 .error {
-    color: #FF0000;
-}
-
-.error-field {
-    color: #1DBD63;
+    color: #DB93B0;
 }
 
 .pointer {
@@ -59,7 +70,7 @@ p {
 }
 
 .collection a.collection-item {
-    color: black !important;
+    color: #17301C !important;
 }
 
 textarea.materialize-textarea {

@@ -41,6 +41,9 @@ class AppointmentForm extends Component {
                             type="text"
                             placeholder="Duration"
                         />
+                    </Col>
+                    
+                    <Col s={12} className="form-field-custom">
                         {error && <strong className="error">{error}</strong>}
                     </Col>
 

@@ -11,8 +11,13 @@ class SideNav extends Component {
     }
 
     logOut() {
-        this.props.setJWTToken(null);
-        sessionStorage.setItem('jwtToken', null);
+        let confirm = window.confirm('Sign out ?');
+
+        if (confirm) {
+            this.props.setJWTToken(null);
+            sessionStorage.setItem('jwtToken', null);
+            this.props.unauthenticated();
+        }
     }
 
     isActive(link) {
@@ -47,7 +52,7 @@ class SideNav extends Component {
                         <i className={'small material-icons icon-sidenav ' + this.isActive('setting')}>settings</i> Setting
                     </Link>
 
-                    <Link className="collection-item" onClick={this.logOut} to="/signin">
+                    <Link className="collection-item" onClick={this.logOut} to="#">
                         <i className="small material-icons icon-sidenav">arrow_drop_down_circle</i> Sign out
                     </Link>
                 </ul>

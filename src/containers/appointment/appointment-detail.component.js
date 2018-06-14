@@ -22,19 +22,23 @@ class AppointmentDetail extends Component {
     }
 
     updateToTrashAppointment(id) {
-        this.props.updateToTrashAppointment(id).then((appointment) => {
-            window.M.toast({
-                html: 'Appointment deleted',
-                classes: 'toast-custom',
-                displayLength: 1000
+        let confirm = window.confirm('Are you sure you want to delete this appointment ?');
+
+        if (confirm) {
+            this.props.updateToTrashAppointment(id).then((appointment) => {
+                window.M.toast({
+                    html: 'Appointment deleted',
+                    classes: 'toast-custom',
+                    displayLength: 1000
+                });
+            }).catch((err) => {
+                window.M.toast({
+                    html: 'Error during appointment delete',
+                    classes: 'toast-custom-error',
+                    displayLength: 1000
+                });
             });
-        }).catch((err) => {
-            window.M.toast({
-                html: 'Error during appointment delete',
-                classes: 'toast-custom-error',
-                displayLength: 1000
-            });
-        });
+        }
     }
 
     formatDate(date) {
@@ -72,7 +76,7 @@ class AppointmentDetail extends Component {
                     <Link to="#" onClick={this.openModalUpdateAppointment}>
                         <strong>Edit</strong>
                     </Link>
-                    
+
                     <ModalCustom
                         label="Update appointment"
                         modalIsOpen={this.state.modalIsOpenUpdateAppointment}
