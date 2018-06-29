@@ -15,19 +15,19 @@ class Home extends Component {
                 </Col>
                 <Col m={6} s={12}>
                     <Card className="card-list-patient" textClassName="white-text">
-                        <span class="card-title">Manage your patients</span>
+                        <span className="card-title">Manage your patients</span>
                         Record your patient's detail, in a easy and secure way !
                     </Card>
                 </Col>
                 <Col className="offset-m6" m={6} s={12}>
                     <Card className="card-calendar" textClassName="white-text">
-                        <span class="card-title">Calendar online</span>
+                        <span className="card-title">Calendar online</span>
                         Have a quick and simple look to your appointments !
                     </Card>
                 </Col>
                 <Col className="offset-m6" m={6} s={12}>
                     <Card className="card-statistic" textClassName="white-text">
-                        <span class="card-title">Statistic automatic</span>
+                        <span className="card-title">Statistic automatic</span>
                         Keep track of your incomes, and number of appointments !
                     </Card>
                 </Col>
