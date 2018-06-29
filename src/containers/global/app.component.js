@@ -3,6 +3,7 @@ import Root from '../../containers/global/root.container';
 import { Row, Col } from 'react-materialize';
 import SideNav from './side-nav.container';
 import Header from './header.container';
+import axios from 'axios';
 
 class App extends Component {
 
@@ -41,6 +42,12 @@ class App extends Component {
   }
 
   render() {
+
+    // Ping server every 5 minutes to keep heroku app active
+    setInterval(() => {
+      axios.get('https://dahlia-front.herokuapp.com');
+    }, 300000);
+
     if (this.state.loading) {
       return (<div></div>);
     }
