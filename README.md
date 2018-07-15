@@ -1,7 +1,7 @@
 # Dahlia Front
 
 
-## Demo (still in prototye state)
+## Demo
 
 https://dahlia.quentinandrieu.com/
 
