@@ -3,7 +3,7 @@
 
 ## Demo (still in prototye state)
 
-https://dahlia-front.herokuapp.com/
+https://dahlia.quentinandrieu.com/
 
 ### Init project
 
